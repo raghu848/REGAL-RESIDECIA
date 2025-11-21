@@ -46,6 +46,11 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+// Add a root route for health check
+app.get('/', (req, res) => {
+  res.send('Regal Residencia Server is Running');
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
