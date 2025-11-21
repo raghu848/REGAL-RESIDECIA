@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
   "name": "regal-residencia-client",
   "version": "0.1.0",
   "private": true,
@@ -39,3 +40,34 @@
     ]
   }
 }
+=======
+  "name": "regal-residencia",
+  "version": "1.0.0",
+  "description": "Premium dark-themed website for Regal Residencia luxury residential project in Mohali",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node dev-start.js",
+    "build": "npm install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "real-estate",
+    "luxury",
+    "mern",
+    "dark-theme"
+  ],
+  "author": "Regal Residencia Team",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.6.1",
+    "express": "^4.21.2",
+    "mongoose": "^7.8.7"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
+>>>>>>> 4988622b69a330237baa2b9342c5b1f36b97a41c
