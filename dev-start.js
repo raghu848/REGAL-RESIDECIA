@@ -17,7 +17,7 @@ const server = spawn('node', ['server.js'], {
 console.log('🖥️  Server process started...\n');
 
 // Start the client with a specific port
-const client = spawn('powershell', ['-Command', '$env:PORT=3001; npm start'], {
+const client = spawn('powershell', ['-Command', '$env:PORT=3006; npm start'], {
   cwd: path.join(process.cwd(), 'client'),
   stdio: 'inherit',
   shell: true
@@ -26,8 +26,8 @@ const client = spawn('powershell', ['-Command', '$env:PORT=3001; npm start'], {
 console.log('💻 Client process started...\n');
 
 console.log('✅ Development environment is starting up!');
-console.log('   Server: http://localhost:5000');
-console.log('   Client: http://localhost:3001\n');
+console.log('   Server: http://localhost:5005');
+console.log('   Client: http://localhost:3006\n');
 console.log('🔄 Both processes are running in the background.');
 console.log('   Press Ctrl+C to stop both processes.\n');
 

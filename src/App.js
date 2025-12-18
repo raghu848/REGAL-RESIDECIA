@@ -71,6 +71,129 @@ const GlobalStyle = createGlobalStyle`
     padding: 2rem 0;
   }
 
+  /* Enhanced responsive design for all resolutions including 125% scaling */
+  @media (max-width: 1200px) {
+    .container {
+      width: 95%;
+      padding: 1.5rem 0;
+    }
+    
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .container {
+      width: 95%;
+      padding: 1.5rem 0;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .container {
+      width: 95%;
+      padding: 1rem 0;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-title::after {
+      width: 80px;
+      height: 3px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .container {
+      width: 95%;
+      padding: 0.8rem 0;
+    }
+    
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .section-title::after {
+      width: 60px;
+      height: 2px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      width: 95%;
+      padding: 0.6rem 0;
+    }
+    
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 1.1rem;
+    }
+    
+    .section-title::after {
+      width: 50px;
+      height: 1.5px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .container {
+      width: 95%;
+      padding: 0.5rem 0;
+    }
+    
+    .section-title {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    .container {
+      width: 95%;
+      padding: 1.1rem 0;
+    }
+    
+    .section-title {
+      font-size: 1.85rem;
+      margin-bottom: 1.55rem;
+    }
+    
+    .section-title::after {
+      width: 82px;
+      height: 3.2px;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    .container {
+      width: 95%;
+      padding: 1.2rem 0;
+    }
+    
+    .section-title {
+      font-size: 1.9rem;
+      margin-bottom: 1.6rem;
+    }
+    
+    .section-title::after {
+      width: 85px;
+      height: 3.5px;
+    }
+  }
+
   .btn {
     background: linear-gradient(135deg, var(--accent-gold), #b8860b);
     color: var(--primary-dark);
@@ -100,6 +223,40 @@ const AppContainer = styled.div`
   background-color: var(--primary-dark);
   min-height: 100vh;
   width: 100%;
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    min-height: 100vh;
+  }
+  
+  @media (max-width: 992px) {
+    min-height: 100vh;
+  }
+  
+  @media (max-width: 768px) {
+    min-height: 100vh;
+  }
+  
+  @media (max-width: 576px) {
+    min-height: 100vh;
+  }
+  
+  @media (max-width: 480px) {
+    min-height: 100vh;
+  }
+  
+  @media (max-width: 400px) {
+    min-height: 100vh;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    min-height: 100vh;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    min-height: 100vh;
+  }
 `;
 
 // Sticky Icons Container
@@ -111,6 +268,56 @@ const StickyIconsContainer = styled.div`
   flex-direction: column;
   gap: 15px;
   z-index: 1000;
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    right: 18px;
+    bottom: 18px;
+    gap: 13px;
+  }
+  
+  @media (max-width: 992px) {
+    right: 16px;
+    bottom: 16px;
+    gap: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    right: 15px;
+    bottom: 15px;
+    gap: 11px;
+  }
+  
+  @media (max-width: 576px) {
+    right: 12px;
+    bottom: 12px;
+    gap: 10px;
+  }
+  
+  @media (max-width: 480px) {
+    right: 10px;
+    bottom: 10px;
+    gap: 9px;
+  }
+  
+  @media (max-width: 400px) {
+    right: 8px;
+    bottom: 8px;
+    gap: 8px;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    right: 16px;
+    bottom: 16px;
+    gap: 12px;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    right: 17px;
+    bottom: 17px;
+    gap: 13px;
+  }
 `;
 
 // Social Icon Button
@@ -134,10 +341,54 @@ const SocialIcon = styled(motion.a)`
     box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
   }
   
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+  
+  @media (max-width: 992px) {
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+  }
+  
   @media (max-width: 768px) {
     width: 45px;
     height: 45px;
     font-size: 1.3rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    width: 47px;
+    height: 47px;
+    font-size: 1.35rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
   }
 `;
 
@@ -148,6 +399,56 @@ const PhoneIcon = styled(SocialIcon)`
   &:hover {
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+  
+  @media (max-width: 992px) {
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+  }
+  
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    width: 47px;
+    height: 47px;
+    font-size: 1.35rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
 `;
 
 // WhatsApp Icon
@@ -156,6 +457,56 @@ const WhatsAppIcon = styled(SocialIcon)`
   
   &:hover {
     box-shadow: 0 6px 20px rgba(37, 211, 102, 0.5);
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+  
+  @media (max-width: 992px) {
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+  }
+  
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    width: 47px;
+    height: 47px;
+    font-size: 1.35rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
   }
 `;
 
@@ -166,6 +517,56 @@ const FacebookIcon = styled(SocialIcon)`
   &:hover {
     box-shadow: 0 6px 20px rgba(66, 103, 178, 0.5);
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+  
+  @media (max-width: 992px) {
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+  }
+  
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    width: 47px;
+    height: 47px;
+    font-size: 1.35rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
 `;
 
 // Instagram Icon
@@ -175,6 +576,56 @@ const InstagramIcon = styled(SocialIcon)`
   &:hover {
     box-shadow: 0 6px 20px rgba(188, 24, 136, 0.5);
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+  
+  @media (max-width: 992px) {
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+  }
+  
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    width: 47px;
+    height: 47px;
+    font-size: 1.35rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+  }
 `;
 
 // LinkedIn Icon
@@ -183,6 +634,56 @@ const LinkedInIcon = styled(SocialIcon)`
   
   &:hover {
     box-shadow: 0 6px 20px rgba(0, 119, 181, 0.5);
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+  }
+  
+  @media (max-width: 992px) {
+    width: 46px;
+    height: 46px;
+    font-size: 1.35rem;
+  }
+  
+  @media (max-width: 768px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+  
+  @media (max-width: 576px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 38px;
+    height: 38px;
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    width: 35px;
+    height: 35px;
+    font-size: 1rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    width: 47px;
+    height: 47px;
+    font-size: 1.35rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
   }
 `;
 

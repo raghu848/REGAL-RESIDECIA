@@ -17,6 +17,40 @@ const TestimonialsSection = styled.section`
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 3.5rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 2.5rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2.2rem 0;
+  }
+  
+  @media (max-width: 400px) {
+    padding: 2rem 0;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    padding: 3.2rem 0;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    padding: 3.4rem 0;
+  }
 `;
 
 const TestimonialsContainer = styled.div`
@@ -35,9 +69,54 @@ const TestimonialCard = styled(motion.div)`
   position: relative;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    padding: 2.5rem;
+    margin: 1.8rem 0;
+    border-radius: 14px;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 2.2rem;
+    margin: 1.6rem 0;
+    border-radius: 12px;
+  }
+  
   @media (max-width: 768px) {
     padding: 2rem 1.5rem;
     margin: 1rem;
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1.8rem 1.2rem;
+    margin: 0.8rem;
+    border-radius: 9px;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1.6rem 1rem;
+    margin: 0.7rem;
+    border-radius: 8px;
+  }
+  
+  @media (max-width: 400px) {
+    padding: 1.4rem 0.8rem;
+    margin: 0.6rem;
+    border-radius: 7px;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    padding: 2.1rem 1.6rem;
+    margin: 1.1rem;
+    border-radius: 10.5px;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    padding: 2.2rem 1.7rem;
+    margin: 1.2rem;
+    border-radius: 11px;
   }
   
   .quote-icon {
@@ -48,6 +127,56 @@ const TestimonialCard = styled(motion.div)`
     left: 20px;
     font-family: 'Playfair Display', serif;
     transform: rotate(180deg);
+    
+    /* Responsive design for all resolutions */
+    @media (max-width: 1200px) {
+      font-size: 4.5rem;
+      top: 18px;
+      left: 18px;
+    }
+    
+    @media (max-width: 992px) {
+      font-size: 4rem;
+      top: 16px;
+      left: 16px;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 3.5rem;
+      top: 14px;
+      left: 14px;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 3rem;
+      top: 12px;
+      left: 12px;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 2.5rem;
+      top: 10px;
+      left: 10px;
+    }
+    
+    @media (max-width: 400px) {
+      font-size: 2rem;
+      top: 8px;
+      left: 8px;
+    }
+    
+    /* Additional media queries for 125% scaling */
+    @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+      font-size: 3.7rem;
+      top: 15px;
+      left: 15px;
+    }
+    
+    @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+      font-size: 4rem;
+      top: 16px;
+      left: 16px;
+    }
   }
   
   .testimonial-text {
@@ -59,6 +188,56 @@ const TestimonialCard = styled(motion.div)`
     position: relative;
     z-index: 1;
     font-weight: 300;
+    
+    /* Responsive design for all resolutions */
+    @media (max-width: 1200px) {
+      font-size: 1.15rem;
+      margin-bottom: 1.8rem;
+      line-height: 1.7;
+    }
+    
+    @media (max-width: 992px) {
+      font-size: 1.1rem;
+      margin-bottom: 1.6rem;
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 1.05rem;
+      margin-bottom: 1.4rem;
+      line-height: 1.5;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.4;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.95rem;
+      margin-bottom: 1.1rem;
+      line-height: 1.3;
+    }
+    
+    @media (max-width: 400px) {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+    
+    /* Additional media queries for 125% scaling */
+    @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+      font-size: 1.07rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.55;
+    }
+    
+    @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+      font-size: 1.1rem;
+      margin-bottom: 1.6rem;
+      line-height: 1.6;
+    }
   }
   
   .client-info {
@@ -66,6 +245,40 @@ const TestimonialCard = styled(motion.div)`
     align-items: center;
     justify-content: center;
     gap: 1.5rem;
+    
+    /* Responsive design for all resolutions */
+    @media (max-width: 1200px) {
+      gap: 1.3rem;
+    }
+    
+    @media (max-width: 992px) {
+      gap: 1.1rem;
+    }
+    
+    @media (max-width: 768px) {
+      gap: 1rem;
+    }
+    
+    @media (max-width: 576px) {
+      gap: 0.8rem;
+    }
+    
+    @media (max-width: 480px) {
+      gap: 0.7rem;
+    }
+    
+    @media (max-width: 400px) {
+      gap: 0.6rem;
+    }
+    
+    /* Additional media queries for 125% scaling */
+    @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+      gap: 1.05rem;
+    }
+    
+    @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+      gap: 1.1rem;
+    }
   }
   
   .client-avatar {
@@ -81,6 +294,64 @@ const TestimonialCard = styled(motion.div)`
     color: var(--primary-dark);
     border: 3px solid var(--accent-gold);
     box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    
+    /* Responsive design for all resolutions */
+    @media (max-width: 1200px) {
+      width: 70px;
+      height: 70px;
+      font-size: 1.8rem;
+      border: 2.5px solid var(--accent-gold);
+    }
+    
+    @media (max-width: 992px) {
+      width: 60px;
+      height: 60px;
+      font-size: 1.6rem;
+      border: 2px solid var(--accent-gold);
+    }
+    
+    @media (max-width: 768px) {
+      width: 50px;
+      height: 50px;
+      font-size: 1.4rem;
+      border: 1.5px solid var(--accent-gold);
+    }
+    
+    @media (max-width: 576px) {
+      width: 45px;
+      height: 45px;
+      font-size: 1.2rem;
+      border: 1.2px solid var(--accent-gold);
+    }
+    
+    @media (max-width: 480px) {
+      width: 40px;
+      height: 40px;
+      font-size: 1.1rem;
+      border: 1px solid var(--accent-gold);
+    }
+    
+    @media (max-width: 400px) {
+      width: 35px;
+      height: 35px;
+      font-size: 1rem;
+      border: 0.8px solid var(--accent-gold);
+    }
+    
+    /* Additional media queries for 125% scaling */
+    @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+      width: 55px;
+      height: 55px;
+      font-size: 1.5rem;
+      border: 1.7px solid var(--accent-gold);
+    }
+    
+    @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+      width: 60px;
+      height: 60px;
+      font-size: 1.6rem;
+      border: 2px solid var(--accent-gold);
+    }
   }
   
   .client-details {
@@ -92,23 +363,179 @@ const TestimonialCard = styled(motion.div)`
     font-weight: 600;
     color: var(--text-light);
     margin-bottom: 0.3rem;
+    
+    /* Responsive design for all resolutions */
+    @media (max-width: 1200px) {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    @media (max-width: 992px) {
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      margin-bottom: 0.15rem;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 0.95rem;
+      margin-bottom: 0.1rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.9rem;
+      margin-bottom: 0.05rem;
+    }
+    
+    @media (max-width: 400px) {
+      font-size: 0.85rem;
+    }
+    
+    /* Additional media queries for 125% scaling */
+    @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+      font-size: 1.05rem;
+      margin-bottom: 0.17rem;
+    }
+    
+    @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
   }
   
   .client-title {
     font-size: 1rem;
     color: var(--accent-gold);
     margin-bottom: 0.3rem;
+    
+    /* Responsive design for all resolutions */
+    @media (max-width: 1200px) {
+      font-size: 0.95rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    @media (max-width: 992px) {
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 0.85rem;
+      margin-bottom: 0.15rem;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 0.8rem;
+      margin-bottom: 0.1rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.75rem;
+      margin-bottom: 0.05rem;
+    }
+    
+    @media (max-width: 400px) {
+      font-size: 0.7rem;
+    }
+    
+    /* Additional media queries for 125% scaling */
+    @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+      font-size: 0.87rem;
+      margin-bottom: 0.17rem;
+    }
+    
+    @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+      font-size: 0.9rem;
+      margin-bottom: 0.2rem;
+    }
   }
   
   .client-location {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.7);
+    
+    /* Responsive design for all resolutions */
+    @media (max-width: 1200px) {
+      font-size: 0.85rem;
+    }
+    
+    @media (max-width: 992px) {
+      font-size: 0.8rem;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 0.75rem;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 0.7rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.65rem;
+    }
+    
+    @media (max-width: 400px) {
+      font-size: 0.6rem;
+    }
+    
+    /* Additional media queries for 125% scaling */
+    @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+      font-size: 0.77rem;
+    }
+    
+    @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+      font-size: 0.8rem;
+    }
   }
   
   .rating {
     color: var(--accent-gold);
     font-size: 1.2rem;
     margin-top: 0.5rem;
+    
+    /* Responsive design for all resolutions */
+    @media (max-width: 1200px) {
+      font-size: 1.1rem;
+      margin-top: 0.4rem;
+    }
+    
+    @media (max-width: 992px) {
+      font-size: 1rem;
+      margin-top: 0.3rem;
+    }
+    
+    @media (max-width: 768px) {
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+    
+    @media (max-width: 576px) {
+      font-size: 0.8rem;
+      margin-top: 0.1rem;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 0.7rem;
+    }
+    
+    @media (max-width: 400px) {
+      font-size: 0.6rem;
+    }
+    
+    /* Additional media queries for 125% scaling */
+    @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+      font-size: 0.95rem;
+      margin-top: 0.25rem;
+    }
+    
+    @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+      font-size: 1rem;
+      margin-top: 0.3rem;
+    }
   }
 `;
 
@@ -133,6 +560,96 @@ const SectionTitle = styled.h2`
     background: var(--accent-gold);
     border-radius: 3px;
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    font-size: 2.2rem;
+    margin-bottom: 0.9rem;
+    
+    &::after {
+      width: 70px;
+      height: 2.5px;
+      bottom: -9px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    
+    &::after {
+      width: 60px;
+      height: 2px;
+      bottom: -8px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin-bottom: 0.7rem;
+    
+    &::after {
+      width: 50px;
+      height: 1.5px;
+      bottom: -7px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.6rem;
+    margin-bottom: 0.6rem;
+    
+    &::after {
+      width: 40px;
+      height: 1px;
+      bottom: -6px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    
+    &::after {
+      width: 35px;
+      height: 0.8px;
+      bottom: -5px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+    
+    &::after {
+      width: 30px;
+      height: 0.5px;
+      bottom: -4px;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    font-size: 1.85rem;
+    margin-bottom: 0.75rem;
+    
+    &::after {
+      width: 52px;
+      height: 1.6px;
+      bottom: -7.2px;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    font-size: 1.9rem;
+    margin-bottom: 0.8rem;
+    
+    &::after {
+      width: 55px;
+      height: 1.7px;
+      bottom: -7.5px;
+    }
+  }
 `;
 
 const Subtitle = styled.p`
@@ -141,6 +658,56 @@ const Subtitle = styled.p`
   font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto 3rem;
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    font-size: 1.05rem;
+    max-width: 550px;
+    margin: 0 auto 2.5rem;
+  }
+  
+  @media (max-width: 992px) {
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto 2.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 0.95rem;
+    max-width: 450px;
+    margin: 0 auto 2rem;
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 0.9rem;
+    max-width: 400px;
+    margin: 0 auto 1.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 0.85rem;
+    max-width: 350px;
+    margin: 0 auto 1.6rem;
+  }
+  
+  @media (max-width: 400px) {
+    font-size: 0.8rem;
+    max-width: 300px;
+    margin: 0 auto 1.4rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    font-size: 0.97rem;
+    max-width: 470px;
+    margin: 0 auto 2.1rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto 2.2rem;
+  }
 `;
 
 const NavigationButton = styled.button`
@@ -163,6 +730,64 @@ const NavigationButton = styled.button`
     border-color: var(--accent-gold);
     transform: translateY(-3px);
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
+    margin: 0 9px;
+  }
+  
+  @media (max-width: 992px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    margin: 0 8px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 35px;
+    height: 35px;
+    font-size: 0.9rem;
+    margin: 0 7px;
+  }
+  
+  @media (max-width: 576px) {
+    width: 30px;
+    height: 30px;
+    font-size: 0.8rem;
+    margin: 0 6px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 28px;
+    height: 28px;
+    font-size: 0.75rem;
+    margin: 0 5px;
+  }
+  
+  @media (max-width: 400px) {
+    width: 25px;
+    height: 25px;
+    font-size: 0.7rem;
+    margin: 0 4px;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    width: 37px;
+    height: 37px;
+    font-size: 0.95rem;
+    margin: 0 7.5px;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+    margin: 0 8px;
+  }
 `;
 
 const IndicatorsContainer = styled.div`
@@ -170,6 +795,48 @@ const IndicatorsContainer = styled.div`
   justify-content: center;
   gap: 0.8rem;
   margin-top: 2rem;
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    gap: 0.7rem;
+    margin-top: 1.8rem;
+  }
+  
+  @media (max-width: 992px) {
+    gap: 0.6rem;
+    margin-top: 1.6rem;
+  }
+  
+  @media (max-width: 768px) {
+    gap: 0.5rem;
+    margin-top: 1.4rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 0.4rem;
+    margin-top: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.35rem;
+    margin-top: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    gap: 0.3rem;
+    margin-top: 1rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    gap: 0.55rem;
+    margin-top: 1.5rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    gap: 0.6rem;
+    margin-top: 1.6rem;
+  }
 `;
 
 const Indicator = styled.button`
@@ -183,6 +850,48 @@ const Indicator = styled.button`
   
   &:hover {
     background: ${props => props.active ? 'var(--accent-gold)' : 'rgba(255, 255, 255, 0.4)'};
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    width: 13px;
+    height: 13px;
+  }
+  
+  @media (max-width: 992px) {
+    width: 12px;
+    height: 12px;
+  }
+  
+  @media (max-width: 768px) {
+    width: 11px;
+    height: 11px;
+  }
+  
+  @media (max-width: 576px) {
+    width: 10px;
+    height: 10px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 9px;
+    height: 9px;
+  }
+  
+  @media (max-width: 400px) {
+    width: 8px;
+    height: 8px;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    width: 11.5px;
+    height: 11.5px;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    width: 12px;
+    height: 12px;
   }
 `;
 

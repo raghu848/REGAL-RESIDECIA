@@ -47,8 +47,37 @@ const HeroContainer = styled.section`
     100% { transform: translateY(0px); }
   }
   
+  @media (max-width: 1200px) {
+    height: 140vh;
+  }
+  
+  @media (max-width: 992px) {
+    height: 130vh;
+  }
+  
   @media (max-width: 768px) {
-    height: 174vh; /* Reduced from 170vh to 120vh */
+    height: 120vh;
+  }
+  
+  @media (max-width: 576px) {
+    height: 110vh;
+  }
+  
+  @media (max-width: 480px) {
+    height: 100vh;
+  }
+  
+  @media (max-width: 400px) {
+    height: 90vh;
+  }
+  
+  /* Additional media queries for 125% scaling and other resolutions */
+  @media screen and (min-resolution: 120dpi) and (max-width: 1200px) {
+    height: 145vh;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 1200px) {
+    height: 150vh;
   }
 `;
 
@@ -81,6 +110,32 @@ const ProjectLogo = styled.div`
     text-transform: uppercase;
   }
   
+  @media (max-width: 1200px) {
+    top: 25px;
+    left: 25px;
+    
+    .logo-text {
+      font-size: 1.7rem;
+    }
+    
+    .logo-subtext {
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    top: 22px;
+    left: 22px;
+    
+    .logo-text {
+      font-size: 1.6rem;
+    }
+    
+    .logo-subtext {
+      font-size: 0.7rem;
+    }
+  }
+  
   @media (max-width: 768px) {
     top: 20px;
     left: 20px;
@@ -91,6 +146,72 @@ const ProjectLogo = styled.div`
     
     .logo-subtext {
       font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    top: 15px;
+    left: 15px;
+    
+    .logo-text {
+      font-size: 1.3rem;
+    }
+    
+    .logo-subtext {
+      font-size: 0.6rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    top: 12px;
+    left: 12px;
+    
+    .logo-text {
+      font-size: 1.2rem;
+    }
+    
+    .logo-subtext {
+      font-size: 0.55rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    top: 10px;
+    left: 10px;
+    
+    .logo-text {
+      font-size: 1.1rem;
+    }
+    
+    .logo-subtext {
+      font-size: 0.5rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling and other resolutions */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    top: 22px;
+    left: 22px;
+    
+    .logo-text {
+      font-size: 1.65rem;
+    }
+    
+    .logo-subtext {
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    top: 24px;
+    left: 24px;
+    
+    .logo-text {
+      font-size: 1.7rem;
+    }
+    
+    .logo-subtext {
+      font-size: 0.8rem;
     }
   }
 `;
@@ -142,6 +263,22 @@ const Subtitle = styled(motion.h3)`
     font-size: 1rem;
     letter-spacing: 2px;
   }
+  
+  @media (max-width: 480px) {
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    font-size: 1.05rem;
+    letter-spacing: 2.2px;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    font-size: 1.1rem;
+    letter-spacing: 2.5px;
+  }
 `;
 
 const Title = styled(motion.h1)`
@@ -161,12 +298,37 @@ const Title = styled(motion.h1)`
     display: block;
   }
   
+  @media (max-width: 1200px) {
+    font-size: 3.5rem;
+  }
+  
+  @media (max-width: 992px) {
+    font-size: 3rem;
+  }
+  
   @media (max-width: 768px) {
     font-size: 2.5rem;
   }
   
+  @media (max-width: 576px) {
+    font-size: 2.2rem;
+  }
+  
   @media (max-width: 480px) {
     font-size: 2rem;
+  }
+  
+  @media (max-width: 400px) {
+    font-size: 1.8rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 1200px) {
+    font-size: 3.7rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 1200px) {
+    font-size: 3.9rem;
   }
 `;
 
@@ -190,12 +352,37 @@ const Description = styled(motion.p)`
     font-family: 'Playfair Display', serif;
   }
   
+  @media (max-width: 1200px) {
+    font-size: 1.1rem;
+  }
+  
+  @media (max-width: 992px) {
+    font-size: 1.05rem;
+  }
+  
   @media (max-width: 768px) {
     font-size: 1rem;
   }
   
+  @media (max-width: 576px) {
+    font-size: 0.95rem;
+  }
+  
   @media (max-width: 480px) {
     font-size: 0.9rem;
+  }
+  
+  @media (max-width: 400px) {
+    font-size: 0.85rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 1200px) {
+    font-size: 1.15rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 1200px) {
+    font-size: 1.2rem;
   }
 `;
 
@@ -240,16 +427,60 @@ const FeatureHighlights = styled(motion.div)`
     color: var(--accent-gold);
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 1200px) {
+    padding: 0.8rem;
+    margin: 0.8rem auto;
+    
+    .feature-title {
+      font-size: 1.2rem;
+    }
+    
+    .feature-description {
+      font-size: 0.95rem;
+    }
+    
+    .feature-list {
+      gap: 0.75rem;
+    }
+    
+    .feature-item {
+      padding: 0.4rem 0.9rem;
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
     padding: 0.75rem;
     margin: 0.75rem auto;
+    
+    .feature-title {
+      font-size: 1.15rem;
+    }
+    
+    .feature-description {
+      font-size: 0.9rem;
+    }
+    
+    .feature-list {
+      gap: 0.6rem;
+    }
+    
+    .feature-item {
+      padding: 0.35rem 0.85rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.7rem;
+    margin: 0.7rem auto;
     
     .feature-title {
       font-size: 1.1rem;
     }
     
     .feature-description {
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
     
     .feature-list {
@@ -258,7 +489,51 @@ const FeatureHighlights = styled(motion.div)`
     
     .feature-item {
       padding: 0.3rem 0.8rem;
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.6rem;
+    margin: 0.6rem auto;
+    
+    .feature-title {
+      font-size: 1rem;
+    }
+    
+    .feature-description {
       font-size: 0.8rem;
+    }
+    
+    .feature-list {
+      gap: 0.4rem;
+    }
+    
+    .feature-item {
+      padding: 0.25rem 0.7rem;
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    padding: 0.5rem;
+    margin: 0.5rem auto;
+    
+    .feature-title {
+      font-size: 0.9rem;
+    }
+    
+    .feature-description {
+      font-size: 0.75rem;
+    }
+    
+    .feature-list {
+      gap: 0.3rem;
+    }
+    
+    .feature-item {
+      padding: 0.2rem 0.6rem;
+      font-size: 0.65rem;
     }
   }
 `;
@@ -298,6 +573,32 @@ const StatItem = styled(motion.div)`
     letter-spacing: 1px;
   }
   
+  @media (max-width: 1200px) {
+    min-width: 90px;
+    padding: 0.7rem 0.9rem;
+    
+    .stat-number {
+      font-size: 1.8rem;
+    }
+    
+    .stat-label {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    min-width: 85px;
+    padding: 0.65rem 0.85rem;
+    
+    .stat-number {
+      font-size: 1.7rem;
+    }
+    
+    .stat-label {
+      font-size: 0.8rem;
+    }
+  }
+  
   @media (max-width: 768px) {
     min-width: 80px; /* Reduced from 100px to 80px */
     padding: 0.6rem 0.8rem; /* Reduced from 0.8rem 1rem to 0.6rem 0.8rem */
@@ -308,6 +609,32 @@ const StatItem = styled(motion.div)`
     
     .stat-label {
       font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    min-width: 70px;
+    padding: 0.5rem 0.7rem;
+    
+    .stat-number {
+      font-size: 1.3rem;
+    }
+    
+    .stat-label {
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    min-width: 60px;
+    padding: 0.4rem 0.6rem;
+    
+    .stat-number {
+      font-size: 1.1rem;
+    }
+    
+    .stat-label {
+      font-size: 0.6rem;
     }
   }
 `;
@@ -349,9 +676,24 @@ const CTAButton = styled(motion.button)`
     box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
   }
   
+  @media (max-width: 1200px) {
+    padding: 0.75rem 1.75rem;
+    font-size: 0.95rem;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 0.7rem 1.6rem;
+    font-size: 0.9rem;
+  }
+  
   @media (max-width: 768px) {
     padding: 0.7rem 1.5rem; /* Reduced from 0.8rem 2rem to 0.7rem 1.5rem */
     font-size: 0.9rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.65rem 1.3rem;
+    font-size: 0.85rem;
   }
   
   @media (max-width: 480px) {
@@ -359,6 +701,13 @@ const CTAButton = styled(motion.button)`
     font-size: 0.8rem;
     width: 100%;
     max-width: 250px;
+  }
+  
+  @media (max-width: 400px) {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    width: 100%;
+    max-width: 200px;
   }
 `;
 
@@ -385,9 +734,29 @@ const ScrollIndicator = styled(motion.div)`
     60% {transform: translateY(-10px);}
   }
   
+  @media (max-width: 1200px) {
+    bottom: 8px;
+    font-size: 0.85rem;
+  }
+  
+  @media (max-width: 992px) {
+    bottom: 7px;
+    font-size: 0.82rem;
+  }
+  
   @media (max-width: 768px) {
     bottom: 5px;
     font-size: 0.8rem;
+  }
+  
+  @media (max-width: 576px) {
+    bottom: 4px;
+    font-size: 0.75rem;
+  }
+  
+  @media (max-width: 400px) {
+    bottom: 3px;
+    font-size: 0.7rem;
   }
 `;
 
@@ -450,11 +819,39 @@ const StickyExploreButton = styled(motion.div)`
     }
   }
   
+  @media (max-width: 1200px) {
+    left: 15px;
+    width: 55px;
+    height: 55px;
+    font-size: 0.85rem;
+  }
+  
+  @media (max-width: 992px) {
+    left: 12px;
+    width: 52px;
+    height: 52px;
+    font-size: 0.82rem;
+  }
+  
   @media (max-width: 768px) {
     left: 10px;
     width: 50px;
     height: 50px;
     font-size: 0.8rem;
+  }
+  
+  @media (max-width: 576px) {
+    left: 8px;
+    width: 45px;
+    height: 45px;
+    font-size: 0.75rem;
+  }
+  
+  @media (max-width: 400px) {
+    left: 5px;
+    width: 40px;
+    height: 40px;
+    font-size: 0.7rem;
   }
 `;
 

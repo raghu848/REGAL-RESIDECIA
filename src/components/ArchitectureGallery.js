@@ -26,6 +26,96 @@ const SectionTitle = styled.h2`
     border-radius: 3px;
     box-shadow: 0 2px 10px rgba(212, 175, 55, 0.5);
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    font-size: 2.2rem;
+    margin-bottom: 2.5rem;
+    
+    &::after {
+      width: 90px;
+      height: 3.5px;
+      margin: 0.9rem auto;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    font-size: 2rem;
+    margin-bottom: 2.2rem;
+    
+    &::after {
+      width: 80px;
+      height: 3px;
+      margin: 0.8rem auto;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    
+    &::after {
+      width: 70px;
+      height: 2.5px;
+      margin: 0.7rem auto;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    font-size: 1.6rem;
+    margin-bottom: 1.8rem;
+    
+    &::after {
+      width: 60px;
+      height: 2px;
+      margin: 0.6rem auto;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.5rem;
+    margin-bottom: 1.6rem;
+    
+    &::after {
+      width: 50px;
+      height: 1.8px;
+      margin: 0.5rem auto;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    
+    &::after {
+      width: 45px;
+      height: 1.5px;
+      margin: 0.4rem auto;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    font-size: 1.85rem;
+    margin-bottom: 2.1rem;
+    
+    &::after {
+      width: 72px;
+      height: 2.6px;
+      margin: 0.72rem auto;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    font-size: 1.9rem;
+    margin-bottom: 2.15rem;
+    
+    &::after {
+      width: 75px;
+      height: 2.7px;
+      margin: 0.75rem auto;
+    }
+  }
 `;
 
 const GalleryGrid = styled.div`
@@ -34,9 +124,45 @@ const GalleryGrid = styled.div`
   gap: 1.5rem;
   margin-top: 3rem;
   
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.3rem;
+  }
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.1rem;
+  }
+  
   @media (max-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1rem;
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+  }
+  
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
+    gap: 1.05rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.1rem;
   }
 `;
 
@@ -64,6 +190,64 @@ const GalleryItem = styled(motion.div)`
     img {
       transform: scale(1.1);
     }
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    border-radius: 10px;
+    height: 280px;
+    border: 1.8px solid #555;
+    box-shadow: 0 9px 27px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 992px) {
+    border-radius: 9px;
+    height: 260px;
+    border: 1.6px solid #555;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: 8px;
+    height: 240px;
+    border: 1.4px solid #555;
+    box-shadow: 0 7px 21px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 576px) {
+    border-radius: 7px;
+    height: 220px;
+    border: 1.2px solid #555;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 6px;
+    height: 200px;
+    border: 1px solid #555;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 400px) {
+    border-radius: 5px;
+    height: 180px;
+    border: 0.8px solid #555;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    border-radius: 8.5px;
+    height: 250px;
+    border: 1.5px solid #555;
+    box-shadow: 0 7.5px 22px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    border-radius: 9px;
+    height: 260px;
+    border: 1.6px solid #555;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   }
 `;
 

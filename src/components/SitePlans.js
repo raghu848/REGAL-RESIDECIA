@@ -5,6 +5,40 @@ import { motion } from 'framer-motion';
 const SitePlansSection = styled.section`
   padding: 1rem 2;
   background-color: var(--secondary-dark);
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 3.5rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 2.5rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2.2rem 0;
+  }
+  
+  @media (max-width: 400px) {
+    padding: 2rem 0;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    padding: 3.2rem 0;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    padding: 3.4rem 0;
+  }
 `;
 
 const SectionHeader = styled.div`
@@ -24,6 +58,112 @@ const SectionHeader = styled.div`
     margin: 0 auto;
     line-height: 1.6;
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    margin-bottom: 2.5rem;
+    
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.9rem;
+    }
+    
+    p {
+      font-size: 1.05rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    margin-bottom: 2.2rem;
+    
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    margin-bottom: 2rem;
+    
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 0.7rem;
+    }
+    
+    p {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    margin-bottom: 1.8rem;
+    
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 0.6rem;
+    }
+    
+    p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-bottom: 1.6rem;
+    
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      font-size: 0.88rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    margin-bottom: 1.5rem;
+    
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+    }
+    
+    p {
+      font-size: 0.85rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    margin-bottom: 2.1rem;
+    
+    h2 {
+      font-size: 1.85rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    p {
+      font-size: 0.97rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    margin-bottom: 2.15rem;
+    
+    h2 {
+      font-size: 1.9rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
 `;
 
 const PlansContainer = styled.div`
@@ -32,8 +172,51 @@ const PlansContainer = styled.div`
   gap: 2rem;
   margin-top: 2rem;
   
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
+    margin-top: 1.8rem;
+  }
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.6rem;
+    margin-top: 1.6rem;
+  }
+  
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.4rem;
+    margin-top: 1.4rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1.1rem;
+    margin-top: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    margin-top: 1.6rem;
   }
 `;
 
@@ -75,6 +258,56 @@ const PlanCard = styled(motion.div)`
     }
   }
   
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    .plan-image {
+      height: 280px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .plan-image {
+      height: 260px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .plan-image {
+      height: 240px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .plan-image {
+      height: 220px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .plan-image {
+      height: 200px;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .plan-image {
+      height: 180px;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    .plan-image {
+      height: 250px;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    .plan-image {
+      height: 260px;
+    }
+  }
+  
   &:hover .plan-image img {
     transform: scale(1.1);
   }
@@ -107,6 +340,216 @@ const PlanCard = styled(motion.div)`
       padding: 0.3rem 0.8rem;
       border-radius: 20px;
       font-size: 0.8rem;
+    }
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    .plan-content {
+      padding: 1.3rem;
+    }
+    
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.9rem;
+    }
+    
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 0.9rem;
+    }
+    
+    .plan-details {
+      gap: 0.45rem;
+      margin-top: 0.9rem;
+    }
+    
+    .detail-tag {
+      padding: 0.25rem 0.7rem;
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .plan-content {
+      padding: 1.2rem;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .plan-details {
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+    
+    .detail-tag {
+      padding: 0.2rem 0.6rem;
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .plan-content {
+      padding: 1.1rem;
+    }
+    
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.7rem;
+    }
+    
+    p {
+      font-size: 0.85rem;
+      margin-bottom: 0.7rem;
+    }
+    
+    .plan-details {
+      gap: 0.35rem;
+      margin-top: 0.7rem;
+    }
+    
+    .detail-tag {
+      padding: 0.15rem 0.5rem;
+      font-size: 0.65rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .plan-content {
+      padding: 1rem;
+    }
+    
+    h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.6rem;
+    }
+    
+    p {
+      font-size: 0.8rem;
+      margin-bottom: 0.6rem;
+    }
+    
+    .plan-details {
+      gap: 0.3rem;
+      margin-top: 0.6rem;
+    }
+    
+    .detail-tag {
+      padding: 0.1rem 0.4rem;
+      font-size: 0.6rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .plan-content {
+      padding: 0.9rem;
+    }
+    
+    h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    p {
+      font-size: 0.78rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .plan-details {
+      gap: 0.25rem;
+      margin-top: 0.5rem;
+    }
+    
+    .detail-tag {
+      padding: 0.05rem 0.3rem;
+      font-size: 0.55rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    .plan-content {
+      padding: 0.8rem;
+    }
+    
+    h3 {
+      font-size: 1rem;
+      margin-bottom: 0.4rem;
+    }
+    
+    p {
+      font-size: 0.75rem;
+      margin-bottom: 0.4rem;
+    }
+    
+    .plan-details {
+      gap: 0.2rem;
+      margin-top: 0.4rem;
+    }
+    
+    .detail-tag {
+      padding: 0.05rem 0.25rem;
+      font-size: 0.5rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    .plan-content {
+      padding: 1.15rem;
+    }
+    
+    h3 {
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    p {
+      font-size: 0.87rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .plan-details {
+      gap: 0.37rem;
+      margin-top: 0.75rem;
+    }
+    
+    .detail-tag {
+      padding: 0.17rem 0.55rem;
+      font-size: 0.67rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    .plan-content {
+      padding: 1.2rem;
+    }
+    
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .plan-details {
+      gap: 0.4rem;
+      margin-top: 0.8rem;
+    }
+    
+    .detail-tag {
+      padding: 0.2rem 0.6rem;
+      font-size: 0.7rem;
     }
   }
 `;

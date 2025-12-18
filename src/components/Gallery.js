@@ -5,6 +5,40 @@ import { motion } from 'framer-motion';
 const GallerySection = styled.section`
   padding: 1rem 2;
   background-color: var(--primary-dark);
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 3.5rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 2.5rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2.2rem 0;
+  }
+  
+  @media (max-width: 400px) {
+    padding: 2rem 0;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    padding: 3.2rem 0;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    padding: 3.4rem 0;
+  }
 `;
 
 const GalleryGrid = styled.div`
@@ -12,6 +46,56 @@ const GalleryGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   gap: 1rem;
   margin-top: 1.5rem;
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 0.9rem;
+    margin-top: 1.3rem;
+  }
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 0.7rem;
+    margin-top: 1.1rem;
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0.55rem;
+    margin-top: 0.9rem;
+  }
+  
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+    margin-top: 0.8rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
+    gap: 0.72rem;
+    margin-top: 1.12rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 0.75rem;
+    margin-top: 1.15rem;
+  }
 `;
 
 const GalleryItem = styled(motion.div)`
@@ -57,6 +141,186 @@ const GalleryItem = styled(motion.div)`
     
     .overlay {
       opacity: 1;
+    }
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    border-radius: 10px;
+    height: 230px;
+    box-shadow: 0 9px 27px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 1.1rem;
+      padding: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    border-radius: 9px;
+    height: 210px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 1rem;
+      padding: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: 8px;
+    height: 190px;
+    box-shadow: 0 7px 21px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.9rem;
+      padding: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    border-radius: 7px;
+    height: 170px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.8rem;
+      padding: 0.6rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 6.5px;
+    height: 160px;
+    box-shadow: 0 5.5px 16.5px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.75rem;
+      padding: 0.55rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    border-radius: 6px;
+    height: 150px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.7rem;
+      padding: 0.5rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    border-radius: 8.2px;
+    height: 192px;
+    box-shadow: 0 7.2px 21.5px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.92rem;
+      padding: 0.72rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    border-radius: 8.5px;
+    height: 195px;
+    box-shadow: 0 7.5px 22px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.95rem;
+      padding: 0.75rem;
+    }
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    border-radius: 10px;
+    height: 230px;
+    box-shadow: 0 9px 27px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 1.1rem;
+      padding: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    border-radius: 9px;
+    height: 210px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 1rem;
+      padding: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: 8px;
+    height: 190px;
+    box-shadow: 0 7px 21px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.9rem;
+      padding: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    border-radius: 7px;
+    height: 170px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.8rem;
+      padding: 0.6rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 6.5px;
+    height: 160px;
+    box-shadow: 0 5.5px 16.5px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.75rem;
+      padding: 0.55rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    border-radius: 6px;
+    height: 150px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.7rem;
+      padding: 0.5rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    border-radius: 8.2px;
+    height: 192px;
+    box-shadow: 0 7.2px 21.5px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.92rem;
+      padding: 0.72rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    border-radius: 8.5px;
+    height: 195px;
+    box-shadow: 0 7.5px 22px rgba(0, 0, 0, 0.3);
+    
+    .overlay-text {
+      font-size: 0.95rem;
+      padding: 0.75rem;
     }
   }
 `;

@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5002;
 
 // Middleware
 app.use(cors());
@@ -36,19 +36,18 @@ const inquiryRoutes = require('./routes/inquiry');
 // Use routes
 app.use('/api/inquiry', inquiryRoutes);
 
-// Serve static files from React app
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-  
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
-
 // Add a root route for health check
-app.get('/', (req, res) => {
+app.get('/health', (req, res) => {
   res.send('Regal Residencia Server is Running');
+});
+
+// Serve static files from React app
+// Always serve static files regardless of environment
+app.use(express.static('client/build'));
+
+const path = require('path');
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
 });
 
 app.listen(PORT, () => {

@@ -5,6 +5,40 @@ import { motion } from 'framer-motion';
 const OverviewSection = styled.section`
   padding: 1rem 2;
   background-color: var(--secondary-dark);
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 3.5rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 2.5rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2.2rem 0;
+  }
+  
+  @media (max-width: 400px) {
+    padding: 2rem 0;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    padding: 3.2rem 0;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    padding: 3.4rem 0;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -13,8 +47,42 @@ const ContentWrapper = styled.div`
   gap: 3rem;
   align-items: center;
   
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.9rem;
+  }
+  
+  @media (max-width: 400px) {
+    gap: 0.8rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.7rem;
   }
 `;
 
@@ -31,6 +99,104 @@ const TextContent = styled.div`
     color: var(--text-muted);
     margin-bottom: 1.5rem;
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.3rem;
+    }
+    
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.1rem;
+    }
+    
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.9rem;
+    }
+    
+    p {
+      font-size: 0.88rem;
+      margin-bottom: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    p {
+      font-size: 0.85rem;
+      margin-bottom: 0.8rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    h2 {
+      font-size: 1.85rem;
+      margin-bottom: 1.15rem;
+    }
+    
+    p {
+      font-size: 0.97rem;
+      margin-bottom: 1.15rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    h2 {
+      font-size: 1.9rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+  }
 `;
 
 const StatsGrid = styled.div`
@@ -38,6 +204,56 @@ const StatsGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 1.5rem;
   margin-top: 2rem;
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.3rem;
+    margin-top: 1.8rem;
+  }
+  
+  @media (max-width: 992px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.6rem;
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.1rem;
+    margin-top: 1.4rem;
+  }
+  
+  @media (max-width: 576px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+    margin-top: 1.1rem;
+  }
+  
+  @media (max-width: 400px) {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    margin-top: 1rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.15rem;
+    margin-top: 1.45rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-top: 1.5rem;
+  }
 `;
 
 const StatCard = styled.div`
@@ -64,6 +280,104 @@ const StatCard = styled.div`
   .stat-label {
     font-size: 1rem;
     color: var(--text-muted);
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    padding: 1.3rem;
+    
+    .stat-number {
+      font-size: 1.8rem;
+    }
+    
+    .stat-label {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    padding: 1.2rem;
+    
+    .stat-number {
+      font-size: 1.7rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1.1rem;
+    
+    .stat-number {
+      font-size: 1.6rem;
+    }
+    
+    .stat-label {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    padding: 1rem;
+    
+    .stat-number {
+      font-size: 1.4rem;
+    }
+    
+    .stat-label {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.9rem;
+    
+    .stat-number {
+      font-size: 1.3rem;
+    }
+    
+    .stat-label {
+      font-size: 0.78rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    padding: 0.8rem;
+    
+    .stat-number {
+      font-size: 1.2rem;
+    }
+    
+    .stat-label {
+      font-size: 0.75rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    padding: 1.15rem;
+    
+    .stat-number {
+      font-size: 1.65rem;
+    }
+    
+    .stat-label {
+      font-size: 0.87rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    padding: 1.2rem;
+    
+    .stat-number {
+      font-size: 1.7rem;
+    }
+    
+    .stat-label {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -92,6 +406,110 @@ const ImageContent = styled.div`
     object-fit: cover;
     display: block;
   }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    gap: 0.9rem;
+    
+    .large-image {
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
+    }
+    
+    .small-image {
+      box-shadow: 0 9px 18px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  @media (max-width: 992px) {
+    gap: 0.8rem;
+    
+    .large-image {
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    .small-image {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0.7rem;
+    
+    .large-image {
+      grid-column: span 1;
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+    }
+    
+    .small-image {
+      box-shadow: 0 7px 14px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    gap: 0.6rem;
+    
+    .large-image {
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+    }
+    
+    .small-image {
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.55rem;
+    
+    .large-image {
+      box-shadow: 0 11px 22px rgba(0, 0, 0, 0.3);
+    }
+    
+    .small-image {
+      box-shadow: 0 5.5px 11px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  @media (max-width: 400px) {
+    gap: 0.5rem;
+    
+    .large-image {
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    }
+    
+    .small-image {
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    
+    .large-image {
+      grid-column: span 1;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    .small-image {
+      box-shadow: 0 7.5px 15px rgba(0, 0, 0, 0.2);
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    
+    .large-image {
+      grid-column: span 1;
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+    }
+    
+    .small-image {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+  }
 `;
 
 const ConnectivitySection = styled.div`
@@ -109,6 +527,120 @@ const ConnectivitySection = styled.div`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.5rem;
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    margin-top: 2.5rem;
+    padding-top: 1.8rem;
+    
+    h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1.3rem;
+    }
+    
+    .connectivity-grid {
+      gap: 1.3rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    margin-top: 2.2rem;
+    padding-top: 1.6rem;
+    
+    h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .connectivity-grid {
+      gap: 1.2rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+    padding-top: 1.4rem;
+    
+    h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.1rem;
+    }
+    
+    .connectivity-grid {
+      gap: 1rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    margin-top: 1.8rem;
+    padding-top: 1.2rem;
+    
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    
+    .connectivity-grid {
+      gap: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    margin-top: 1.7rem;
+    padding-top: 1.1rem;
+    
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.9rem;
+    }
+    
+    .connectivity-grid {
+      gap: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .connectivity-grid {
+      gap: 0.6rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    margin-top: 2.1rem;
+    padding-top: 1.45rem;
+    
+    h3 {
+      font-size: 1.55rem;
+      margin-bottom: 1.15rem;
+    }
+    
+    .connectivity-grid {
+      gap: 1.05rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    margin-top: 2.15rem;
+    padding-top: 1.5rem;
+    
+    h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .connectivity-grid {
+      gap: 1.1rem;
+    }
   }
   
   .connectivity-item {
@@ -151,6 +683,36 @@ const ConnectivitySection = styled.div`
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       gap: 1rem;
     }
+      
+    @media (max-width: 1200px) {
+      .accessibility-grid {
+        gap: 0.9rem;
+      }
+    }
+      
+    @media (max-width: 992px) {
+      .accessibility-grid {
+        gap: 0.8rem;
+      }
+    }
+      
+    @media (max-width: 768px) {
+      .accessibility-grid {
+        gap: 0.7rem;
+      }
+    }
+      
+    @media (max-width: 576px) {
+      .accessibility-grid {
+        gap: 0.6rem;
+      }
+    }
+      
+    @media (max-width: 400px) {
+      .accessibility-grid {
+        gap: 0.5rem;
+      }
+    }
     
     .accessibility-item {
       display: flex;
@@ -180,6 +742,36 @@ const ConnectivitySection = styled.div`
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 1rem;
+    }
+      
+    @media (max-width: 1200px) {
+      .amenities-grid {
+        gap: 0.9rem;
+      }
+    }
+      
+    @media (max-width: 992px) {
+      .amenities-grid {
+        gap: 0.8rem;
+      }
+    }
+      
+    @media (max-width: 768px) {
+      .amenities-grid {
+        gap: 0.7rem;
+      }
+    }
+      
+    @media (max-width: 576px) {
+      .amenities-grid {
+        gap: 0.6rem;
+      }
+    }
+      
+    @media (max-width: 400px) {
+      .amenities-grid {
+        gap: 0.5rem;
+      }
     }
     
     .amenity-item {

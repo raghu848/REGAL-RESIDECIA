@@ -5,6 +5,40 @@ import axios from 'axios';
 
 const FormSection = styled.section`
   padding: 5rem 0;
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 3.5rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 2.5rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2.2rem 0;
+  }
+  
+  @media (max-width: 400px) {
+    padding: 2rem 0;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    padding: 3.2rem 0;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    padding: 3.4rem 0;
+  }
   background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
   position: relative;
   overflow: hidden;
@@ -16,8 +50,42 @@ const FormContainer = styled.div`
   gap: 3rem;
   align-items: center;
   
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.9rem;
+  }
+  
+  @media (max-width: 400px) {
+    gap: 0.8rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.7rem;
   }
 `;
 
@@ -67,6 +135,295 @@ const FormInfo = styled.div`
     margin: 0;
     font-size: 1rem;
     color: var(--text-muted);
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 1.3rem;
+    }
+    
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 1.8rem;
+    }
+    
+    .contact-info {
+      margin-top: 1.8rem;
+    }
+    
+    .info-item {
+      gap: 0.9rem;
+      margin-bottom: 1.3rem;
+    }
+    
+    .info-icon {
+      width: 45px;
+      height: 45px;
+      font-size: 1.1rem;
+    }
+    
+    .info-details h4 {
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .info-details p {
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+      margin-bottom: 1.6rem;
+    }
+    
+    .contact-info {
+      margin-top: 1.6rem;
+    }
+    
+    .info-item {
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .info-icon {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+    
+    .info-details h4 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    .info-details p {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.1rem;
+    }
+    
+    p {
+      font-size: 0.95rem;
+      margin-bottom: 1.4rem;
+    }
+    
+    .contact-info {
+      margin-top: 1.4rem;
+    }
+    
+    .info-item {
+      gap: 0.7rem;
+      margin-bottom: 1.1rem;
+    }
+    
+    .info-icon {
+      width: 35px;
+      height: 35px;
+      font-size: 0.9rem;
+    }
+    
+    .info-details h4 {
+      font-size: 0.95rem;
+      margin-bottom: 0.15rem;
+    }
+    
+    .info-details p {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+    }
+    
+    p {
+      font-size: 0.9rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .contact-info {
+      margin-top: 1.2rem;
+    }
+    
+    .info-item {
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    
+    .info-icon {
+      width: 30px;
+      height: 30px;
+      font-size: 0.8rem;
+    }
+    
+    .info-details h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.1rem;
+    }
+    
+    .info-details p {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.9rem;
+    }
+    
+    p {
+      font-size: 0.88rem;
+      margin-bottom: 1.1rem;
+    }
+    
+    .contact-info {
+      margin-top: 1.1rem;
+    }
+    
+    .info-item {
+      gap: 0.55rem;
+      margin-bottom: 0.9rem;
+    }
+    
+    .info-icon {
+      width: 28px;
+      height: 28px;
+      font-size: 0.75rem;
+    }
+    
+    .info-details h4 {
+      font-size: 0.85rem;
+      margin-bottom: 0.05rem;
+    }
+    
+    .info-details p {
+      font-size: 0.78rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    p {
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+    }
+    
+    .contact-info {
+      margin-top: 1rem;
+    }
+    
+    .info-item {
+      gap: 0.5rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .info-icon {
+      width: 25px;
+      height: 25px;
+      font-size: 0.7rem;
+    }
+    
+    .info-details h4 {
+      font-size: 0.8rem;
+    }
+    
+    .info-details p {
+      font-size: 0.75rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    h2 {
+      font-size: 1.85rem;
+      margin-bottom: 1.15rem;
+    }
+    
+    p {
+      font-size: 0.97rem;
+      margin-bottom: 1.45rem;
+    }
+    
+    .contact-info {
+      margin-top: 1.45rem;
+    }
+    
+    .info-item {
+      gap: 0.72rem;
+      margin-bottom: 1.12rem;
+    }
+    
+    .info-icon {
+      width: 36px;
+      height: 36px;
+      font-size: 0.92rem;
+    }
+    
+    .info-details h4 {
+      font-size: 0.97rem;
+      margin-bottom: 0.17rem;
+    }
+    
+    .info-details p {
+      font-size: 0.87rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    h2 {
+      font-size: 1.9rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .contact-info {
+      margin-top: 1.5rem;
+    }
+    
+    .info-item {
+      gap: 0.75rem;
+      margin-bottom: 1.15rem;
+    }
+    
+    .info-icon {
+      width: 38px;
+      height: 38px;
+      font-size: 0.95rem;
+    }
+    
+    .info-details h4 {
+      font-size: 1rem;
+      margin-bottom: 0.2rem;
+    }
+    
+    .info-details p {
+      font-size: 0.9rem;
+    }
   }
 `;
 
@@ -154,6 +511,280 @@ const StyledForm = styled.form`
       background: rgba(220, 53, 69, 0.2);
       color: #dc3545;
       border: 1px solid #dc3545;
+    }
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    border-radius: 10px;
+    padding: 2.2rem;
+    
+    .form-group {
+      margin-bottom: 1.3rem;
+    }
+    
+    label {
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    
+    input, textarea {
+      padding: 0.7rem 0.9rem;
+      font-size: 0.95rem;
+    }
+    
+    textarea {
+      min-height: 140px;
+    }
+    
+    .submit-btn {
+      padding: 0.9rem;
+      font-size: 1.05rem;
+    }
+    
+    .form-message {
+      padding: 0.9rem;
+      margin-top: 0.9rem;
+      font-size: 0.95rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    border-radius: 9px;
+    padding: 2rem;
+    
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    
+    label {
+      margin-bottom: 0.35rem;
+      font-size: 0.9rem;
+    }
+    
+    input, textarea {
+      padding: 0.65rem 0.85rem;
+      font-size: 0.9rem;
+    }
+    
+    textarea {
+      min-height: 130px;
+    }
+    
+    .submit-btn {
+      padding: 0.85rem;
+      font-size: 1rem;
+    }
+    
+    .form-message {
+      padding: 0.85rem;
+      margin-top: 0.85rem;
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: 8px;
+    padding: 1.8rem;
+    
+    .form-group {
+      margin-bottom: 1.1rem;
+    }
+    
+    label {
+      margin-bottom: 0.3rem;
+      font-size: 0.85rem;
+    }
+    
+    input, textarea {
+      padding: 0.6rem 0.8rem;
+      font-size: 0.85rem;
+    }
+    
+    textarea {
+      min-height: 120px;
+    }
+    
+    .submit-btn {
+      padding: 0.8rem;
+      font-size: 0.95rem;
+    }
+    
+    .form-message {
+      padding: 0.8rem;
+      margin-top: 0.8rem;
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    border-radius: 7px;
+    padding: 1.5rem;
+    
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    label {
+      margin-bottom: 0.25rem;
+      font-size: 0.8rem;
+    }
+    
+    input, textarea {
+      padding: 0.5rem 0.7rem;
+      font-size: 0.8rem;
+    }
+    
+    textarea {
+      min-height: 110px;
+    }
+    
+    .submit-btn {
+      padding: 0.7rem;
+      font-size: 0.9rem;
+    }
+    
+    .form-message {
+      padding: 0.7rem;
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 6.5px;
+    padding: 1.35rem;
+    
+    .form-group {
+      margin-bottom: 0.9rem;
+    }
+    
+    label {
+      margin-bottom: 0.22rem;
+      font-size: 0.78rem;
+    }
+    
+    input, textarea {
+      padding: 0.45rem 0.65rem;
+      font-size: 0.78rem;
+    }
+    
+    textarea {
+      min-height: 105px;
+    }
+    
+    .submit-btn {
+      padding: 0.65rem;
+      font-size: 0.88rem;
+    }
+    
+    .form-message {
+      padding: 0.65rem;
+      margin-top: 0.65rem;
+      font-size: 0.78rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    border-radius: 6px;
+    padding: 1.2rem;
+    
+    .form-group {
+      margin-bottom: 0.8rem;
+    }
+    
+    label {
+      margin-bottom: 0.2rem;
+      font-size: 0.75rem;
+    }
+    
+    input, textarea {
+      padding: 0.4rem 0.6rem;
+      font-size: 0.75rem;
+    }
+    
+    textarea {
+      min-height: 100px;
+    }
+    
+    .submit-btn {
+      padding: 0.6rem;
+      font-size: 0.85rem;
+    }
+    
+    .form-message {
+      padding: 0.6rem;
+      margin-top: 0.6rem;
+      font-size: 0.75rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    border-radius: 8.2px;
+    padding: 1.85rem;
+    
+    .form-group {
+      margin-bottom: 1.15rem;
+    }
+    
+    label {
+      margin-bottom: 0.32rem;
+      font-size: 0.87rem;
+    }
+    
+    input, textarea {
+      padding: 0.62rem 0.82rem;
+      font-size: 0.87rem;
+    }
+    
+    textarea {
+      min-height: 122px;
+    }
+    
+    .submit-btn {
+      padding: 0.82rem;
+      font-size: 0.97rem;
+    }
+    
+    .form-message {
+      padding: 0.82rem;
+      margin-top: 0.82rem;
+      font-size: 0.87rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    border-radius: 8.5px;
+    padding: 1.9rem;
+    
+    .form-group {
+      margin-bottom: 1.18rem;
+    }
+    
+    label {
+      margin-bottom: 0.33rem;
+      font-size: 0.9rem;
+    }
+    
+    input, textarea {
+      padding: 0.63rem 0.83rem;
+      font-size: 0.9rem;
+    }
+    
+    textarea {
+      min-height: 125px;
+    }
+    
+    .submit-btn {
+      padding: 0.83rem;
+      font-size: 0.98rem;
+    }
+    
+    .form-message {
+      padding: 0.83rem;
+      margin-top: 0.83rem;
+      font-size: 0.9rem;
     }
   }
 `;

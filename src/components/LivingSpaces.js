@@ -5,6 +5,40 @@ import { motion } from 'framer-motion';
 const LivingSpacesSection = styled.section`
   padding: 1rem 2;
   background-color: var(--secondary-dark);
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    padding: 4rem 0;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 3.5rem 0;
+  }
+  
+  @media (max-width: 768px) {
+    padding: 3rem 0;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 2.5rem 0;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 2.2rem 0;
+  }
+  
+  @media (max-width: 400px) {
+    padding: 2rem 0;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    padding: 3.2rem 0;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    padding: 3.4rem 0;
+  }
 `;
 
 const SpacesTabs = styled.div`
@@ -31,9 +65,45 @@ const TabButton = styled.button`
     border-color: var(--accent-gold);
   }
   
+  @media (max-width: 1200px) {
+    padding: 0.7rem 1.3rem;
+    font-size: 0.95rem;
+  }
+  
+  @media (max-width: 992px) {
+    padding: 0.65rem 1.15rem;
+    font-size: 0.92rem;
+  }
+  
   @media (max-width: 768px) {
     padding: 0.6rem 1rem;
     font-size: 0.9rem;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.78rem;
+  }
+  
+  @media (max-width: 400px) {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    padding: 0.65rem 1.05rem;
+    font-size: 0.92rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    padding: 0.68rem 1.08rem;
+    font-size: 0.94rem;
   }
 `;
 
@@ -43,8 +113,42 @@ const SpacesContent = styled.div`
   gap: 3rem;
   align-items: center;
   
+  @media (max-width: 1200px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+  
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 576px) {
+    gap: 1rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 0.9rem;
+  }
+  
+  @media (max-width: 400px) {
+    gap: 0.8rem;
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1.7rem;
   }
 `;
 
@@ -58,6 +162,48 @@ const SpaceImage = styled.div`
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    border-radius: 10px;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 992px) {
+    border-radius: 9px;
+    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 768px) {
+    border-radius: 8px;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 576px) {
+    border-radius: 7px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 480px) {
+    border-radius: 6.5px;
+    box-shadow: 0 11px 22px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media (max-width: 400px) {
+    border-radius: 6px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    border-radius: 8.2px;
+    box-shadow: 0 14.5px 29px rgba(0, 0, 0, 0.3);
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    border-radius: 8.5px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
   }
 `;
 
@@ -184,6 +330,628 @@ const SpaceDetails = styled.div`
   .plan-option p {
     margin: 0;
     font-size: 0.9rem;
+  }
+  
+  /* Responsive design for all resolutions */
+  @media (max-width: 1200px) {
+    h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.3rem;
+    }
+    
+    .space-specs {
+      gap: 0.9rem;
+      margin-bottom: 1.8rem;
+    }
+    
+    .spec-item {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.85rem;
+    }
+    
+    p {
+      margin-bottom: 1.8rem;
+    }
+    
+    .space-features {
+      margin-top: 1.8rem;
+    }
+    
+    .features-grid {
+      gap: 0.9rem;
+    }
+    
+    .room-details {
+      margin-top: 1.8rem;
+      padding-top: 1.8rem;
+    }
+    
+    .room-details h4 {
+      margin-bottom: 0.9rem;
+    }
+    
+    .rooms-grid {
+      gap: 0.9rem;
+    }
+    
+    .room-item {
+      padding: 0.9rem;
+    }
+    
+    .room-item h5 {
+      font-size: 0.95rem;
+    }
+    
+    .room-item p {
+      font-size: 0.85rem;
+    }
+    
+    .floor-plans {
+      margin-top: 1.8rem;
+      padding-top: 1.8rem;
+    }
+    
+    .floor-plans h4 {
+      margin-bottom: 0.9rem;
+    }
+    
+    .plan-options {
+      gap: 0.9rem;
+    }
+    
+    .plan-option {
+      padding: 0.9rem;
+      min-width: 110px;
+    }
+    
+    .plan-option p {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .space-specs {
+      gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+    
+    .spec-item {
+      padding: 0.4rem 0.8rem;
+      font-size: 0.8rem;
+    }
+    
+    p {
+      margin-bottom: 1.6rem;
+    }
+    
+    .space-features {
+      margin-top: 1.6rem;
+    }
+    
+    .features-grid {
+      gap: 0.8rem;
+    }
+    
+    .room-details {
+      margin-top: 1.6rem;
+      padding-top: 1.6rem;
+    }
+    
+    .room-details h4 {
+      margin-bottom: 0.8rem;
+    }
+    
+    .rooms-grid {
+      gap: 0.8rem;
+    }
+    
+    .room-item {
+      padding: 0.8rem;
+    }
+    
+    .room-item h5 {
+      font-size: 0.9rem;
+    }
+    
+    .room-item p {
+      font-size: 0.8rem;
+    }
+    
+    .floor-plans {
+      margin-top: 1.6rem;
+      padding-top: 1.6rem;
+    }
+    
+    .floor-plans h4 {
+      margin-bottom: 0.8rem;
+    }
+    
+    .plan-options {
+      gap: 0.8rem;
+    }
+    
+    .plan-option {
+      padding: 0.8rem;
+      min-width: 100px;
+    }
+    
+    .plan-option p {
+      font-size: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.1rem;
+    }
+    
+    .space-specs {
+      gap: 0.7rem;
+      margin-bottom: 1.4rem;
+    }
+    
+    .spec-item {
+      padding: 0.35rem 0.7rem;
+      font-size: 0.75rem;
+    }
+    
+    p {
+      margin-bottom: 1.4rem;
+    }
+    
+    .space-features {
+      margin-top: 1.4rem;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 0.7rem;
+    }
+    
+    .room-details {
+      margin-top: 1.4rem;
+      padding-top: 1.4rem;
+    }
+    
+    .room-details h4 {
+      margin-bottom: 0.7rem;
+    }
+    
+    .rooms-grid {
+      grid-template-columns: 1fr;
+      gap: 0.7rem;
+    }
+    
+    .room-item {
+      padding: 0.7rem;
+    }
+    
+    .room-item h5 {
+      font-size: 0.85rem;
+    }
+    
+    .room-item p {
+      font-size: 0.75rem;
+    }
+    
+    .floor-plans {
+      margin-top: 1.4rem;
+      padding-top: 1.4rem;
+    }
+    
+    .floor-plans h4 {
+      margin-bottom: 0.7rem;
+    }
+    
+    .plan-options {
+      gap: 0.7rem;
+    }
+    
+    .plan-option {
+      padding: 0.7rem;
+      min-width: 90px;
+    }
+    
+    .plan-option p {
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+    }
+    
+    .space-specs {
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .spec-item {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.7rem;
+    }
+    
+    p {
+      margin-bottom: 1.2rem;
+    }
+    
+    .space-features {
+      margin-top: 1.2rem;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    
+    .room-details {
+      margin-top: 1.2rem;
+      padding-top: 1.2rem;
+    }
+    
+    .room-details h4 {
+      margin-bottom: 0.6rem;
+    }
+    
+    .rooms-grid {
+      grid-template-columns: 1fr;
+      gap: 0.6rem;
+    }
+    
+    .room-item {
+      padding: 0.6rem;
+    }
+    
+    .room-item h5 {
+      font-size: 0.8rem;
+    }
+    
+    .room-item p {
+      font-size: 0.7rem;
+    }
+    
+    .floor-plans {
+      margin-top: 1.2rem;
+      padding-top: 1.2rem;
+    }
+    
+    .floor-plans h4 {
+      margin-bottom: 0.6rem;
+    }
+    
+    .plan-options {
+      gap: 0.6rem;
+    }
+    
+    .plan-option {
+      padding: 0.6rem;
+      min-width: 80px;
+    }
+    
+    .plan-option p {
+      font-size: 0.7rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.9rem;
+    }
+    
+    .space-specs {
+      gap: 0.55rem;
+      margin-bottom: 1.1rem;
+    }
+    
+    .spec-item {
+      padding: 0.28rem 0.55rem;
+      font-size: 0.68rem;
+    }
+    
+    p {
+      margin-bottom: 1.1rem;
+    }
+    
+    .space-features {
+      margin-top: 1.1rem;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+    }
+    
+    .room-details {
+      margin-top: 1.1rem;
+      padding-top: 1.1rem;
+    }
+    
+    .room-details h4 {
+      margin-bottom: 0.55rem;
+    }
+    
+    .rooms-grid {
+      grid-template-columns: 1fr;
+      gap: 0.55rem;
+    }
+    
+    .room-item {
+      padding: 0.55rem;
+    }
+    
+    .room-item h5 {
+      font-size: 0.78rem;
+    }
+    
+    .room-item p {
+      font-size: 0.68rem;
+    }
+    
+    .floor-plans {
+      margin-top: 1.1rem;
+      padding-top: 1.1rem;
+    }
+    
+    .floor-plans h4 {
+      margin-bottom: 0.55rem;
+    }
+    
+    .plan-options {
+      gap: 0.55rem;
+    }
+    
+    .plan-option {
+      padding: 0.55rem;
+      min-width: 75px;
+    }
+    
+    .plan-option p {
+      font-size: 0.68rem;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    
+    .space-specs {
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .spec-item {
+      padding: 0.25rem 0.5rem;
+      font-size: 0.65rem;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+    
+    .space-features {
+      margin-top: 1rem;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    
+    .room-details {
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+    
+    .room-details h4 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .rooms-grid {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+    
+    .room-item {
+      padding: 0.5rem;
+    }
+    
+    .room-item h5 {
+      font-size: 0.75rem;
+    }
+    
+    .room-item p {
+      font-size: 0.65rem;
+    }
+    
+    .floor-plans {
+      margin-top: 1rem;
+      padding-top: 1rem;
+    }
+    
+    .floor-plans h4 {
+      margin-bottom: 0.5rem;
+    }
+    
+    .plan-options {
+      gap: 0.5rem;
+    }
+    
+    .plan-option {
+      padding: 0.5rem;
+      min-width: 70px;
+    }
+    
+    .plan-option p {
+      font-size: 0.65rem;
+    }
+  }
+  
+  /* Additional media queries for 125% scaling */
+  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
+    h3 {
+      font-size: 1.65rem;
+      margin-bottom: 1.15rem;
+    }
+    
+    .space-specs {
+      gap: 0.72rem;
+      margin-bottom: 1.45rem;
+    }
+    
+    .spec-item {
+      padding: 0.37rem 0.72rem;
+      font-size: 0.77rem;
+    }
+    
+    p {
+      margin-bottom: 1.45rem;
+    }
+    
+    .space-features {
+      margin-top: 1.45rem;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 0.72rem;
+    }
+    
+    .room-details {
+      margin-top: 1.45rem;
+      padding-top: 1.45rem;
+    }
+    
+    .room-details h4 {
+      margin-bottom: 0.72rem;
+    }
+    
+    .rooms-grid {
+      grid-template-columns: 1fr;
+      gap: 0.72rem;
+    }
+    
+    .room-item {
+      padding: 0.72rem;
+    }
+    
+    .room-item h5 {
+      font-size: 0.87rem;
+    }
+    
+    .room-item p {
+      font-size: 0.77rem;
+    }
+    
+    .floor-plans {
+      margin-top: 1.45rem;
+      padding-top: 1.45rem;
+    }
+    
+    .floor-plans h4 {
+      margin-bottom: 0.72rem;
+    }
+    
+    .plan-options {
+      gap: 0.72rem;
+    }
+    
+    .plan-option {
+      padding: 0.72rem;
+      min-width: 92px;
+    }
+    
+    .plan-option p {
+      font-size: 0.77rem;
+    }
+  }
+  
+  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
+    h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1.2rem;
+    }
+    
+    .space-specs {
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .spec-item {
+      padding: 0.38rem 0.75rem;
+      font-size: 0.8rem;
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .space-features {
+      margin-top: 1.5rem;
+    }
+    
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    
+    .room-details {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+    }
+    
+    .room-details h4 {
+      margin-bottom: 0.75rem;
+    }
+    
+    .rooms-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+    
+    .room-item {
+      padding: 0.75rem;
+    }
+    
+    .room-item h5 {
+      font-size: 0.88rem;
+    }
+    
+    .room-item p {
+      font-size: 0.8rem;
+    }
+    
+    .floor-plans {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+    }
+    
+    .floor-plans h4 {
+      margin-bottom: 0.75rem;
+    }
+    
+    .plan-options {
+      gap: 0.75rem;
+    }
+    
+    .plan-option {
+      padding: 0.75rem;
+      min-width: 95px;
+    }
+    
+    .plan-option p {
+      font-size: 0.8rem;
+    }
   }
 `;
 
