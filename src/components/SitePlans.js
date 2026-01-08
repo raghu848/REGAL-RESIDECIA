@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
+import ArchitectureGallery from './ArchitectureGallery';
 
 const SitePlansSection = styled.section`
   padding: 1rem 2;
@@ -635,6 +636,7 @@ const SitePlans = () => {
                 <img 
                   src={plan.image} 
                   alt={plan.title} 
+                  className="img-radius-1"
                   onError={(e) => {
                     // Fallback to a default image if the specific image fails to load
                     e.target.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80';
@@ -653,6 +655,28 @@ const SitePlans = () => {
             </PlanCard>
           ))}
         </PlansContainer>
+        
+        {/* Architecture Gallery Section */}
+        <SectionHeader>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="section-title">Architecture Gallery</h2>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Explore our architectural excellence and innovative design concepts.
+          </motion.p>
+        </SectionHeader>
+        
+        <ArchitectureGallery />
       </div>
     </SitePlansSection>
   );

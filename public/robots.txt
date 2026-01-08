@@ -1,3 +1,19 @@
-# https://www.robotstxt.org/robotstxt.html
+# Robust robots.txt for Regal Residencia
 User-agent: *
-Disallow:
+Allow: /
+
+# Sitemaps
+Sitemap: https://regalresidencia.com/sitemap.xml
+
+# Directories
+Disallow: /admin/
+Disallow: /api/
+Disallow: /private/
+
+# File types
+Disallow: /*.pdf$
+Disallow: /*.zip$
+
+# Crawl-delay for礼貌
+User-agent: *
+Crawl-delay: 10

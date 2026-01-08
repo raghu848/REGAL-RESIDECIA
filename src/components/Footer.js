@@ -2,9 +2,21 @@ import React from 'react';
 import styled from 'styled-components';
 
 const FooterSection = styled.footer`
-  background: var(--secondary-dark);
-  padding: 3rem 0 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  padding: 4rem 0 2rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #D4A540, transparent);
+  }
 `;
 
 const FooterContainer = styled.div`
@@ -60,13 +72,130 @@ const FooterContainer = styled.div`
   }
 `;
 
+// Logo container for footer
+const LogoContainer = styled.div`
+  position: relative;
+  width: 220px;
+  height: 90px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  @media (max-width: 768px) {
+    width: 180px;
+    height: 80px;
+    margin: 0 auto 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 160px;
+    height: 70px;
+  }
+`;
+
+const BarsContainer = styled.div`
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 2;
+  
+  @media (max-width: 480px) {
+    gap: 4px;
+  }
+`;
+
+const Bar = styled.div`
+  background: linear-gradient(90deg, #D4A540 0%, #F4D576 50%, #D4A540 100%);
+  height: 6px;
+  border-radius: 3px;
+  width: ${props => props.width || '20px'};
+  box-shadow: 0 2px 5px rgba(212, 175, 55, 0.3);
+  
+  @media (max-width: 480px) {
+    height: 5px;
+  }
+`;
+
+const Circle = styled.div`
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 35px;
+  height: 35px;
+  border: 2px solid #666;
+  background: rgba(26, 26, 26, 0.8);
+  border-radius: 50%;
+  z-index: 1;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+  
+  @media (max-width: 480px) {
+    right: 40px;
+    width: 30px;
+    height: 30px;
+  }
+`;
+
+const TextContainer = styled.div`
+  padding-top: 0;
+  z-index: 3;
+`;
+
+const RegalText = styled.div`
+  font-family: 'Arial Black', 'Arial Bold', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 900;
+  color: #D4A540;
+  text-decoration: none;
+  letter-spacing: 1px;
+  margin: 0;
+  text-transform: uppercase;
+  display: block;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+  
+  @media (max-width: 768px) {
+    font-size: 1.6rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.4rem;
+  }
+`;
+
+const ResidenciaText = styled.div`
+  font-family: 'Brush Script MT', cursive, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: #D4A540;
+  margin: -8px 0 0 0;
+  letter-spacing: 0.5px;
+  font-style: italic;
+  display: block;
+  line-height: 1;
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+  
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 1.1rem;
+  }
+`;
+
 const FooterColumn = styled.div`
   h3 {
-    color: var(--accent-gold);
+    color: #D4A540;
     margin-bottom: 1.5rem;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     position: relative;
     padding-bottom: 0.5rem;
+    font-weight: 600;
   }
   
   h3::after {
@@ -74,15 +203,16 @@ const FooterColumn = styled.div`
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 50px;
-    height: 2px;
-    background: var(--accent-gold);
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, #D4A540, #F4D576);
+    border-radius: 2px;
   }
   
   p, li {
-    color: var(--text-muted);
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
+    color: #e0e0e0;
+    line-height: 1.7;
+    margin-bottom: 0.6rem;
   }
   
   ul {
@@ -91,14 +221,20 @@ const FooterColumn = styled.div`
   }
   
   li {
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.9rem;
     display: flex;
     align-items: flex-start;
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  li:hover {
+    transform: translateX(5px);
+    color: #D4A540;
   }
   
   li::before {
     content: '•';
-    color: var(--accent-gold);
+    color: #D4A540;
     font-weight: bold;
     display: inline-block;
     width: 1em;
@@ -108,8 +244,24 @@ const FooterColumn = styled.div`
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
     h3 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 1.3rem;
+    }
+    
+    p, li {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    li {
+      margin-bottom: 0.8rem;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    h3 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
     }
     
     p, li {
@@ -122,10 +274,10 @@ const FooterColumn = styled.div`
     }
   }
   
-  @media (max-width: 992px) {
+  @media (max-width: 768px) {
     h3 {
       font-size: 1.1rem;
-      margin-bottom: 1.2rem;
+      margin-bottom: 1.1rem;
     }
     
     p, li {
@@ -138,10 +290,10 @@ const FooterColumn = styled.div`
     }
   }
   
-  @media (max-width: 768px) {
+  @media (max-width: 576px) {
     h3 {
-      font-size: 1.1rem;
-      margin-bottom: 1.1rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
     }
     
     p, li {
@@ -154,22 +306,6 @@ const FooterColumn = styled.div`
     }
   }
   
-  @media (max-width: 576px) {
-    h3 {
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    p, li {
-      font-size: 0.8rem;
-      margin-bottom: 0.1rem;
-    }
-    
-    li {
-      margin-bottom: 0.4rem;
-    }
-  }
-  
   @media (max-width: 480px) {
     h3 {
       font-size: 0.95rem;
@@ -177,12 +313,12 @@ const FooterColumn = styled.div`
     }
     
     p, li {
-      font-size: 0.78rem;
-      margin-bottom: 0.05rem;
+      font-size: 0.8rem;
+      margin-bottom: 0.15rem;
     }
     
     li {
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.45rem;
     }
   }
   
@@ -197,7 +333,7 @@ const FooterColumn = styled.div`
     }
     
     li {
-      margin-bottom: 0.3rem;
+      margin-bottom: 0.4rem;
     }
   }
   
@@ -209,12 +345,12 @@ const FooterColumn = styled.div`
     }
     
     p, li {
-      font-size: 0.87rem;
-      margin-bottom: 0.22rem;
+      font-size: 0.92rem;
+      margin-bottom: 0.32rem;
     }
     
     li {
-      margin-bottom: 0.52rem;
+      margin-bottom: 0.62rem;
     }
   }
   
@@ -225,23 +361,31 @@ const FooterColumn = styled.div`
     }
     
     p, li {
-      font-size: 0.9rem;
-      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+      margin-bottom: 0.35rem;
     }
     
     li {
-      margin-bottom: 0.55rem;
+      margin-bottom: 0.65rem;
     }
   }
 `;
 
 const MapContainer = styled.div`
   background: rgba(255, 255, 255, 0.05);
-  border-radius: 8px;
+  border-radius: 12px;
   overflow: hidden;
   height: 250px;
   position: relative;
   margin-bottom: 1rem;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(212, 175, 55, 0.2);
+  }
   
   iframe {
     width: 100%;
@@ -255,7 +399,7 @@ const MapContainer = styled.div`
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(26, 26, 26, 0.9));
     display: flex;
     align-items: center;
     justify-content: center;
@@ -267,17 +411,18 @@ const MapContainer = styled.div`
   
   .map-overlay h4 {
     margin-bottom: 1rem;
-    color: var(--accent-gold);
+    color: #D4A540;
+    font-size: 1.2rem;
   }
   
   .map-overlay p {
     margin-bottom: 0.5rem;
-    color: var(--text-light);
+    color: #e0e0e0;
   }
   
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
-    border-radius: 7px;
+    border-radius: 10px;
     height: 230px;
     margin-bottom: 0.9rem;
     
@@ -297,7 +442,7 @@ const MapContainer = styled.div`
   }
   
   @media (max-width: 992px) {
-    border-radius: 6px;
+    border-radius: 8px;
     height: 210px;
     margin-bottom: 0.8rem;
     
@@ -317,7 +462,7 @@ const MapContainer = styled.div`
   }
   
   @media (max-width: 768px) {
-    border-radius: 5px;
+    border-radius: 6px;
     height: 190px;
     margin-bottom: 0.7rem;
     
@@ -375,24 +520,26 @@ const MapContainer = styled.div`
 `;
 
 const DirectionsButton = styled.button`
-  background: var(--accent-gold);
-  color: var(--primary-dark);
+  background: linear-gradient(135deg, #D4A540, #B8860B);
+  color: #0F172A;
   border: none;
-  padding: 0.8rem 1.5rem;
-  border-radius: 6px;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: all var(--transition-speed) ease;
+  transition: all 0.3s ease;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   width: 100%;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
   
   &:hover {
-    background: #e6c542;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+    background: linear-gradient(135deg, #e6c542, #D4A540);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
   }
   
   &:active {
@@ -401,34 +548,34 @@ const DirectionsButton = styled.button`
   
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
-    padding: 0.7rem 1.4rem;
-    border-radius: 5px;
+    padding: 0.8rem 1.4rem;
+    border-radius: 7px;
     font-size: 0.95rem;
     gap: 0.4rem;
   }
   
   @media (max-width: 992px) {
-    padding: 0.65rem 1.3rem;
-    border-radius: 4px;
+    padding: 0.7rem 1.3rem;
+    border-radius: 6px;
     font-size: 0.9rem;
     gap: 0.35rem;
   }
   
   @media (max-width: 768px) {
-    padding: 0.6rem 1.2rem;
-    border-radius: 4px;
+    padding: 0.65rem 1.2rem;
+    border-radius: 5px;
     font-size: 0.85rem;
     gap: 0.3rem;
   }
   
   @media (max-width: 576px) {
-    padding: 0.55rem 1.1rem;
+    padding: 0.6rem 1.1rem;
     font-size: 0.8rem;
     gap: 0.25rem;
   }
   
   @media (max-width: 400px) {
-    padding: 0.5rem 1rem;
+    padding: 0.55rem 1rem;
     font-size: 0.75rem;
     gap: 0.2rem;
   }
@@ -437,41 +584,49 @@ const DirectionsButton = styled.button`
 const ContactInfo = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
+  transition: transform 0.3s ease;
+  
+  &:hover {
+    transform: translateX(5px);
+  }
   
   .icon {
-    width: 40px;
-    height: 40px;
-    background: rgba(212, 175, 55, 0.1);
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-right: 1rem;
-    color: var(--accent-gold);
-    font-size: 1.2rem;
+    margin-right: 1.2rem;
+    color: #D4A540;
+    font-size: 1.3rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
   }
   
   .contact-details h4 {
-    color: var(--text-light);
+    color: #e0e0e0;
     margin-bottom: 0.2rem;
+    font-weight: 500;
   }
   
   .contact-details p {
     margin: 0;
-    color: var(--text-muted);
-    font-size: 0.9rem;
+    color: #D4A540;
+    font-size: 0.95rem;
+    font-weight: 500;
   }
   
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
-    margin-bottom: 0.9rem;
+    margin-bottom: 1.1rem;
     
     .icon {
-      width: 36px;
-      height: 36px;
-      font-size: 1.1rem;
-      margin-right: 0.9rem;
+      width: 42px;
+      height: 42px;
+      font-size: 1.2rem;
+      margin-right: 1.1rem;
     }
     
     .contact-details h4 {
@@ -480,18 +635,18 @@ const ContactInfo = styled.div`
     }
     
     .contact-details p {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
     }
   }
   
   @media (max-width: 992px) {
-    margin-bottom: 0.8rem;
+    margin-bottom: 1rem;
     
     .icon {
-      width: 32px;
-      height: 32px;
-      font-size: 1rem;
-      margin-right: 0.8rem;
+      width: 38px;
+      height: 38px;
+      font-size: 1.1rem;
+      margin-right: 1rem;
     }
     
     .contact-details h4 {
@@ -499,18 +654,18 @@ const ContactInfo = styled.div`
     }
     
     .contact-details p {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
     }
   }
   
   @media (max-width: 768px) {
-    margin-bottom: 0.7rem;
+    margin-bottom: 0.9rem;
     
     .icon {
-      width: 28px;
-      height: 28px;
-      font-size: 0.9rem;
-      margin-right: 0.7rem;
+      width: 34px;
+      height: 34px;
+      font-size: 1rem;
+      margin-right: 0.9rem;
     }
     
     .contact-details h4 {
@@ -518,18 +673,18 @@ const ContactInfo = styled.div`
     }
     
     .contact-details p {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
     }
   }
   
   @media (max-width: 576px) {
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.8rem;
     
     .icon {
-      width: 24px;
-      height: 24px;
-      font-size: 0.8rem;
-      margin-right: 0.6rem;
+      width: 30px;
+      height: 30px;
+      font-size: 0.9rem;
+      margin-right: 0.8rem;
     }
     
     .contact-details h4 {
@@ -537,18 +692,18 @@ const ContactInfo = styled.div`
     }
     
     .contact-details p {
-      font-size: 0.7rem;
+      font-size: 0.75rem;
     }
   }
   
   @media (max-width: 400px) {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.7rem;
     
     .icon {
-      width: 20px;
-      height: 20px;
-      font-size: 0.7rem;
-      margin-right: 0.5rem;
+      width: 26px;
+      height: 26px;
+      font-size: 0.8rem;
+      margin-right: 0.7rem;
     }
     
     .contact-details h4 {
@@ -556,124 +711,149 @@ const ContactInfo = styled.div`
     }
     
     .contact-details p {
-      font-size: 0.65rem;
+      font-size: 0.7rem;
     }
   }
 `;
 
 const SocialLinks = styled.div`
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 1.2rem;
+  margin-top: 1.5rem;
   
   a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text-light);
+    background: linear-gradient(135deg, rgba(26, 26, 26, 0.8), rgba(0, 0, 0, 0.8));
+    color: #D4A540;
     text-decoration: none;
-    transition: all var(--transition-speed) ease;
-    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    font-size: 1.3rem;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
   }
   
   a:hover {
-    background: var(--accent-gold);
-    transform: translateY(-3px);
+    background: linear-gradient(135deg, #D4A540, #F4D576);
+    color: #0F172A;
+    transform: translateY(-5px) scale(1.1);
+    box-shadow: 0 6px 15px rgba(212, 175, 55, 0.4);
   }
   
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
-    gap: 0.9rem;
-    margin-top: 0.9rem;
+    gap: 1.1rem;
+    margin-top: 1.3rem;
     
     a {
-      width: 36px;
-      height: 36px;
-      font-size: 1.1rem;
+      width: 42px;
+      height: 42px;
+      font-size: 1.2rem;
     }
   }
   
   @media (max-width: 992px) {
-    gap: 0.8rem;
-    margin-top: 0.8rem;
+    gap: 1rem;
+    margin-top: 1.2rem;
     
     a {
-      width: 32px;
-      height: 32px;
-      font-size: 1rem;
+      width: 38px;
+      height: 38px;
+      font-size: 1.1rem;
     }
   }
   
   @media (max-width: 768px) {
-    gap: 0.7rem;
-    margin-top: 0.7rem;
+    gap: 0.9rem;
+    margin-top: 1.1rem;
     
     a {
-      width: 28px;
-      height: 28px;
-      font-size: 0.9rem;
+      width: 34px;
+      height: 34px;
+      font-size: 1rem;
     }
   }
   
   @media (max-width: 576px) {
-    gap: 0.6rem;
-    margin-top: 0.6rem;
+    gap: 0.8rem;
+    margin-top: 1rem;
     
     a {
-      width: 24px;
-      height: 24px;
-      font-size: 0.8rem;
+      width: 30px;
+      height: 30px;
+      font-size: 0.9rem;
     }
   }
   
   @media (max-width: 400px) {
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+    gap: 0.7rem;
+    margin-top: 0.9rem;
     
     a {
-      width: 20px;
-      height: 20px;
-      font-size: 0.7rem;
+      width: 26px;
+      height: 26px;
+      font-size: 0.8rem;
     }
   }
 `;
 
 const Copyright = styled.div`
   text-align: center;
-  padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: var(--text-muted);
-  font-size: 0.9rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(212, 175, 55, 0.2);
+  color: #e0e0e0;
+  font-size: 0.95rem;
+  flex: 1;
+  margin-left: 2rem;
   
   p {
-    margin: 0.5rem 0;
+    margin: 0.6rem 0;
+    font-size: 0.9rem;
+  }
+  
+  p:first-child {
+    color: #D4A540;
+    font-weight: 500;
   }
   
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
-    padding-top: 1.8rem;
+    padding-top: 1.5rem;
+    font-size: 0.9rem;
+    margin-left: 1.5rem;
+    
+    p {
+      margin: 0.5rem 0;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    padding-top: 1.5rem;
     font-size: 0.85rem;
+    margin-left: 1rem;
     
     p {
       margin: 0.4rem 0;
     }
   }
   
-  @media (max-width: 992px) {
-    padding-top: 1.6rem;
+  @media (max-width: 768px) {
+    padding-top: 1.5rem;
     font-size: 0.8rem;
+    margin-left: 0;
+    text-align: center;
     
     p {
       margin: 0.3rem 0;
     }
   }
   
-  @media (max-width: 768px) {
-    padding-top: 1.4rem;
+  @media (max-width: 576px) {
+    padding-top: 1.5rem;
     font-size: 0.75rem;
     
     p {
@@ -681,18 +861,13 @@ const Copyright = styled.div`
     }
   }
   
-  @media (max-width: 576px) {
+  @media (max-width: 400px) {
     padding-top: 1.2rem;
     font-size: 0.7rem;
     
     p {
-      margin: 0.1rem 0;
+      margin: 0.15rem 0;
     }
-  }
-  
-  @media (max-width: 400px) {
-    padding-top: 1rem;
-    font-size: 0.65rem;
   }
 `;
 
@@ -700,10 +875,16 @@ const Footer = () => {
   return (
     <FooterSection>
       <div className="container">
+
+        
         <FooterContainer>
           <FooterColumn>
-            <h3>Regal Residencia</h3>
-            <p>Experience unparalleled luxury in the heart of Mohali. Premium residential-commercial project designed for those who demand excellence in every detail.</p>
+            <h3>About Us</h3>
+            <p>{`Experience unparalleled luxury in the heart of Mohali. Premium residential-commercial project designed for those who demand excellence in every detail.`.toLowerCase().includes('luxury') ? (
+                          <span dangerouslySetInnerHTML={{__html: `Experience unparalleled luxury in the heart of Mohali. Premium residential-commercial project designed for those who demand excellence in every detail.`.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+                        ) : (
+                          `Experience unparalleled luxury in the heart of Mohali. Premium residential-commercial project designed for those who demand excellence in every detail.`
+                        )}</p>
             
             <ContactInfo>
               <div className="icon">📍</div>
@@ -735,21 +916,9 @@ const Footer = () => {
                   <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951z"/>
                 </svg>
               </a>
-              <a href="https://instagram.com/regalresidencia" target="_blank" rel="noopener noreferrer" title="Instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.843-.038 1.096-.047 3.232-.047z"/>
-                  <path d="M8 3.993c-2.205 0-4 1.795-4 4s1.795 4 4 4 4-1.795 4-4-1.795-4-4-4zm0 7c-1.655 0-3-1.345-3-3s1.345-3 3-3 3 1.345 3 3-1.345 3-3 3z"/>
-                  <circle cx="12.5" cy="3.5" r="1.5"/>
-                </svg>
-              </a>
               <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" title="WhatsApp">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
                   <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
-                </svg>
-              </a>
-              <a href="https://linkedin.com/company/regalresidencia" target="_blank" rel="noopener noreferrer" title="LinkedIn">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
                 </svg>
               </a>
             </SocialLinks>
@@ -783,10 +952,29 @@ const Footer = () => {
           </FooterColumn>
         </FooterContainer>
         
-        <Copyright>
-          <p>&copy; {new Date().getFullYear()} Regal Residencia. All Rights Reserved.</p>
-          <p>Premium Residential-Commercial Project at Mohali Sector 114</p>
-        </Copyright>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', paddingTop: '2rem' }}>
+          <LogoContainer style={{ margin: 0 }}>
+            <BarsContainer>
+              <Bar width="25px" />
+              <Bar width="32px" />
+              <Bar width="40px" />
+              <Bar width="32px" />
+              <Bar width="25px" />
+            </BarsContainer>
+            <Circle />
+            <TextContainer>
+              <RegalText>
+                REGAL
+              </RegalText>
+              <ResidenciaText>Residencial</ResidenciaText>
+            </TextContainer>
+          </LogoContainer>
+          
+          <Copyright>
+            <p>&copy; {new Date().getFullYear()} Regal Residencia. All Rights Reserved.</p>
+            <p>Premium Residential-Commercial Project at Mohali Sector 114</p>
+          </Copyright>
+        </div>
       </div>
     </FooterSection>
   );

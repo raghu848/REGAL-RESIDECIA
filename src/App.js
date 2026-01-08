@@ -1,18 +1,19 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
-import HeroSection from './components/HeroSection';
+import SparkleStars from './components/SparkleStars';
+import Navbar from './components/Navbar';
+import HeroSection from './components/RedesignedHero';
 import ProjectOverview from './components/ProjectOverview';
 import Amenities from './components/Amenities';
 import LivingSpaces from './components/LivingSpaces';
-import Gallery from './components/Gallery';
-import ArchitectureGallery from './components/ArchitectureGallery';
 import BuildingGallery from './components/BuildingGallery';
 import Testimonials from './components/Testimonials';
 import InquiryForm from './components/InquiryForm';
 import Footer from './components/Footer';
 import SitePlans from './components/SitePlans';
-import TechnicalSpecs from './components/TechnicalSpecs';
+
+
 
 // Global Styles for Dark Theme
 const GlobalStyle = createGlobalStyle`
@@ -216,6 +217,41 @@ const GlobalStyle = createGlobalStyle`
 
   .btn:active {
     transform: translateY(0);
+  }
+
+  /* Image border-radius utility classes */
+  .img-radius-1 {
+    border-radius: 32px;
+    border: 3px solid var(--accent-gold);
+    max-width: 100%;
+    display: block;
+  }
+  
+  .img-radius-2 {
+    border-radius: 32px 50px;
+    border: 3px solid var(--accent-gold);
+    max-width: 100%;
+    display: block;
+  }
+  
+  .img-radius-3 {
+    border-radius: 20px 36px 12px;
+    border: 3px solid var(--accent-gold);
+    max-width: 100%;
+    display: block;
+  }
+  
+  .img-radius-4 {
+    border-radius: 20px 28px 40px 32px;
+    border: 3px solid var(--accent-gold);
+    max-width: 100%;
+    display: block;
+  }
+  
+  .luxury-text {
+    color: var(--accent-gold);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
   }
 `;
 
@@ -692,18 +728,29 @@ function App() {
     <>
       <GlobalStyle />
       <AppContainer>
+        <Navbar />
         <HeroSection />
-        <LivingSpaces />
-        <ProjectOverview />
-        <SitePlans />
-        <TechnicalSpecs />
-        <Amenities />
-        <Gallery />
-        <ArchitectureGallery />
-        <BuildingGallery />
+        <div id="about">
+          <ProjectOverview />
+        </div>
+        <div id="living-spaces">
+          <LivingSpaces />
+        </div>
+        <div id="amenities">
+          <SitePlans />
+          <Amenities />
+        </div>
+        <div id="location">
+          <BuildingGallery />
+        </div>
         <Testimonials />
-        <InquiryForm />
+        <div id="inquiry">
+          <InquiryForm />
+        </div>
+        
         <Footer />
+        
+        <SparkleStars />
         
         {/* Sticky Social Media Icons */}
         <StickyIconsContainer>
@@ -729,7 +776,7 @@ function App() {
           </WhatsAppIcon>
           
           <FacebookIcon
-            href="https://facebook.com/regalresidencia"
+            href="https://www.facebook.com/gdplmohali"
             target="_blank"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -741,7 +788,7 @@ function App() {
           </FacebookIcon>
           
           <InstagramIcon
-            href="https://instagram.com/regalresidencia"
+            href="https://www.instagram.com/gdpl70/"
             target="_blank"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
@@ -752,17 +799,7 @@ function App() {
             </svg>
           </InstagramIcon>
           
-          <LinkedInIcon
-            href="https://linkedin.com/company/regalresidencia"
-            target="_blank"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            title="Connect on LinkedIn"
-          >
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-            </svg>
-          </LinkedInIcon>
+
         </StickyIconsContainer>
       </AppContainer>
     </>

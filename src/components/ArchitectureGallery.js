@@ -1,180 +1,62 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const GallerySection = styled.section`
-  padding: 1rem 2;
-  background-color: var(--primary-dark);
-`;
-
-const SectionTitle = styled.h2`
+const GalleryContainer = styled.section`
+  padding: 0 2rem 4rem;
+  background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   position: relative;
-  text-align: center;
-  margin-bottom: 3rem;
-  font-size: 2.5rem;
-  color: var(--text-light);
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
+  overflow: hidden;
   
-  &::after {
+  &::before {
     content: '';
-    display: block;
-    width: 100px;
-    height: 4px;
-    background: var(--accent-gold);
-    margin: 1rem auto;
-    border-radius: 3px;
-    box-shadow: 0 2px 10px rgba(212, 175, 55, 0.5);
-  }
-  
-  /* Responsive design for all resolutions */
-  @media (max-width: 1200px) {
-    font-size: 2.2rem;
-    margin-bottom: 2.5rem;
-    
-    &::after {
-      width: 90px;
-      height: 3.5px;
-      margin: 0.9rem auto;
-    }
-  }
-  
-  @media (max-width: 992px) {
-    font-size: 2rem;
-    margin-bottom: 2.2rem;
-    
-    &::after {
-      width: 80px;
-      height: 3px;
-      margin: 0.8rem auto;
-    }
-  }
-  
-  @media (max-width: 768px) {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
-    
-    &::after {
-      width: 70px;
-      height: 2.5px;
-      margin: 0.7rem auto;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    font-size: 1.6rem;
-    margin-bottom: 1.8rem;
-    
-    &::after {
-      width: 60px;
-      height: 2px;
-      margin: 0.6rem auto;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    font-size: 1.5rem;
-    margin-bottom: 1.6rem;
-    
-    &::after {
-      width: 50px;
-      height: 1.8px;
-      margin: 0.5rem auto;
-    }
-  }
-  
-  @media (max-width: 400px) {
-    font-size: 1.4rem;
-    margin-bottom: 1.5rem;
-    
-    &::after {
-      width: 45px;
-      height: 1.5px;
-      margin: 0.4rem auto;
-    }
-  }
-  
-  /* Additional media queries for 125% scaling */
-  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
-    font-size: 1.85rem;
-    margin-bottom: 2.1rem;
-    
-    &::after {
-      width: 72px;
-      height: 2.6px;
-      margin: 0.72rem auto;
-    }
-  }
-  
-  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
-    font-size: 1.9rem;
-    margin-bottom: 2.15rem;
-    
-    &::after {
-      width: 75px;
-      height: 2.7px;
-      margin: 0.75rem auto;
-    }
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+    pointer-events: none;
   }
 `;
 
-const GalleryGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 1.5rem;
-  margin-top: 3rem;
-  
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.3rem;
-  }
-  
-  @media (max-width: 992px) {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.1rem;
-  }
+const CarouselContainer = styled.div`
+  position: relative;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  perspective: 2000px;
+  margin: 2rem 0 2rem;
+  z-index: 2;
   
   @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
+    height: 400px;
+    margin: 1.5rem 0 1.5rem;
   }
-  
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
-    gap: 0.8rem;
-  }
-  
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    gap: 0.7rem;
-  }
-  
-  @media (max-width: 400px) {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-  }
-  
-  /* Additional media queries for 125% scaling */
-  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(255px, 1fr));
-    gap: 1.05rem;
-  }
-  
-  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.1rem;
-  }
+`;
+
+const CarouselTrack = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
 `;
 
 const GalleryItem = styled(motion.div)`
-  border-radius: 12px;
+  position: absolute;
+  width: 350px;
+  height: 400px;
+  border-radius: 24px;
   overflow: hidden;
-  position: relative;
-  height: 300px;
   cursor: pointer;
-  border: 2px solid #555;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  border: 3px solid rgba(212, 165, 64, 0.4);
   transition: all 0.3s ease;
+  background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
   
   img {
     width: 100%;
@@ -184,133 +66,373 @@ const GalleryItem = styled(motion.div)`
   }
   
   &:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    transform: scale(1.05) !important;
+    box-shadow: 0 35px 70px rgba(212, 165, 64, 0.5);
+    border: 3px solid rgba(212, 175, 55, 0.8);
     
     img {
-      transform: scale(1.1);
+      transform: scale(1.15);
     }
   }
   
-  /* Responsive design for all resolutions */
-  @media (max-width: 1200px) {
-    border-radius: 10px;
-    height: 280px;
-    border: 1.8px solid #555;
-    box-shadow: 0 9px 27px rgba(0, 0, 0, 0.3);
-  }
-  
-  @media (max-width: 992px) {
-    border-radius: 9px;
-    height: 260px;
-    border: 1.6px solid #555;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  }
-  
   @media (max-width: 768px) {
-    border-radius: 8px;
-    height: 240px;
-    border: 1.4px solid #555;
-    box-shadow: 0 7px 21px rgba(0, 0, 0, 0.3);
-  }
-  
-  @media (max-width: 576px) {
-    border-radius: 7px;
-    height: 220px;
-    border: 1.2px solid #555;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
-  }
-  
-  @media (max-width: 480px) {
-    border-radius: 6px;
-    height: 200px;
-    border: 1px solid #555;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  }
-  
-  @media (max-width: 400px) {
-    border-radius: 5px;
-    height: 180px;
-    border: 0.8px solid #555;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Additional media queries for 125% scaling */
-  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
-    border-radius: 8.5px;
-    height: 250px;
-    border: 1.5px solid #555;
-    box-shadow: 0 7.5px 22px rgba(0, 0, 0, 0.3);
-  }
-  
-  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
-    border-radius: 9px;
-    height: 260px;
-    border: 1.6px solid #555;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    width: 280px;
+    height: 320px;
   }
 `;
 
-// Architecture images from the architech folder
-const architectureImages = [
-//   { id: 1, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-034.jpg", alt: "Architecture Design 1" },
-//   { id: 2, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-054.png", alt: "Architecture Design 2" },
-//   { id: 3, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-068.jpg", alt: "Architecture Design 3" },
-//   { id: 4, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-078.jpg", alt: "Architecture Design 4" },
-  { id: 5, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-090.jpg", alt: "Architecture Design 5" },
-  { id: 6, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-102.jpg", alt: "Architecture Design 6" },
-  { id: 7, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-110.jpg", alt: "Architecture Design 7" },
-  { id: 8, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-122.jpg", alt: "Architecture Design 8" },
-  { id: 9, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-123.jpg", alt: "Architecture Design 9" },
-  { id: 10, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-131.jpg", alt: "Architecture Design 10" },
-  // { id: 11, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-134.jpg", alt: "Architecture Design 11" },
-  { id: 12, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-142.jpg", alt: "Architecture Design 12" },
-  { id: 13, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-159.jpg", alt: "Architecture Design 13" },
-  // { id: 14, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image- 160.jpg", alt: "Architecture Design 14" },
-  { id: 15, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-166.jpg", alt: "Architecture Design 15" },
-//   { id: 16, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-167.jpg", alt: "Architecture Design 16" },
-//   { id: 17, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-173.jpg", alt: "Architecture Design 17" },
-  { id: 18, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-174.jpg", alt: "Architecture Design 18" },
-  { id: 19, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-185.jpg", alt: "Architecture Design 19" },
-//   { id: 20, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-186.jpg", alt: "Architecture Design 20" },
-  { id: 21, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-192.jpg", alt: "Architecture Design 21" },
-//   { id: 22, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-198.jpg", alt: "Architecture Design 22" },
-//   { id: 23, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-204.jpg", alt: "Architecture Design 23" },
-  { id: 24, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-210.jpg", alt: "Architecture Design 24" },
-//   { id: 25, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-216.jpg", alt: "Architecture Design 25" },
-  { id: 26, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-252.jpg", alt: "Architecture Design 26" },
-  { id: 27, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-324.jpg", alt: "Architecture Design 27" }
-];
+const NavigationArrows = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0 2rem;
+  z-index: 10;
+  
+  @media (max-width: 768px) {
+    padding: 0 1rem;
+  }
+`;
+
+const ArrowButton = styled.button`
+  background: rgba(212, 165, 64, 0.2);
+  border: 2px solid #D4A540;
+  color: #D4A540;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 5px 15px rgba(212, 165, 64, 0.2);
+  
+  &:hover {
+    background: linear-gradient(135deg, #D4A540, #b8860b);
+    color: #0a0a0a;
+    transform: scale(1.1) translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 165, 64, 0.4);
+  }
+  
+  &:active {
+    transform: scale(0.95);
+  }
+  
+  @media (max-width: 768px) {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(212, 165, 64, 0.2);
+  }
+`;
+
+const DotsContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2rem;
+  z-index: 2;
+  position: relative;
+`;
+
+const Dot = styled.button`
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: ${props => props.active ? '#D4A540' : 'rgba(255, 255, 255, 0.3)'};
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(212, 165, 64, 0.3);
+  
+  &:hover {
+    background: #D4A540;
+    transform: scale(1.3);
+    box-shadow: 0 3px 8px rgba(212, 165, 64, 0.5);
+  }
+  
+  @media (max-width: 768px) {
+    width: 10px;
+    height: 10px;
+  }
+`;
+
+const Caption = styled.p`
+  text-align: center;
+  color: #D4A540;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  font-style: italic;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 0 10px rgba(212, 165, 64, 0.3);
+  padding: 0.5rem;
+  
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+  }
+`;
+
+const Lightbox = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: ${props => props.visible ? 1 : 0};
+  pointer-events: ${props => props.visible ? 'all' : 'none'};
+  transition: opacity 0.3s ease;
+`;
+
+const LightboxImage = styled.img`
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+`;
+
+const LightboxClose = styled.button`
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    background: rgba(212, 165, 64, 0.3);
+  }
+`;
 
 const ArchitectureGallery = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [showLightbox, setShowLightbox] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const intervalRef = useRef(null);
+  const containerRef = useRef(null);
+
+  // Architecture images
+  const architectureItems = [
+    { id: 1, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-034.jpg", title: "Master Plan Design" },
+    { id: 2, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-054.png", title: "Elevation View" },
+    { id: 3, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-068.jpg", title: "Floor Plan Layout" },
+    { id: 4, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-078.jpg", title: "Building Facade" },
+    { id: 5, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-090.jpg", title: "Landscape Design" },
+    { id: 6, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-102.jpg", title: "Structural Details" },
+    { id: 7, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-110.jpg", title: "Interior Layout" },
+    { id: 8, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-122.jpg", title: "Parking Design" },
+    { id: 9, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-142.jpg", title: "Common Areas" },
+    { id: 10, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-159.jpg", title: "Amenities Layout" },
+    
+    // Additional architecture items
+    { id: 11, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-034.jpg", title: "3D Architectural Model" },
+    { id: 12, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-054.png", title: "Sustainable Design Features" },
+    { id: 13, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-068.jpg", title: "Smart Home Integration" },
+    { id: 14, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-078.jpg", title: "Energy Efficiency Plan" },
+    { id: 15, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-090.jpg", title: "Security Architecture" },
+    { id: 16, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-102.jpg", title: "Fire Safety Design" },
+    { id: 17, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-110.jpg", title: "Plumbing Layout" },
+    { id: 18, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-122.jpg", title: "Electrical Plan" },
+    { id: 19, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-142.jpg", title: "HVAC System Design" },
+    { id: 20, src: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-159.jpg", title: "Landscape Irrigation" }
+  ];
+
+  // Auto-rotate carousel
+  useEffect(() => {
+    if (isAutoPlaying && architectureItems.length > 1) {
+      intervalRef.current = setInterval(() => {
+        setCurrentIndex(prev => (prev + 1) % architectureItems.length);
+      }, 3000); // Increased interval to 3 seconds
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isAutoPlaying, architectureItems.length]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === 'ArrowLeft') {
+        goToPrev();
+      } else if (event.key === 'ArrowRight') {
+        goToNext();
+      } else if (event.key === ' ') { // Space bar to pause/play
+        setIsAutoPlaying(prev => !prev);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  // Handle mouse enter/leave for auto-play
+  const handleMouseEnter = () => setIsAutoPlaying(false);
+  const handleMouseLeave = () => setIsAutoPlaying(true);
+
+  // Navigation functions
+  const goToNext = () => {
+    setCurrentIndex(prev => (prev + 1) % architectureItems.length);
+  };
+
+  const goToPrev = () => {
+    setCurrentIndex(prev => (prev - 1 + architectureItems.length) % architectureItems.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
+  // Calculate positions for 3D effect
+  const getTransform = (index, activeIndex, length) => {
+    const positions = [
+      { x: -200, y: 0, z: -200, scale: 0.7, opacity: 0.5, rotateY: -30 },
+      { x: -100, y: 0, z: -100, scale: 0.85, opacity: 0.8, rotateY: -15 },
+      { x: 0, y: 0, z: 0, scale: 1, opacity: 1, rotateY: 0 },
+      { x: 100, y: 0, z: -100, scale: 0.85, opacity: 0.8, rotateY: 15 },
+      { x: 200, y: 0, z: -200, scale: 0.7, opacity: 0.5, rotateY: 30 },
+    ];
+
+    const diff = index - activeIndex;
+    const absDiff = Math.abs(diff);
+
+    if (absDiff > 2) {
+      // Wrap around for circular effect
+      const wrappedIndex = diff > 0 ? diff - length : diff + length;
+      if (Math.abs(wrappedIndex) <= 2) {
+        const posIndex = wrappedIndex + 2;
+        return positions[posIndex];
+      }
+      return { x: 0, y: 0, z: 0, scale: 0.7, opacity: 0.5, rotateY: 0 };
+    }
+
+    const posIndex = diff + 2;
+    return positions[posIndex] || { x: 0, y: 0, z: 0, scale: 0.7, opacity: 0.5, rotateY: 0 };
+  };
+
+  // Open lightbox
+  const openLightbox = (index) => {
+    setLightboxIndex(index);
+    setShowLightbox(true);
+  };
+
+  // Close lightbox
+  const closeLightbox = () => {
+    setShowLightbox(false);
+  };
+
+  // Navigate lightbox
+  const navigateLightbox = (direction) => {
+    if (direction === 'next') {
+      setLightboxIndex(prev => (prev + 1) % architectureItems.length);
+    } else {
+      setLightboxIndex(prev => (prev - 1 + architectureItems.length) % architectureItems.length);
+    }
+  };
+
   return (
-    <GallerySection>
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <SectionTitle>Architectural Highlights</SectionTitle>
-        </motion.div>
+    <>
+      <GalleryContainer onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         
-        <GalleryGrid>
-          {architectureImages.map((image, index) => (
-            <GalleryItem
-              key={image.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.03 }}
-            >
-              <img src={image.src} alt={image.alt} loading="lazy" />
-            </GalleryItem>
+        <CarouselContainer ref={containerRef}>
+          <CarouselTrack>
+            {architectureItems.map((item, index) => {
+              const transform = getTransform(index, currentIndex, architectureItems.length);
+              return (
+                <GalleryItem
+                  key={item.id}
+                  style={{
+                    transform: `translateX(${transform.x}px) translateY(${transform.y}px) translateZ(${transform.z}px) rotateY(${transform.rotateY}deg) scale(${transform.scale})`,
+                    opacity: transform.opacity,
+                    zIndex: Math.round(transform.scale * 10),
+                  }}
+                  whileHover={{ scale: 1.05 }}
+                  onClick={() => openLightbox(index)}
+                >
+                  <img src={item.src} alt={item.title} loading="lazy" />
+                </GalleryItem>
+              );
+            })}
+          </CarouselTrack>
+          
+          <NavigationArrows>
+            <ArrowButton onClick={goToPrev} aria-label="Previous image">
+              &larr;
+            </ArrowButton>
+            <ArrowButton onClick={goToNext} aria-label="Next image">
+              &rarr;
+            </ArrowButton>
+          </NavigationArrows>
+        </CarouselContainer>
+        
+        <Caption>{architectureItems[currentIndex]?.title || ''}</Caption>
+        
+        <DotsContainer>
+          {architectureItems.map((_, index) => (
+            <Dot
+              key={index}
+              active={index === currentIndex}
+              onClick={() => goToSlide(index)}
+              aria-label={`Go to slide ${index + 1}`}
+            />
           ))}
-        </GalleryGrid>
-      </div>
-    </GallerySection>
+        </DotsContainer>
+      </GalleryContainer>
+      
+      <Lightbox visible={showLightbox} onClick={closeLightbox}>
+        <LightboxClose onClick={closeLightbox} aria-label="Close lightbox">
+          &times;
+        </LightboxClose>
+        <LightboxImage 
+          src={architectureItems[lightboxIndex]?.src} 
+          alt={architectureItems[lightboxIndex]?.title}
+          onClick={(e) => e.stopPropagation()}
+        />
+        <ArrowButton 
+          style={{ position: 'absolute', left: '2rem', top: '50%', transform: 'translateY(-50%)' }}
+          onClick={(e) => {
+            e.stopPropagation();
+            navigateLightbox('prev');
+          }}
+          aria-label="Previous image in lightbox"
+        >
+          &larr;
+        </ArrowButton>
+        <ArrowButton 
+          style={{ position: 'absolute', right: '2rem', top: '50%', transform: 'translateY(-50%)' }}
+          onClick={(e) => {
+            e.stopPropagation();
+            navigateLightbox('next');
+          }}
+          aria-label="Next image in lightbox"
+        >
+          &rarr;
+        </ArrowButton>
+      </Lightbox>
+    </>
   );
 };
 

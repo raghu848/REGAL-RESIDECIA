@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
+
+
 const HeroContainer = styled.section`
-  height: 150vh; /* Reduced from 200vh to 150vh */
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(rgba(97, 70, 70, 0.7), rgba(10, 10, 10, 0.9)), 
-              url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
   
   &::before {
     content: '';
@@ -19,8 +19,9 @@ const HeroContainer = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle at center, transparent 0%, rgba(10, 10, 10, 0.9) 70%);
+    background: radial-gradient(circle at center, transparent 0%, rgba(10, 10, 10, 0.7) 70%);
     pointer-events: none;
+    z-index: 2;
   }
   
   &::after {
@@ -30,9 +31,10 @@ const HeroContainer = styled.section`
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(45deg, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    background: linear-gradient(45deg, rgba(212, 175, 55, 0.05) 0%, transparent 70%);
     pointer-events: none;
     animation: shimmer 8s infinite;
+    z-index: 3;
   }
   
   @keyframes shimmer {
@@ -81,33 +83,39 @@ const HeroContainer = styled.section`
   }
 `;
 
-// Adding a new styled component for the project logo
-const ProjectLogo = styled.div`
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  z-index: 10;
+// Content Wrapper
+const ContentWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+`;
+
+const HeroCard = styled(motion.div)`
+  text-align: left;
+  z-index: 2;
+  max-width: 600px;
+  position: relative;
   
-  .logo-text {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.8rem;
-    font-weight: 700;
-    color: var(--text-light);
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    
-    span {
-      color: var(--accent-gold);
-    }
-  }
+  // Luxurious card styling
+  background: rgba(10, 10, 10, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 50px 0 0 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 32px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
   
-  .logo-subtext {
-    font-size: 0.8rem;
-    color: var(--accent-gold);
-    letter-spacing: 1px;
-    text-transform: uppercase;
+  // 3D tilt effect (opposite side with stronger tilt)
+  transform: perspective(1000px) rotateY(8deg) rotateX(-3deg);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  
+  &:hover {
+    transform: perspective(1000px) rotateY(5deg) rotateX(-1.5deg);
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.5);
   }
   
   @media (max-width: 1200px) {
@@ -137,16 +145,16 @@ const ProjectLogo = styled.div`
   }
   
   @media (max-width: 768px) {
-    top: 20px;
-    left: 20px;
-    
-    .logo-text {
-      font-size: 1.5rem;
-    }
-    
-    .logo-subtext {
-      font-size: 0.7rem;
-    }
+    text-align: center;
+    max-width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+  }
+  
+  @media (max-width: 480px) {
+    max-width: 95%;
+    padding: 24px;
+    border-radius: 24px;
   }
   
   @media (max-width: 576px) {
@@ -217,51 +225,43 @@ const ProjectLogo = styled.div`
 `;
 
 const HeroContent = styled.div`
-  text-align: center;
-  z-index: 2;
-  max-width: 900px;
-  padding: 0 20px;
   position: relative;
-  margin-top: 50px; /* Reduced from 100px to 50px */
   
   &::before {
     content: '';
     position: absolute;
     top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
+    left: 0;
     width: 100px;
     height: 4px;
     background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
     border-radius: 2px;
   }
-`;
-
-const Subtitle = styled(motion.h3)`
-  color: var(--accent-gold);
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  font-size: 1.2rem;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem; /* Reduced from 1rem to 0.5rem */
-  position: relative;
-  display: inline-block;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: -8px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 40px;
-    height: 2px;
-    background: var(--accent-gold);
-  }
   
   @media (max-width: 768px) {
-    font-size: 1rem;
-    letter-spacing: 2px;
+    &::before {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+`;
+
+const Tag = styled(motion.span)`
+  display: inline-block;
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--accent-gold);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  
+  @media (max-width: 768px) {
+    margin-bottom: 1rem;
   }
   
   @media (max-width: 480px) {
@@ -282,17 +282,15 @@ const Subtitle = styled(motion.h3)`
 `;
 
 const Title = styled(motion.h1)`
-  font-size: 4rem;
-  margin-bottom: 1rem; /* Reduced from 1.5rem to 1rem */
-  margin-top: 2rem; /* Reduced from 5rem to 2rem */
+  font-size: 3.5rem;
+  margin-bottom: 1.5rem;
   line-height: 1.2;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  background: linear-gradient(to right, #f5f5f5, #d4af37);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+  background: linear-gradient(to bottom, #ffffff, #d4af37);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   position: relative;
-  animation: float 6s ease-in-out infinite;
   
   span {
     display: block;
@@ -308,6 +306,7 @@ const Title = styled(motion.h1)`
   
   @media (max-width: 768px) {
     font-size: 2.5rem;
+    margin-bottom: 1rem;
   }
   
   @media (max-width: 576px) {
@@ -334,23 +333,23 @@ const Title = styled(motion.h1)`
 
 const Description = styled(motion.p)`
   font-size: 1.2rem;
-  margin-bottom: 1rem; /* Reduced from 2rem to 1rem */
-  color: var(--text-muted);
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #FFFFFF; /* Changed from var(--text-muted) to pure white for maximum brightness */
+  max-width: 500px;
+  line-height: 1.7;
   position: relative;
   
-  &::before {
-    content: '"';
-    position: absolute;
-    top: -20px;
-    left: -15px;
-    font-size: 4rem;
-    color: rgba(212, 175, 55, 0.2);
-    font-family: 'Playfair Display', serif;
+  @media (max-width: 768px) {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    max-width: 100%;
   }
+`;
+
+const CTAContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
   
   @media (max-width: 1200px) {
     font-size: 1.1rem;
@@ -361,7 +360,9 @@ const Description = styled(motion.p)`
   }
   
   @media (max-width: 768px) {
-    font-size: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
   }
   
   @media (max-width: 576px) {
@@ -548,16 +549,6 @@ const StatsContainer = styled.div`
   @media (max-width: 768px) {
     gap: 1rem;
   }
-`;
-
-const StatItem = styled(motion.div)`
-  text-align: center;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 0.75rem 1rem; /* Reduced from 1rem 1.5rem to 0.75rem 1rem */
-  border-radius: 8px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  min-width: 100px; /* Reduced from 120px to 100px */
   
   .stat-number {
     font-size: 2rem;
@@ -639,41 +630,28 @@ const StatItem = styled(motion.div)`
   }
 `;
 
-const CTAButton = styled(motion.button)`
+const PrimaryButton = styled(motion.button)`
   background: linear-gradient(135deg, var(--accent-gold), #b8860b);
   color: var(--primary-dark);
   border: none;
-  padding: 0.8rem 2rem; /* Reduced from 1rem 2.5rem to 0.8rem 2rem */
-  font-size: 1rem; /* Reduced from 1.1rem to 1rem */
+  padding: 1rem 2rem;
+  font-size: 1rem;
   font-weight: 600;
-  border-radius: 4px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all var(--transition-speed) ease;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
-  position: relative;
-  overflow: hidden;
-  margin-top: 1rem; /* Added to give some space above button */
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: 0.5s;
-  }
-  
-  &:hover::before {
-    left: 100%;
-  }
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  white-space: nowrap;
   
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(212, 175, 55, 0.7);
+  }
+  
+  &:active {
+    transform: translateY(0);
   }
   
   @media (max-width: 1200px) {
@@ -687,8 +665,8 @@ const CTAButton = styled(motion.button)`
   }
   
   @media (max-width: 768px) {
-    padding: 0.7rem 1.5rem; /* Reduced from 0.8rem 2rem to 0.7rem 1.5rem */
-    font-size: 0.9rem;
+    padding: 0.9rem 1.8rem;
+    font-size: 0.95rem;
   }
   
   @media (max-width: 576px) {
@@ -697,10 +675,9 @@ const CTAButton = styled(motion.button)`
   }
   
   @media (max-width: 480px) {
-    padding: 0.6rem 1.2rem; /* Reduced from 0.7rem 1.5rem to 0.6rem 1.2rem */
-    font-size: 0.8rem;
     width: 100%;
-    max-width: 250px;
+    padding: 1rem;
+    font-size: 1rem;
   }
   
   @media (max-width: 400px) {
@@ -711,27 +688,26 @@ const CTAButton = styled(motion.button)`
   }
 `;
 
-const ScrollIndicator = styled(motion.div)`
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+const SecondaryButton = styled(motion.button)`
+  background: transparent;
   color: var(--text-light);
-  font-size: 0.9rem;
+  border: 1px solid var(--accent-gold);
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
   cursor: pointer;
+  transition: all var(--transition-speed) ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   
-  .scroll-arrow {
-    margin-top: 5px;
-    animation: bounce 2s infinite;
+  &:hover {
+    background: rgba(212, 175, 55, 0.1);
+    transform: translateY(-3px);
   }
   
-  @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-    40% {transform: translateY(-20px);}
-    60% {transform: translateY(-10px);}
+  &:active {
+    transform: translateY(0);
   }
   
   @media (max-width: 1200px) {
@@ -745,8 +721,130 @@ const ScrollIndicator = styled(motion.div)`
   }
   
   @media (max-width: 768px) {
-    bottom: 5px;
+    padding: 0.9rem 1.8rem;
+    font-size: 0.95rem;
+  }
+  
+  @media (max-width: 480px) {
+    width: 100%;
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  // Additional responsive styles for better mobile experience
+  @media (max-width: 320px) {
+    padding: 0.8rem;
+    font-size: 0.9rem;
+  }
+`;
+
+const SocialProof = styled(motion.p)`
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  
+  span {
+    color: var(--accent-gold);
+    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+`;
+
+
+// Floating Cards Container
+const FloatingCardsContainer = styled.div`
+  position: absolute;
+  right: 100px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  z-index: 2;
+  
+  @media (max-width: 768px) {
+    display: none;
+  }
+`;
+
+// Floating Card
+const FloatingCard = styled(motion.div)`
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(212, 175, 55, 0.3);
+  border-radius: 12px;
+  padding: 1.5rem;
+  width: 250px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  
+  // 3D tilt effect (matching hero card)
+  transform: perspective(1000px) rotateY(8deg) rotateX(-3deg);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: perspective(1000px) rotateY(5deg) rotateX(-1.5deg) translateY(-5px);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.4);
+    border-color: rgba(212, 175, 55, 0.6);
+  }
+  
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+  
+  .project-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    margin: 0;
+  }
+  
+  .price {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+  }
+  
+  .location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #DDDDDD;
+    margin-bottom: 1rem;
     font-size: 0.8rem;
+  }
+  
+  .location-icon {
+    color: var(--accent-gold);
+  }
+  
+  .stats {
+    display: flex;
+    justify-content: space-between;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1rem;
+  }
+  
+  .stat-item {
+    text-align: center;
+  }
+  
+  .stat-value {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+  }
+  
+  .stat-label {
+    font-size: 0.7rem;
+    color: #CCCCCC;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
   
   @media (max-width: 576px) {
@@ -760,10 +858,9 @@ const ScrollIndicator = styled(motion.div)`
   }
 `;
 
-// Updated styled component for the sticky explore button - smaller and round with animated arrow
 const StickyExploreButton = styled(motion.div)`
   position: fixed;
-  left: 20px;
+  left: 25px;
   top: 50%;
   transform: translateY(-50%);
   z-index: 1000;
@@ -773,14 +870,14 @@ const StickyExploreButton = styled(motion.div)`
   justify-content: center;
   background: linear-gradient(135deg, var(--accent-gold), #b8860b);
   color: var(--primary-dark);
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
   transition: all var(--transition-speed) ease;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 1.1rem;
   letter-spacing: 1px;
   text-transform: uppercase;
   
@@ -789,7 +886,7 @@ const StickyExploreButton = styled(motion.div)`
   }
   
   .explore-arrow {
-    font-size: 2rem;
+    font-size: 2.5rem;
     transition: transform 0.3s ease;
     animation: pulse 2s infinite;
   }
@@ -802,12 +899,12 @@ const StickyExploreButton = styled(motion.div)`
   
   &:hover {
     transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.7);
   }
   
   &.footer-reached {
     top: auto;
-    bottom: 20px;
+    bottom: 30px;
     transform: none;
     
     .explore-arrow {
@@ -834,10 +931,10 @@ const StickyExploreButton = styled(motion.div)`
   }
   
   @media (max-width: 768px) {
-    left: 10px;
-    width: 50px;
-    height: 50px;
-    font-size: 0.8rem;
+    left: 15px;
+    width: 60px;
+    height: 60px;
+    font-size: 0.9rem;
   }
   
   @media (max-width: 576px) {
@@ -855,12 +952,65 @@ const StickyExploreButton = styled(motion.div)`
   }
 `;
 
+// Environmental Effects
+const EnvironmentalEffects = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+`;
+
+const LightRay = styled.div`
+  position: absolute;
+  top: 0;
+  left: ${props => props.position || '10%'};
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(212, 175, 55, 0.4) 0%, 
+    transparent 70%);
+  transform: skewX(-20deg);
+  opacity: 0.3;
+  filter: blur(1px);
+`;
+
+const Particle = styled.div`
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(212, 175, 55, 0.6);
+  border-radius: 50%;
+  top: ${props => props.top || '20%'};
+  left: ${props => props.left || '30%'};
+  box-shadow: 0 0 3px rgba(212, 175, 55, 0.8); /* Reduced shadow */
+  animation: float ${props => props.duration || '15s'} infinite linear; /* Slower animation */
+  
+  @keyframes float {
+    0% { 
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    10% { opacity: 0.7; } /* Reduced opacity */
+    90% { opacity: 0.7; } /* Reduced opacity */
+    100% { 
+      transform: translateY(-100vh) translateX(${props => props.drift || '10px'}); /* Reduced drift */
+      opacity: 0;
+    }
+  }
+`;
+
+
 const HeroSection = () => {
+
+
   const [stats] = useState([
     { number: "13.44", label: "Acres" },
     { number: "688", label: "Units" },
     { number: "32", label: "Floors" },
-    { number: "5", label: "Amenities" }
+    { number: "5", label: "Star Amenities" }
   ]);
   
   const [isFooterReached, setIsFooterReached] = useState(false);
@@ -929,125 +1079,216 @@ const HeroSection = () => {
 
   return (
     <HeroContainer>
-      {/* Adding Project Logo */}
-      <ProjectLogo>
-        <div className="logo-content">
-          <div className="logo-text">REGAL <span>RESIDENCIA</span></div>
-          <div className="logo-subtext">Luxury Living</div>
-        </div>
-      </ProjectLogo>
+      {/* Background - Image fallback with video option */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: -1,
+          backgroundImage: 'url("https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          opacity: 0.7,
+        }}
+      />
+      {/* Video as overlay with lower opacity */}
+      <video
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover',
+          zIndex: -2,
+          opacity: 0.5,
+        }}
+        autoPlay
+        muted
+        loop
+        playsInline
+        controls={false}
+      >
+        <source src="/videos/hero-background.mp4.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
       
-      <HeroContent>
-        <Subtitle
-          initial={{ opacity: 0, y: 40, scale: 0.95 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1 }}
-          style={{
-            fontFamily: '"Playfair Display", serif',
-            fontWeight: 700,
-            fontSize: '2.5rem',
-            letterSpacing: '0.05em',
-            color: 'linear-gradient(90deg, #d6a354, #726e91)', // For true gradient, use CSS below
-            background: 'linear-gradient(90deg, #d6a354, #726e91)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            textShadow: '0px 6px 24px rgba(140, 101, 43, 0.3)',
-            borderRadius: '8px',
-            padding: '0.4em 1.4em',
-            backgroundColor: 'rgba(32, 32, 32, 0.75)',
-            boxShadow: '0 8px 32px 0 rgba(60,60,90,0.08)',
-            display: 'inline-block',
+      {/* Content Wrapper */}
+      <ContentWrapper>
+        {/* Environmental Effects - Reduced for performance */}
+        <EnvironmentalEffects>
+          <LightRay position="45%" /> {/* Reduced from 3 to 1 light ray */}
+          {Array.from({ length: 1 }).map((_, i) => ( /* Reduced from 3 to 1 particle */
+            <Particle 
+              key={i}
+              top={`${Math.random() * 100}%`}
+              left={`${Math.random() * 100}%`}
+              duration={`${30 + Math.random() * 30}s`} /* Even slower particles */
+              drift={`${Math.random() * 5 - 2.5}px`} /* Further reduced drift */
+            />
+          ))}
+        </EnvironmentalEffects>
+        
+        <HeroCard
+          initial={{ 
+            opacity: 0, 
+            transform: 'perspective(1000px) rotateY(10deg) rotateX(-4deg)' 
           }}
+          animate={{ 
+            opacity: 1, 
+            transform: 'perspective(1000px) rotateY(8deg) rotateX(-3deg)' 
+          }}
+          transition={{ duration: 0.8 }}
         >
-          Luxury Living in Mohali
-        </Subtitle>
-        
-        <Title
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <span>Regal</span>
-          <span>Residencia</span>
-        </Title>
-        
-        <Description
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-        >
-          Experience unparalleled luxury in the heart of Mohali. Premium residential-commercial project designed for those who demand excellence in every detail.
-        </Description>
-        
-        <FeatureHighlights
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-        >
-          <div className="feature-title">Premium Living Experience</div>
-          <div className="feature-description">
-          Regal Residencia offers a truly premium living experience by blending cutting-edge modern architecture with top-tier luxury amenities in Mohali. Residents enjoy advanced 24/7 security, smart home technology, generous green spaces,. Every detail is crafted to provide comfort, convenience, and a sophisticated lifestyle, ensuring that Regal Residencia stands out as the benchmark for luxury and innovation in residential living.
-          </div>
-          <div className="feature-list">
-            <div className="feature-item">24/7 Security</div>
-            <div className="feature-item">Smart Home Tech</div>
-            <div className="feature-item">Green Spaces</div>
-            <div className="feature-item">Premium Finishes</div>
-          </div>
-        </FeatureHighlights>
-        
-        <StatsContainer>
-          {stats.map((stat, index) => (
-            <StatItem
-              key={index}
+          <HeroContent>
+            <Tag
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.6 + index * 0.1 }}
-              whileHover={{ y: -10, scale: 1.05 }}
+              transition={{ duration: 0.6 }}
             >
-              <div className="stat-number">{stat.number}</div>
-              <div className="stat-label">{stat.label}</div>
-            </StatItem>
-          ))}
-        </StatsContainer>
-        
-        <CTAButton
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={handleCTAClick}
+              Premium Residences
+            </Tag>
+            
+            <Title
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <span>Experience</span>
+              <span>{`Luxury Redefined`.includes('Luxury') ? (
+                              <span>{`Luxury Redefined`.split('Luxury')[0]}<span className="luxury-text">Luxury</span>{`Luxury Redefined`.split('Luxury')[1]}</span>
+                            ) : (
+                              `Luxury Redefined`
+                            )}</span>
+            </Title>
+            
+            <Description
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+            >
+              Discover Regal Residencia, where modern architecture meets timeless elegance. 
+              {`Our premium residential project redefines luxury living in the heart of Mohali.`.toLowerCase().includes('luxury') ? (
+                              <span dangerouslySetInnerHTML={{__html: `Our premium residential project redefines luxury living in the heart of Mohali.`.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+                            ) : (
+                              `Our premium residential project redefines luxury living in the heart of Mohali.`
+                            )}
+            </Description>
+          
+          <CTAContainer>
+            <PrimaryButton
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={handleCTAClick}
+            >
+              Schedule a Visit
+            </PrimaryButton>
+            
+            <SecondaryButton
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              onClick={() => {
+                // Scroll to projects section
+                const projectsSection = document.getElementById('projects');
+                if (projectsSection) {
+                  projectsSection.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                  });
+                } else {
+                  // Fallback to scroll down if projects section not found
+                  window.scrollBy({ 
+                    top: window.innerHeight * 0.8, 
+                    behavior: 'smooth' 
+                  });
+                }
+              }}
+            >
+              View Projects
+            </SecondaryButton>
+          </CTAContainer>
+          
+          <SocialProof
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+          >
+            Trusted by <span>200+</span> satisfied buyers
+          </SocialProof>
+        </HeroContent>
+      </HeroCard>
+      </ContentWrapper>
+      
+      {/* Floating Project Cards */}
+      <FloatingCardsContainer>
+        <FloatingCard
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.0 }}
+          whileHover={{ y: -10 }}
         >
-          Schedule a Visit
-        </CTAButton>
-      </HeroContent>
+          <div className="card-header">
+            <h3 className="project-name">Regal Residencia</h3>
+            <div className="price">₹1.2 Cr*</div>
+          </div>
+          
+          <div className="location">
+            <span className="location-icon">📍</span>
+            <span>Sector 70, Mohali</span>
+          </div>
+          
+          <div className="stats">
+            <div className="stat-item">
+              <div className="stat-value">4.8 ★</div>
+              <div className="stat-label">Rating</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-value">95%</div>
+              <div className="stat-label">Sold</div>
+            </div>
+          </div>
+        </FloatingCard>
+        
+        <FloatingCard
+          initial={{ opacity: 0, x: 50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          whileHover={{ y: -10 }}
+        >
+          <div className="card-header">
+            <h3 className="project-name">Skyline Towers</h3>
+            <div className="price">₹95 Lakh*</div>
+          </div>
+          
+          <div className="location">
+            <span className="location-icon">📍</span>
+            <span>Sector 65, Mohali</span>
+          </div>
+          
+          <div className="stats">
+            <div className="stat-item">
+              <div className="stat-value">4.6 ★</div>
+              <div className="stat-label">Rating</div>
+            </div>
+            <div className="stat-item">
+              <div className="stat-value">88%</div>
+              <div className="stat-label">Sold</div>
+            </div>
+          </div>
+        </FloatingCard>
+      </FloatingCardsContainer>
       
-      <ScrollIndicator
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1 }}
-        onClick={handleScrollDown}
-      >
-        <div className="scroll-arrow">↓</div>
-      </ScrollIndicator>
-      
-      {/* Updated sticky explore button - arrow changes based on scroll direction */}
-      <StickyExploreButton
-        className={isFooterReached ? 'footer-reached' : ''}
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, delay: 1.5 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={handleExploreClick}
-      >
-        <div className="explore-arrow">
-          {scrollDirection === 'up' ? '↑' : '↓'}
-        </div>
-      </StickyExploreButton>
     </HeroContainer>
   );
 };
 
-export default HeroSection;   
+export default HeroSection;

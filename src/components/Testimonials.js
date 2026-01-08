@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const TestimonialsSection = styled.section`
   padding: 5rem 0;
-  background-color: var(--secondary-dark);
+  background-color: #ffffff;
   position: relative;
   overflow: hidden;
   
@@ -60,14 +60,13 @@ const TestimonialsContainer = styled.div`
 `;
 
 const TestimonialCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
+  background: #f8f8f8;
   border-radius: 16px;
   padding: 3rem;
   margin: 2rem 0;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid #e0e0e0;
   position: relative;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
@@ -121,7 +120,7 @@ const TestimonialCard = styled(motion.div)`
   
   .quote-icon {
     font-size: 5rem;
-    color: rgba(212, 175, 55, 0.15);
+    color: rgba(212, 175, 55, 0.3);
     position: absolute;
     top: 20px;
     left: 20px;
@@ -182,7 +181,7 @@ const TestimonialCard = styled(motion.div)`
   .testimonial-text {
     font-size: 1.25rem;
     line-height: 1.8;
-    color: var(--text-light);
+    color: #333333;
     margin-bottom: 2rem;
     font-style: italic;
     position: relative;
@@ -288,12 +287,12 @@ const TestimonialCard = styled(motion.div)`
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--accent-gold), #d4af37);
+    background: linear-gradient(135deg, #d4af37, #b8860b);
     font-size: 2rem;
     font-weight: bold;
     color: var(--primary-dark);
     border: 3px solid var(--accent-gold);
-    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
     
     /* Responsive design for all resolutions */
     @media (max-width: 1200px) {
@@ -361,7 +360,7 @@ const TestimonialCard = styled(motion.div)`
   .client-name {
     font-size: 1.3rem;
     font-weight: 600;
-    color: var(--text-light);
+    color: #333333;
     margin-bottom: 0.3rem;
     
     /* Responsive design for all resolutions */
@@ -455,7 +454,7 @@ const TestimonialCard = styled(motion.div)`
   
   .client-location {
     font-size: 0.9rem;
-    color: rgba(255, 255, 255, 0.7);
+    color: #666666;
     
     /* Responsive design for all resolutions */
     @media (max-width: 1200px) {
@@ -542,7 +541,7 @@ const TestimonialCard = styled(motion.div)`
 const SectionTitle = styled.h2`
   text-align: center;
   font-size: 2.5rem;
-  color: var(--text-light);
+  color: #333333;
   margin-bottom: 1rem;
   position: relative;
   display: inline-block;
@@ -654,7 +653,7 @@ const SectionTitle = styled.h2`
 
 const Subtitle = styled.p`
   text-align: center;
-  color: rgba(255, 255, 255, 0.7);
+  color: #666666;
   font-size: 1.1rem;
   max-width: 600px;
   margin: 0 auto 3rem;
@@ -711,9 +710,9 @@ const Subtitle = styled.p`
 `;
 
 const NavigationButton = styled.button`
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--text-light);
+  background: #f0f0f0;
+  border: 1px solid #d0d0d0;
+  color: #333333;
   width: 50px;
   height: 50px;
   border-radius: 50%;
@@ -844,12 +843,12 @@ const Indicator = styled.button`
   height: 14px;
   border-radius: 50%;
   border: none;
-  background: ${props => props.active ? 'var(--accent-gold)' : 'rgba(255, 255, 255, 0.2)'};
+  background: ${props => props.active ? 'var(--accent-gold)' : '#d0d0d0'};
   cursor: pointer;
   transition: background 0.3s ease;
   
   &:hover {
-    background: ${props => props.active ? 'var(--accent-gold)' : 'rgba(255, 255, 255, 0.4)'};
+    background: ${props => props.active ? 'var(--accent-gold)' : '#a0a0a0'};
   }
   
   /* Responsive design for all resolutions */

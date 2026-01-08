@@ -866,7 +866,11 @@ const InquiryForm = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              Schedule a visit to experience luxury living at Regal Residencia. Our team of experts will guide you through our premium amenities and residential spaces.
+              {`Schedule a visit to experience luxury living at Regal Residencia. Our team of experts will guide you through our premium amenities and residential spaces.`.toLowerCase().includes('luxury') ? (
+                            <span dangerouslySetInnerHTML={{__html: `Schedule a visit to experience luxury living at Regal Residencia. Our team of experts will guide you through our premium amenities and residential spaces.`.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+                          ) : (
+                            `Schedule a visit to experience luxury living at Regal Residencia. Our team of experts will guide you through our premium amenities and residential spaces.`
+                          )}
             </motion.p>
             
             <motion.div

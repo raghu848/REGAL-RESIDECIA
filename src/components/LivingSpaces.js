@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const LivingSpacesSection = styled.section`
-  padding: 1rem 2;
+  padding: 5rem 0;
   background-color: var(--secondary-dark);
   
   /* Responsive design for all resolutions */
@@ -152,10 +152,17 @@ const SpacesContent = styled.div`
   }
 `;
 
+const SpaceImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
 const SpaceImage = styled.div`
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(212, 175, 55, 0.3);
   
   img {
     width: 100%;
@@ -961,7 +968,10 @@ const spacesData = [
     name: "3 BHK Luxury Apartment",
     type: "Type 1",
     area: "1450 sq.ft",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+      "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-345.jpg"
+    ],
     description: "Spacious 3 BHK apartment with premium finishes and modern amenities. Designed for comfort and elegance with an open-concept living area and private balcony.",
     features: [
       "Master bedroom with ensuite",
@@ -990,10 +1000,13 @@ const spacesData = [
   },
   {
     id: 2,
-    name: "3 BHK Premium Apartment",
+    name: "3+1 BHK Premium Apartment",
     type: "Type 2",
     area: "1565 sq.ft",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1753&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1753&q=80",
+      "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-331.jpg"
+    ],
     description: "Luxuriously designed 3 BHK apartment with servant room. Features premium materials and thoughtful layouts for the ultimate living experience.",
     features: [
       "Spacious living area",
@@ -1025,7 +1038,10 @@ const spacesData = [
     name: "4 BHK Grand Apartment",
     type: "4 BHK",
     area: "2190 sq.ft",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80",
+      "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-346.jpg"
+    ],
     description: "Grand 4 BHK apartment designed for families who appreciate space and luxury. Features include a private study, entertainment area, and premium finishes throughout.",
     features: [
       "Private study room",
@@ -1059,6 +1075,11 @@ const spacesData = [
 const LivingSpaces = () => {
   const [activeSpace, setActiveSpace] = React.useState(0);
   
+  // Fallback image handler
+  const handleImageError = (e) => {
+    e.target.src = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80";
+  };
+  
   return (
     <LivingSpacesSection>
       <div className="container">
@@ -1078,22 +1099,31 @@ const LivingSpaces = () => {
               className={activeSpace === index ? 'active' : ''}
               onClick={() => setActiveSpace(index)}
             >
-              {space.name}
+              {space.name.includes('Luxury') ? (
+                <span>{space.name.split('Luxury')[0]}<span className="luxury-text">Luxury</span>{space.name.split('Luxury')[1]}</span>
+              ) : (
+                space.name
+              )}
             </TabButton>
           ))}
         </SpacesTabs>
         
         <SpacesContent>
-          <SpaceImage>
-            <motion.img
-              key={spacesData[activeSpace].id}
-              src={spacesData[activeSpace].image}
-              alt={spacesData[activeSpace].name}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            />
-          </SpaceImage>
+          <SpaceImageContainer>
+            {spacesData[activeSpace].images.map((image, index) => (
+              <SpaceImage key={index}>
+                <motion.img
+                  src={image}
+                  alt={`${spacesData[activeSpace].name} ${index + 1}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  onError={handleImageError}
+                  className="img-radius-1"
+                />
+              </SpaceImage>
+            ))}
+          </SpaceImageContainer>
           
           <SpaceDetails>
             <motion.h3
@@ -1102,7 +1132,11 @@ const LivingSpaces = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {spacesData[activeSpace].name}
+              {spacesData[activeSpace].name.includes('Luxury') ? (
+                <span>{spacesData[activeSpace].name.split('Luxury')[0]}<span className="luxury-text">Luxury</span>{spacesData[activeSpace].name.split('Luxury')[1]}</span>
+              ) : (
+                spacesData[activeSpace].name
+              )}
             </motion.h3>
             
             <motion.div
@@ -1126,7 +1160,11 @@ const LivingSpaces = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              {spacesData[activeSpace].description}
+              {spacesData[activeSpace].description.toLowerCase().includes('luxury') ? (
+                <span dangerouslySetInnerHTML={{__html: spacesData[activeSpace].description.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+              ) : (
+                spacesData[activeSpace].description
+              )}
             </motion.p>
             
             <motion.div
@@ -1139,7 +1177,11 @@ const LivingSpaces = () => {
               <div className="features-grid">
                 {spacesData[activeSpace].features.map((feature, index) => (
                   <div key={index} className="feature-item">
-                    {feature}
+                    {feature.toLowerCase().includes('luxury') ? (
+                      <span dangerouslySetInnerHTML={{__html: feature.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+                    ) : (
+                      feature
+                    )}
                   </div>
                 ))}
               </div>
@@ -1158,7 +1200,11 @@ const LivingSpaces = () => {
                 {Object.entries(spacesData[activeSpace].roomDetails).map(([roomName, roomDetails], index) => (
                   <div key={index} className="room-item">
                     <h5>{roomName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</h5>
-                    <p>{roomDetails}</p>
+                    <p>{roomDetails.toLowerCase().includes('luxury') ? (
+                      <span dangerouslySetInnerHTML={{__html: roomDetails.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+                    ) : (
+                      roomDetails
+                    )}</p>
                   </div>
                 ))}
               </div>
