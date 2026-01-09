@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import ArchitectureGallery from './ArchitectureGallery';
+import FilmReelGallery from './FilmReelGallery';
 
 const SitePlansSection = styled.section`
   padding: 1rem 2;
@@ -555,6 +555,54 @@ const PlanCard = styled(motion.div)`
   }
 `;
 
+// Building Gallery Items
+const buildingGalleryItems = [
+  // Building images
+  // { id: 4, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.jpg", title: "Tower A Elevation" },
+  // { id: 5, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.jpg", title: "Clubhouse & Pool Area" },
+  // { id: 6, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.jpg", title: "Main Entrance Foyer" },
+  // { id: 7, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.jpg", title: "Garden Courtyard" },
+  // { id: 8, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.jpg", title: "Luxury Apartment Interior" },
+  // { id: 9, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.jpg", title: "Sky Lounge & Bar" },
+  // { id: 10, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.jpg", title: "Fitness Center" },
+  // { id: 11, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.jpg", title: "Spa & Wellness Area" },
+  // { id: 12, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.jpg", title: "Conference Room" },
+  // { id: 13, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.jpg", title: "Children's Play Area" },
+  // { id: 14, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.jpg", title: "Parking Area" },
+  // { id: 15, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.jpg", title: "Landscaped Gardens" },
+  // { id: 16, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.jpg", title: "Swimming Pool & Deck" },
+  // { id: 17, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.jpg", title: "Terrace & Outdoor Seating" },
+  // { id: 18, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.jpg", title: "Elevator Lobby" },
+  // { id: 19, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.jpg", title: "Staircase Design" },
+  // { id: 20, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.jpg", title: "Security & Concierge" },
+  // { id: 21, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.jpg", title: "Service Areas" },
+  
+  // Render images
+  // { id: 101, src: "/images/render/3-100.jpg", title: "Exterior View - Day" },
+  // { id: 102, src: "/images/render/Asset 1-100.jpg", title: "Aerial View - Residential Block" },
+  // { id: 103, src: "/images/render/Asset 2-100.jpg", title: "Night View - Illuminated Facade" },
+  
+  // Additional luxury items
+  // { id: 301, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.jpg", title: "Luxury Lobby Design" },
+  // { id: 302, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.jpg", title: "Premium Kitchen Setup" },
+  // { id: 303, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.jpg", title: "Master Bedroom View" },
+  // { id: 304, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.jpg", title: "Luxury Bathroom Design" },
+  // { id: 305, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.jpg", title: "Balcony with View" },
+  // { id: 306, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.jpg", title: "Home Office Space" },
+  // { id: 307, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.jpg", title: "Dining Area Elegance" },
+  // { id: 308, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.jpg", title: "Living Room Ambiance" },
+  // { id: 309, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.jpg", title: "Penthouse Terrace" },
+  // { id: 310, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.jpg", title: "Gated Community Entrance" },
+  // { id: 311, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.jpg", title: "Underground Parking" },
+  // { id: 312, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.jpg", title: "Landscaped Water Features" },
+  // { id: 313, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.jpg", title: "Yoga & Meditation Deck" },
+  // { id: 314, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.jpg", title: "Barbecue Pavilion" },
+  // { id: 315, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.jpg", title: "Multipurpose Hall" },
+  // { id: 316, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.jpg", title: "Library & Study" },
+  // { id: 317, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.jpg", title: "Wine Cellar & Tasting Room" },
+  // { id: 318, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.jpg", title: "Private Cinema" }
+];
+
 const sitePlansData = [
   {
     id: 1,
@@ -598,6 +646,11 @@ const sitePlansData = [
     image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-159.jpg",
     details: ["Power Backup", "Water Recycling", "Smart Tech", "Sewage Treatment"]
   }
+];
+
+const filmReelImages = [
+  ...buildingGalleryItems.map(item => ({ src: item.src, title: item.title })),
+  ...sitePlansData.map(item => ({ src: item.image, title: item.title }))
 ];
 
 const SitePlans = () => {
@@ -656,27 +709,7 @@ const SitePlans = () => {
           ))}
         </PlansContainer>
         
-        {/* Architecture Gallery Section */}
-        <SectionHeader>
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="section-title">Architecture Gallery</h2>
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Explore our architectural excellence and innovative design concepts.
-          </motion.p>
-        </SectionHeader>
-        
-        <ArchitectureGallery />
+
       </div>
     </SitePlansSection>
   );

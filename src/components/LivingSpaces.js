@@ -4,40 +4,135 @@ import { motion } from 'framer-motion';
 
 const LivingSpacesSection = styled.section`
   padding: 5rem 0;
-  background-color: var(--secondary-dark);
+  background-color: #ffffff;
+  
+  .section-title {
+    color: #333333;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
   
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
     padding: 4rem 0;
+    
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 1.8rem;
+      
+      &::after {
+        width: 70px;
+        height: 2.5px;
+        bottom: -9px;
+      }
+    }
   }
   
   @media (max-width: 992px) {
     padding: 3.5rem 0;
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.6rem;
+      
+      &::after {
+        width: 60px;
+        height: 2px;
+        bottom: -8px;
+      }
+    }
   }
   
   @media (max-width: 768px) {
     padding: 3rem 0;
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.4rem;
+      
+      &::after {
+        width: 50px;
+        height: 1.5px;
+        bottom: -7px;
+      }
+    }
   }
   
   @media (max-width: 576px) {
     padding: 2.5rem 0;
+    
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      
+      &::after {
+        width: 40px;
+        height: 1px;
+        bottom: -6px;
+      }
+    }
   }
   
   @media (max-width: 480px) {
     padding: 2.2rem 0;
+    
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      
+      &::after {
+        width: 35px;
+        height: 0.8px;
+        bottom: -5px;
+      }
+    }
   }
   
   @media (max-width: 400px) {
     padding: 2rem 0;
+    
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      
+      &::after {
+        width: 30px;
+        height: 0.5px;
+        bottom: -4px;
+      }
+    }
   }
   
   /* Additional media queries for 125% scaling */
   @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
     padding: 3.2rem 0;
+    
+    .section-title {
+      font-size: 1.85rem;
+      margin-bottom: 1.3rem;
+      
+      &::after {
+        width: 52px;
+        height: 1.6px;
+        bottom: -7.2px;
+      }
+    }
   }
   
   @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
     padding: 3.4rem 0;
+    
+    .section-title {
+      font-size: 1.9rem;
+      margin-bottom: 1.4rem;
+      
+      &::after {
+        width: 55px;
+        height: 1.7px;
+        bottom: -7.5px;
+      }
+    }
   }
 `;
 
@@ -52,7 +147,7 @@ const SpacesTabs = styled.div`
 const TabButton = styled.button`
   background: transparent;
   border: 1px solid rgba(212, 175, 55, 0.5);
-  color: var(--text-light);
+  color: #333333;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
@@ -61,7 +156,7 @@ const TabButton = styled.button`
   
   &.active, &:hover {
     background: var(--accent-gold);
-    color: var(--primary-dark);
+    color: #ffffff;
     border-color: var(--accent-gold);
   }
   
@@ -218,7 +313,7 @@ const SpaceDetails = styled.div`
   h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: var(--text-light);
+    color: #333333;
   }
   
   .space-specs {
@@ -229,10 +324,11 @@ const SpaceDetails = styled.div`
   }
   
   .spec-item {
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(212, 175, 55, 0.2);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-size: 0.9rem;
+    color: #333333;
   }
   
   .spec-value {
@@ -241,7 +337,7 @@ const SpaceDetails = styled.div`
   }
   
   p {
-    color: var(--text-muted);
+    color: #555555;
     line-height: 1.8;
     margin-bottom: 2rem;
   }
@@ -260,7 +356,7 @@ const SpaceDetails = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-muted);
+    color: #555555;
   }
   
   .feature-item::before {
@@ -272,7 +368,7 @@ const SpaceDetails = styled.div`
   .room-details {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
   }
   
   .room-details h4 {
@@ -287,13 +383,13 @@ const SpaceDetails = styled.div`
   }
   
   .room-item {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(212, 175, 55, 0.1);
     padding: 1rem;
     border-radius: 8px;
   }
   
   .room-item h5 {
-    color: var(--text-light);
+    color: #333333;
     margin-bottom: 0.5rem;
     font-size: 1rem;
   }
@@ -301,13 +397,13 @@ const SpaceDetails = styled.div`
   .room-item p {
     margin: 0;
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: #555555;
   }
   
   .floor-plans {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
   }
   
   .floor-plans h4 {
@@ -322,7 +418,7 @@ const SpaceDetails = styled.div`
   }
   
   .plan-option {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(212, 175, 55, 0.1);
     padding: 1rem;
     border-radius: 8px;
     text-align: center;
@@ -330,13 +426,14 @@ const SpaceDetails = styled.div`
   }
   
   .plan-option h5 {
-    color: var(--text-light);
+    color: #333333;
     margin-bottom: 0.5rem;
   }
   
   .plan-option p {
     margin: 0;
     font-size: 0.9rem;
+    color: #555555;
   }
   
   /* Responsive design for all resolutions */
@@ -354,6 +451,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.45rem 0.9rem;
       font-size: 0.85rem;
+      color: #333333;
     }
     
     p {
@@ -430,6 +528,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.4rem 0.8rem;
       font-size: 0.8rem;
+      color: #333333;
     }
     
     p {
@@ -506,6 +605,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.35rem 0.7rem;
       font-size: 0.75rem;
+      color: #333333;
     }
     
     p {
@@ -584,6 +684,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.3rem 0.6rem;
       font-size: 0.7rem;
+      color: #333333;
     }
     
     p {
@@ -662,6 +763,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.28rem 0.55rem;
       font-size: 0.68rem;
+      color: #333333;
     }
     
     p {
@@ -740,6 +842,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.25rem 0.5rem;
       font-size: 0.65rem;
+      color: #333333;
     }
     
     p {
@@ -819,6 +922,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.37rem 0.72rem;
       font-size: 0.77rem;
+      color: #333333;
     }
     
     p {
@@ -897,6 +1001,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.38rem 0.75rem;
       font-size: 0.8rem;
+      color: #333333;
     }
     
     p {

@@ -16,9 +16,15 @@ const NavbarContainer = styled.nav`
   padding: 0.8rem 1.5rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 0; /* Removing side margins to make navbar full width */
 
   @media (max-width: 768px) {
     padding: 0.8rem 1rem;
+    margin: 0; /* No side margins on smaller screens */
+  }
+
+  @media (max-width: 480px) {
+    margin: 0; /* No side margins on very small screens */
   }
 
   &.scrolled {
