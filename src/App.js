@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
-import SparkleStars from './components/SparkleStars';
 import Navbar from './components/Navbar';
 import HeroSection from './components/RedesignedHero';
-import ProjectOverview from './components/ProjectOverview';
-import Amenities from './components/Amenities';
-import LivingSpaces from './components/LivingSpaces';
-import BuildingGallery from './components/BuildingGallery';
-import Testimonials from './components/Testimonials';
-import InquiryForm from './components/InquiryForm';
-import Footer from './components/Footer';
-import SitePlans from './components/SitePlans';
+
+// Lazy load heavy components
+const SparkleStars = lazy(() => import('./components/SparkleStars'));
+const ProjectOverview = lazy(() => import('./components/ProjectOverview'));
+const Amenities = lazy(() => import('./components/Amenities'));
+const LivingSpaces = lazy(() => import('./components/LivingSpaces'));
+const BuildingGallery = lazy(() => import('./components/BuildingGallery'));
+const Testimonials = lazy(() => import('./components/Testimonials'));
+const InquiryForm = lazy(() => import('./components/InquiryForm'));
+const Footer = lazy(() => import('./components/Footer'));
+const SitePlans = lazy(() => import('./components/SitePlans'));
+
+// Loading fallback component
+const LoadingFallback = () => <div style={{ minHeight: '200px' }} />;
 
 
 
@@ -730,27 +735,27 @@ function App() {
       <AppContainer>
         <Navbar />
         <HeroSection />
-        <div id="about">
-          <ProjectOverview />
-        </div>
-        <div id="living-spaces">
-          <LivingSpaces />
-        </div>
-        <div id="amenities">
-          <SitePlans />
-          <Amenities />
-        </div>
-        <div id="location">
-          <BuildingGallery />
-        </div>
-        <Testimonials />
-        <div id="inquiry">
-          <InquiryForm />
-        </div>
-        
-        <Footer />
-        
-        <SparkleStars />
+        <Suspense fallback={LoadingFallback()}>
+          <div id="about">
+            <ProjectOverview />
+          </div>
+          <div id="living-spaces">
+            <LivingSpaces />
+          </div>
+          <div id="amenities">
+            <SitePlans />
+            <Amenities />
+          </div>
+          <div id="location">
+            <BuildingGallery />
+          </div>
+          <Testimonials />
+          <div id="inquiry">
+            <InquiryForm />
+          </div>
+          <Footer />
+          <SparkleStars />
+        </Suspense>
         
         {/* Sticky Social Media Icons */}
         <StickyIconsContainer>

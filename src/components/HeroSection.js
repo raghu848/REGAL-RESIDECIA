@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -1004,7 +1004,7 @@ const Particle = styled.div`
 
 
 const HeroSection = () => {
-
+  const videoRef = useRef(null);
 
   const [stats] = useState([
     { number: "13.44", label: "Acres" },
@@ -1016,6 +1016,15 @@ const HeroSection = () => {
   const [isFooterReached, setIsFooterReached] = useState(false);
   const [scrollDirection, setScrollDirection] = useState('down'); // Track scroll direction
   const [lastScrollY, setLastScrollY] = useState(0); // Track last scroll position
+
+  // Ensure video plays
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        console.log('Video autoplay prevented:', error);
+      });
+    }
+  }, []);
   
   useEffect(() => {
     const handleScroll = () => {
@@ -1079,23 +1088,9 @@ const HeroSection = () => {
 
   return (
     <HeroContainer>
-      {/* Background - Image fallback with video option */}
-      <div
-        style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          width: '100%',
-          height: '100%',
-          zIndex: -1,
-          backgroundImage: 'url("https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 0.7,
-        }}
-      />
-      {/* Video as overlay with lower opacity */}
+      {/* Video Background */}
       <video
+        ref={videoRef}
         style={{
           position: 'absolute',
           top: 0,
@@ -1103,16 +1098,18 @@ const HeroSection = () => {
           width: '100%',
           height: '100%',
           objectFit: 'cover',
-          zIndex: -2,
-          opacity: 0.5,
+          zIndex: 0,
+          opacity: 1,
+          pointerEvents: 'none',
         }}
         autoPlay
         muted
         loop
         playsInline
+        preload="auto"
         controls={false}
       >
-        <source src="/videos/hero-background.mp4.mp4" type="video/mp4" />
+        <source src="/videos/hero-background.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
       
