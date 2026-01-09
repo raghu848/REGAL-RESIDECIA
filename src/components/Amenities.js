@@ -419,6 +419,12 @@ const amenitiesData = [
     title: "Parking",
     description: "Ample parking spaces with lower ground capacity of 886 cars and ground capacity of 652 cars. Total parking capacity of 1538 cars.",
     image: "https://images.unsplash.com/photo-1758448721043-2cc4eba0e483?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    id: 9,
+    title: "24/7 Security",
+    description: "Round-the-clock security with CCTV surveillance, trained security personnel, and advanced access control systems for complete peace of mind.",
+    image: "https://images.unsplash.com/photo-1542744056-3711a3a5d3b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
   }
 ];
 
@@ -432,7 +438,11 @@ const Amenities = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-title">Luxury Amenities</h2>
+          <h2 className="section-title">{`Luxury Amenities`.includes('Luxury') ? (
+                          <span>{`Luxury Amenities`.split('Luxury')[0]}<span className="luxury-text">Luxury</span>{`Luxury Amenities`.split('Luxury')[1]}</span>
+                        ) : (
+                          `Luxury Amenities`
+                        )}</h2>
         </motion.div>
         
         <AmenitiesGrid>
@@ -445,13 +455,17 @@ const Amenities = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
             >
               <div className="amenity-image">
-                <img src={amenity.image} alt={amenity.title} onError={(e) => {
+                <img src={amenity.image} alt={amenity.title} className="img-radius-1" onError={(e) => {
                   e.target.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80';
                 }} />
               </div>
               <div className="amenity-content">
                 <h3>{amenity.title}</h3>
-                <p>{amenity.description}</p>
+                <p>{amenity.description.toLowerCase().includes('luxury') ? (
+                                      <span dangerouslySetInnerHTML={{__html: amenity.description.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+                                    ) : (
+                                      amenity.description
+                                    )}</p>
               </div>
             </AmenityCard>
           ))}

@@ -3,41 +3,136 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
 const LivingSpacesSection = styled.section`
-  padding: 1rem 2;
-  background-color: var(--secondary-dark);
+  padding: 5rem 0;
+  background-color: #ffffff;
+  
+  .section-title {
+    color: #333333;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
   
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
     padding: 4rem 0;
+    
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 1.8rem;
+      
+      &::after {
+        width: 70px;
+        height: 2.5px;
+        bottom: -9px;
+      }
+    }
   }
   
   @media (max-width: 992px) {
     padding: 3.5rem 0;
+    
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 1.6rem;
+      
+      &::after {
+        width: 60px;
+        height: 2px;
+        bottom: -8px;
+      }
+    }
   }
   
   @media (max-width: 768px) {
     padding: 3rem 0;
+    
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 1.4rem;
+      
+      &::after {
+        width: 50px;
+        height: 1.5px;
+        bottom: -7px;
+      }
+    }
   }
   
   @media (max-width: 576px) {
     padding: 2.5rem 0;
+    
+    .section-title {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      
+      &::after {
+        width: 40px;
+        height: 1px;
+        bottom: -6px;
+      }
+    }
   }
   
   @media (max-width: 480px) {
     padding: 2.2rem 0;
+    
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      
+      &::after {
+        width: 35px;
+        height: 0.8px;
+        bottom: -5px;
+      }
+    }
   }
   
   @media (max-width: 400px) {
     padding: 2rem 0;
+    
+    .section-title {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+      
+      &::after {
+        width: 30px;
+        height: 0.5px;
+        bottom: -4px;
+      }
+    }
   }
   
   /* Additional media queries for 125% scaling */
   @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
     padding: 3.2rem 0;
+    
+    .section-title {
+      font-size: 1.85rem;
+      margin-bottom: 1.3rem;
+      
+      &::after {
+        width: 52px;
+        height: 1.6px;
+        bottom: -7.2px;
+      }
+    }
   }
   
   @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
     padding: 3.4rem 0;
+    
+    .section-title {
+      font-size: 1.9rem;
+      margin-bottom: 1.4rem;
+      
+      &::after {
+        width: 55px;
+        height: 1.7px;
+        bottom: -7.5px;
+      }
+    }
   }
 `;
 
@@ -52,7 +147,7 @@ const SpacesTabs = styled.div`
 const TabButton = styled.button`
   background: transparent;
   border: 1px solid rgba(212, 175, 55, 0.5);
-  color: var(--text-light);
+  color: #333333;
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
   cursor: pointer;
@@ -61,7 +156,7 @@ const TabButton = styled.button`
   
   &.active, &:hover {
     background: var(--accent-gold);
-    color: var(--primary-dark);
+    color: #ffffff;
     border-color: var(--accent-gold);
   }
   
@@ -152,10 +247,17 @@ const SpacesContent = styled.div`
   }
 `;
 
+const SpaceImageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+`;
+
 const SpaceImage = styled.div`
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  border: 2px solid rgba(212, 175, 55, 0.3);
   
   img {
     width: 100%;
@@ -211,7 +313,7 @@ const SpaceDetails = styled.div`
   h3 {
     font-size: 2rem;
     margin-bottom: 1.5rem;
-    color: var(--text-light);
+    color: #333333;
   }
   
   .space-specs {
@@ -222,10 +324,11 @@ const SpaceDetails = styled.div`
   }
   
   .spec-item {
-    background: rgba(212, 175, 55, 0.1);
+    background: rgba(212, 175, 55, 0.2);
     padding: 0.5rem 1rem;
     border-radius: 4px;
     font-size: 0.9rem;
+    color: #333333;
   }
   
   .spec-value {
@@ -234,7 +337,7 @@ const SpaceDetails = styled.div`
   }
   
   p {
-    color: var(--text-muted);
+    color: #555555;
     line-height: 1.8;
     margin-bottom: 2rem;
   }
@@ -253,7 +356,7 @@ const SpaceDetails = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--text-muted);
+    color: #555555;
   }
   
   .feature-item::before {
@@ -265,7 +368,7 @@ const SpaceDetails = styled.div`
   .room-details {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
   }
   
   .room-details h4 {
@@ -280,13 +383,13 @@ const SpaceDetails = styled.div`
   }
   
   .room-item {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(212, 175, 55, 0.1);
     padding: 1rem;
     border-radius: 8px;
   }
   
   .room-item h5 {
-    color: var(--text-light);
+    color: #333333;
     margin-bottom: 0.5rem;
     font-size: 1rem;
   }
@@ -294,13 +397,13 @@ const SpaceDetails = styled.div`
   .room-item p {
     margin: 0;
     font-size: 0.9rem;
-    color: var(--text-muted);
+    color: #555555;
   }
   
   .floor-plans {
     margin-top: 2rem;
     padding-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(212, 175, 55, 0.3);
   }
   
   .floor-plans h4 {
@@ -315,7 +418,7 @@ const SpaceDetails = styled.div`
   }
   
   .plan-option {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(212, 175, 55, 0.1);
     padding: 1rem;
     border-radius: 8px;
     text-align: center;
@@ -323,13 +426,14 @@ const SpaceDetails = styled.div`
   }
   
   .plan-option h5 {
-    color: var(--text-light);
+    color: #333333;
     margin-bottom: 0.5rem;
   }
   
   .plan-option p {
     margin: 0;
     font-size: 0.9rem;
+    color: #555555;
   }
   
   /* Responsive design for all resolutions */
@@ -347,6 +451,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.45rem 0.9rem;
       font-size: 0.85rem;
+      color: #333333;
     }
     
     p {
@@ -423,6 +528,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.4rem 0.8rem;
       font-size: 0.8rem;
+      color: #333333;
     }
     
     p {
@@ -499,6 +605,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.35rem 0.7rem;
       font-size: 0.75rem;
+      color: #333333;
     }
     
     p {
@@ -577,6 +684,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.3rem 0.6rem;
       font-size: 0.7rem;
+      color: #333333;
     }
     
     p {
@@ -655,6 +763,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.28rem 0.55rem;
       font-size: 0.68rem;
+      color: #333333;
     }
     
     p {
@@ -733,6 +842,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.25rem 0.5rem;
       font-size: 0.65rem;
+      color: #333333;
     }
     
     p {
@@ -812,6 +922,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.37rem 0.72rem;
       font-size: 0.77rem;
+      color: #333333;
     }
     
     p {
@@ -890,6 +1001,7 @@ const SpaceDetails = styled.div`
     .spec-item {
       padding: 0.38rem 0.75rem;
       font-size: 0.8rem;
+      color: #333333;
     }
     
     p {
@@ -961,7 +1073,10 @@ const spacesData = [
     name: "3 BHK Luxury Apartment",
     type: "Type 1",
     area: "1450 sq.ft",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80",
+      "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-345.jpg"
+    ],
     description: "Spacious 3 BHK apartment with premium finishes and modern amenities. Designed for comfort and elegance with an open-concept living area and private balcony.",
     features: [
       "Master bedroom with ensuite",
@@ -990,10 +1105,13 @@ const spacesData = [
   },
   {
     id: 2,
-    name: "3 BHK Premium Apartment",
+    name: "3+1 BHK Premium Apartment",
     type: "Type 2",
     area: "1565 sq.ft",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1753&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1753&q=80",
+      "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-331.jpg"
+    ],
     description: "Luxuriously designed 3 BHK apartment with servant room. Features premium materials and thoughtful layouts for the ultimate living experience.",
     features: [
       "Spacious living area",
@@ -1025,7 +1143,10 @@ const spacesData = [
     name: "4 BHK Grand Apartment",
     type: "4 BHK",
     area: "2190 sq.ft",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80",
+      "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-346.jpg"
+    ],
     description: "Grand 4 BHK apartment designed for families who appreciate space and luxury. Features include a private study, entertainment area, and premium finishes throughout.",
     features: [
       "Private study room",
@@ -1059,6 +1180,11 @@ const spacesData = [
 const LivingSpaces = () => {
   const [activeSpace, setActiveSpace] = React.useState(0);
   
+  // Fallback image handler
+  const handleImageError = (e) => {
+    e.target.src = "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80";
+  };
+  
   return (
     <LivingSpacesSection>
       <div className="container">
@@ -1078,22 +1204,31 @@ const LivingSpaces = () => {
               className={activeSpace === index ? 'active' : ''}
               onClick={() => setActiveSpace(index)}
             >
-              {space.name}
+              {space.name.includes('Luxury') ? (
+                <span>{space.name.split('Luxury')[0]}<span className="luxury-text">Luxury</span>{space.name.split('Luxury')[1]}</span>
+              ) : (
+                space.name
+              )}
             </TabButton>
           ))}
         </SpacesTabs>
         
         <SpacesContent>
-          <SpaceImage>
-            <motion.img
-              key={spacesData[activeSpace].id}
-              src={spacesData[activeSpace].image}
-              alt={spacesData[activeSpace].name}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            />
-          </SpaceImage>
+          <SpaceImageContainer>
+            {spacesData[activeSpace].images.map((image, index) => (
+              <SpaceImage key={index}>
+                <motion.img
+                  src={image}
+                  alt={`${spacesData[activeSpace].name} ${index + 1}`}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  onError={handleImageError}
+                  className="img-radius-1"
+                />
+              </SpaceImage>
+            ))}
+          </SpaceImageContainer>
           
           <SpaceDetails>
             <motion.h3
@@ -1102,7 +1237,11 @@ const LivingSpaces = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
             >
-              {spacesData[activeSpace].name}
+              {spacesData[activeSpace].name.includes('Luxury') ? (
+                <span>{spacesData[activeSpace].name.split('Luxury')[0]}<span className="luxury-text">Luxury</span>{spacesData[activeSpace].name.split('Luxury')[1]}</span>
+              ) : (
+                spacesData[activeSpace].name
+              )}
             </motion.h3>
             
             <motion.div
@@ -1126,7 +1265,11 @@ const LivingSpaces = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              {spacesData[activeSpace].description}
+              {spacesData[activeSpace].description.toLowerCase().includes('luxury') ? (
+                <span dangerouslySetInnerHTML={{__html: spacesData[activeSpace].description.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+              ) : (
+                spacesData[activeSpace].description
+              )}
             </motion.p>
             
             <motion.div
@@ -1139,7 +1282,11 @@ const LivingSpaces = () => {
               <div className="features-grid">
                 {spacesData[activeSpace].features.map((feature, index) => (
                   <div key={index} className="feature-item">
-                    {feature}
+                    {feature.toLowerCase().includes('luxury') ? (
+                      <span dangerouslySetInnerHTML={{__html: feature.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+                    ) : (
+                      feature
+                    )}
                   </div>
                 ))}
               </div>
@@ -1158,7 +1305,11 @@ const LivingSpaces = () => {
                 {Object.entries(spacesData[activeSpace].roomDetails).map(([roomName, roomDetails], index) => (
                   <div key={index} className="room-item">
                     <h5>{roomName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</h5>
-                    <p>{roomDetails}</p>
+                    <p>{roomDetails.toLowerCase().includes('luxury') ? (
+                      <span dangerouslySetInnerHTML={{__html: roomDetails.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
+                    ) : (
+                      roomDetails
+                    )}</p>
                   </div>
                 ))}
               </div>

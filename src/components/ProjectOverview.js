@@ -6,6 +6,15 @@ const OverviewSection = styled.section`
   padding: 1rem 2;
   background-color: var(--secondary-dark);
   
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
     padding: 4rem 0;
@@ -42,23 +51,19 @@ const OverviewSection = styled.section`
 `;
 
 const ContentWrapper = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 3rem;
-  align-items: center;
   
   @media (max-width: 1200px) {
-    grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
   }
   
   @media (max-width: 992px) {
-    grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
   
   @media (max-width: 768px) {
-    grid-template-columns: 1fr;
     gap: 1.5rem;
   }
   
@@ -76,12 +81,10 @@ const ContentWrapper = styled.div`
   
   /* Additional media queries for 125% scaling */
   @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
-    grid-template-columns: 1fr;
     gap: 1.6rem;
   }
   
   @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
-    grid-template-columns: 1fr;
     gap: 1.7rem;
   }
 `;
@@ -90,13 +93,13 @@ const TextContent = styled.div`
   h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: var(--text-light);
+    color: var(--accent-gold);
   }
   
   p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: var(--text-muted);
+    color: var(--accent-gold);
     margin-bottom: 1.5rem;
   }
   
@@ -799,7 +802,37 @@ const ProjectOverview = () => {
         </motion.div>
         
         <ContentWrapper>
-          <TextContent>
+          <div style={{
+            background: 'linear-gradient(145deg, #ffffff, #f0f0f0)',
+            padding: '2rem',
+            borderRadius: '8px',
+            border: '2px solid var(--accent-gold)',
+            boxShadow: '0 10px 30px rgba(212, 175, 55, 0.2), inset 0 0 20px rgba(255, 255, 255, 0.8)',
+            position: 'relative',
+            overflow: 'hidden'
+          }}>
+            <div style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: `linear-gradient(45deg, transparent 30%, rgba(212, 175, 55, 0.3) 50%, transparent 70%)`, /* Darker shade and changed to 45deg for diagonal movement */
+              backgroundSize: '200% 200%',
+              animation: 'shimmer 8s infinite', /* Slower animation */
+              zIndex: 1
+            }}></div>
+            <div style={{
+              position: 'absolute',
+              top: '10px',
+              left: '10px',
+              right: '10px',
+              bottom: '10px',
+              border: '1px solid rgba(212, 175, 55, 0.3)',
+              borderRadius: '6px',
+              zIndex: 2
+            }}></div>
+            <TextContent style={{position: 'relative', zIndex: 3}}>
             <motion.h2
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -826,158 +859,127 @@ const ProjectOverview = () => {
             >
               With excellent connectivity to International Airport (22 km) and Railway Station (13 km), Regal Residencia offers the perfect blend of convenience and luxury. The project spans across 13.44 acres with 8.44 acres dedicated to residential spaces and 5 acres for commercial establishments.
             </motion.p>
-            
-            <StatsGrid>
-              <StatCard>
-                <div className="stat-number">13.44</div>
-                <div className="stat-label">Acres</div>
-              </StatCard>
-              
-              <StatCard>
-                <div className="stat-number">32</div>
-                <div className="stat-label">Floors</div>
-              </StatCard>
-              
-              <StatCard>
-                <div className="stat-number">688</div>
-                <div className="stat-label">Units</div>
-              </StatCard>
-              
-              <StatCard>
-                <div className="stat-number">1538</div>
-                <div className="stat-label">Parking</div>
-              </StatCard>
-            </StatsGrid>
-            
-            <ConnectivitySection>
-              <motion.h3
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-              >
-                Location & Connectivity
-              </motion.h3>
-              
-              <div className="connectivity-grid">
-                <motion.div 
-                  className="connectivity-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.6 }}
-                >
-                  <h4>International Airport</h4>
-                  <p>22 KM / 33 MIN</p>
-                </motion.div>
-                
-                <motion.div 
-                  className="connectivity-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.7 }}
-                >
-                  <h4>Railway Station</h4>
-                  <p>13 KM / 26 MIN</p>
-                </motion.div>
-                
-                <motion.div 
-                  className="connectivity-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.8 }}
-                >
-                  <h4>Chandigarh</h4>
-                  <p>Nearby Tourist Destination</p>
-                </motion.div>
-                
-                <motion.div 
-                  className="connectivity-item"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.9 }}
-                >
-                  <h4>Sukhna Lake</h4>
-                  <p>Nearby Tourist Destination</p>
-                </motion.div>
-              </div>
-              
-              {/* Adding Accessibility Information */}
-              <motion.div
-                className="accessibility-section"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 1.0 }}
-              >
-                <h4>Accessibility & Transportation</h4>
-                <div className="accessibility-grid">
-                  <div className="accessibility-item">Well-connected roads</div>
-                  <div className="accessibility-item">Public transport nearby</div>
-                  <div className="accessibility-item">Easy access to main highways</div>
-                  <div className="accessibility-item">24/7 security checkpoints</div>
-                  <div className="accessibility-item">Underground parking</div>
-                  <div className="accessibility-item">Elevator access in all towers</div>
-                </div>
-              </motion.div>
-              
-              {/* Adding Neighborhood Amenities */}
-              <motion.div
-                className="neighborhood-amenities"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 1.1 }}
-              >
-                <h4>Nearby Amenities</h4>
-                <div className="amenities-grid">
-                  <div className="amenity-item">Shopping Malls</div>
-                  <div className="amenity-item">Schools & Colleges</div>
-                  <div className="amenity-item">Hospitals</div>
-                  <div className="amenity-item">Restaurants</div>
-                  <div className="amenity-item">Parks & Recreation</div>
-                  <div className="amenity-item">Banks & ATMs</div>
-                  <div className="amenity-item">Fuel Stations</div>
-                  <div className="amenity-item">Gyms & Fitness Centers</div>
-                </div>
-              </motion.div>
-            </ConnectivitySection>
-          </TextContent>
+            </TextContent>
+          </div>
           
-          <ImageContent>
-            <motion.div 
-              className="large-image"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-            >
-              <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1771&q=80" alt="Regal Residencia Project" />
-            </motion.div>
+          <StatsGrid>
+            <StatCard>
+              <div className="stat-number">13.44</div>
+              <div className="stat-label">Acres</div>
+            </StatCard>
+              
+            <StatCard>
+              <div className="stat-number">32</div>
+              <div className="stat-label">Floors</div>
+            </StatCard>
+              
+            <StatCard>
+              <div className="stat-number">688</div>
+              <div className="stat-label">Units</div>
+            </StatCard>
+              
+            <StatCard>
+              <div className="stat-number">1538</div>
+              <div className="stat-label">Parking</div>
+            </StatCard>
+          </StatsGrid>
             
-            <motion.div 
-              className="small-image"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+          <ConnectivitySection>
+            <motion.h3
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.3 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
             >
-              <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80" alt="Luxury Apartment" />
-            </motion.div>
-            
-            <motion.div 
-              className="small-image"
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              Location & Connectivity
+            </motion.h3>
+              
+            <div className="connectivity-grid">
+              <motion.div 
+                className="connectivity-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.6 }}
+              >
+                <h4>International Airport</h4>
+                <p>22 KM / 33 MIN</p>
+              </motion.div>
+                
+              <motion.div 
+                className="connectivity-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.7 }}
+              >
+                <h4>Railway Station</h4>
+                <p>13 KM / 26 MIN</p>
+              </motion.div>
+                
+              <motion.div 
+                className="connectivity-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.8 }}
+              >
+                <h4>Chandigarh</h4>
+                <p>Nearby Tourist Destination</p>
+              </motion.div>
+                
+              <motion.div 
+                className="connectivity-item"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.9 }}
+              >
+                <h4>Sukhna Lake</h4>
+                <p>Nearby Tourist Destination</p>
+              </motion.div>
+            </div>
+              
+            {/* Adding Accessibility Information */}
+            <motion.div
+              className="accessibility-section"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.8, delay: 1.0 }}
             >
-              <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1753&q=80" alt="Modern Architecture" />
+              <h4>Accessibility & Transportation</h4>
+              <div className="accessibility-grid">
+                <div className="accessibility-item"><strong>Premium Road Network</strong></div>
+                <div className="accessibility-item"><strong>Elite Transport Links</strong></div>
+                <div className="accessibility-item"><strong>Express Highway Access</strong></div>
+                <div className="accessibility-item"><strong>24/7 Elite Security</strong></div>
+                <div className="accessibility-item"><strong>Valet Parking Service</strong></div>
+                <div className="accessibility-item"><strong>Private Elevator Access</strong></div>
+              </div>
             </motion.div>
-          </ImageContent>
+              
+            {/* Adding Neighborhood Amenities */}
+            <motion.div
+              className="neighborhood-amenities"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 1.1 }}
+            >
+              <h4>Nearby Amenities</h4>
+              <div className="amenities-grid">
+                <div className="amenity-item"><strong>Luxury Shopping Districts</strong></div>
+                <div className="amenity-item"><strong>Prestigious Schools & Universities</strong></div>
+                <div className="amenity-item"><strong>Elite Healthcare Facilities</strong></div>
+                <div className="amenity-item"><strong>Gourmet Dining Experiences</strong></div>
+                <div className="amenity-item"><strong>Exclusive Parks & Recreation</strong></div>
+                <div className="amenity-item"><strong>Private Banking Services</strong></div>
+                <div className="amenity-item"><strong>Premium Fuel Stations</strong></div>
+                <div className="amenity-item"><strong>World-Class Fitness Centers</strong></div>
+              </div>
+            </motion.div>
+          </ConnectivitySection>
         </ContentWrapper>
       </div>
     </OverviewSection>
