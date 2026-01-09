@@ -64,20 +64,21 @@ const ContentBox = styled(motion.div)`
   border: 1px solid rgba(212, 175, 55, 0.5);
   border-radius: 12px;
   padding: 15px;
-  max-width: 280px; /* Smaller width */
-  width: 100%;
+  width: 293px;
+  max-width: 293px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   z-index: 100;
   overflow: visible;
   pointer-events: auto;
-  top: 10px; /* Reduced upward position */
-  left: 80px; /* Adjusted right position */
+  top: 10px;
+  left: -54px;
   
   @media (max-width: 767px) {
-    max-width: 70%; /* Smaller width on mobile */
+    max-width: 96%;
+    width: 96%;
     padding: 12px;
-    top: 5px; /* Reduced position on mobile */
-    left: 10px; /* Adjusted position on mobile */
+    top: 5px;
+    left: 0px;
   }
 `;
 
