@@ -58,10 +58,36 @@ const LogoContainer = styled.div`
   padding: 19px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   
+  @media (max-width: 768px) {
+    width: 140px;
+    height: 70px;
+    padding: 15px;
+  }
+  
+  @media (max-width: 480px) {
+    width: 120px;
+    height: 60px;
+    padding: 12px;
+  }
+  
   img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
+    transform: scale(1.2);
+    transform-origin: center;
+  }
+  
+  @media (max-width: 768px) {
+    img {
+      transform: scale(1.4);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    img {
+      transform: scale(1.5);
+    }
   }
 `;
 
@@ -512,6 +538,11 @@ const Navbar = () => {
             transition={{ duration: 0.3 }}
             id="mobile-menu"
           >
+            <div style={{ textAlign: 'center', marginBottom: '2rem', width: '100%' }}>
+              <a href="/" aria-label="Regal Residencia Home" style={{ display: 'inline-block' }}>
+                <img src="/logo.png" alt="Regal Residencia Logo" style={{ height: '60px', width: 'auto' }} />
+              </a>
+            </div>
             <MobileNavLinks>
               <MobileNavLink><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Project</a></MobileNavLink>
               <MobileNavLink><a href="#amenities" onClick={(e) => scrollToSection(e, 'amenities')}>Amenities</a></MobileNavLink>
