@@ -82,6 +82,12 @@ const LogoContainer = styled.div`
   align-items: center;
   justify-content: center;
   
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+  
   @media (max-width: 768px) {
     width: 180px;
     height: 80px;
@@ -954,20 +960,9 @@ const Footer = () => {
         
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', paddingTop: '2rem' }}>
           <LogoContainer style={{ margin: 0 }}>
-            <BarsContainer>
-              <Bar width="25px" />
-              <Bar width="32px" />
-              <Bar width="40px" />
-              <Bar width="32px" />
-              <Bar width="25px" />
-            </BarsContainer>
-            <Circle />
-            <TextContainer>
-              <RegalText>
-                REGAL
-              </RegalText>
-              <ResidenciaText>Residencial</ResidenciaText>
-            </TextContainer>
+            <a href="/" aria-label="Regal Residencia Home">
+              <img src="/logo.png" alt="Regal Residencia Logo" />
+            </a>
           </LogoContainer>
           
           <Copyright>

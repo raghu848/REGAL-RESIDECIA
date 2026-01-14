@@ -5,22 +5,26 @@ const DownloadButton = styled.a`
   background: transparent;
   color: #D4AF37;
   font-family: 'Inter', sans-serif;
-  font-weight: 500;
+  font-weight: 700;
   text-decoration: none;
-  font-size: 0.95rem;
-  transition: color 0.3s ease;
+  font-size: 1rem;
+  transition: all 0.3s ease;
   white-space: nowrap;
-  border: 1px solid #D4AF37;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
+  border: 2px solid #D4AF37;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 
   &:hover {
-    background: rgba(212, 175, 55, 0.1);
-    color: #FFF;
+    background: #D4AF37;
+    color: #0F172A;
     text-decoration: none;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
   }
 
   @media (max-width: 1024px) {

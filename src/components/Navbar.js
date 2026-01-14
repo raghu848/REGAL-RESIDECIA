@@ -48,10 +48,21 @@ const NavbarWrapper = styled.div`
 
 const LogoContainer = styled.div`
   position: relative;
-  width: 140px;
-  height: 60px;
+  width: 160px;
+  height: 80px;
   display: flex;
   align-items: center;
+  justify-content: center;
+  background: #0F172A;
+  border-radius: 16px;
+  padding: 19px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
 `;
 
 const BarsContainer = styled.div`
@@ -175,23 +186,26 @@ const CTAButton = styled(motion.a)`
   background: linear-gradient(135deg, #D4AF37, #B8860B);
   color: #0F172A;
   font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  padding: 0.8rem 1.5rem;
-  border-radius: 6px;
+  font-weight: 700;
+  padding: 0.9rem 1.6rem;
+  border-radius: 8px;
   text-decoration: none;
   transition: all 0.3s ease;
   border: none;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   white-space: nowrap;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 
   &:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
   }
 
   &:active {
@@ -199,8 +213,8 @@ const CTAButton = styled(motion.a)`
   }
 
   @media (max-width: 1024px) {
-    padding: 0.7rem 1.2rem;
-    font-size: 0.95rem;
+    padding: 0.8rem 1.4rem;
+    font-size: 1rem;
   }
 
   @media (max-width: 768px) {
@@ -307,21 +321,23 @@ const MobileCTAButton = styled(motion.a)`
   background: linear-gradient(135deg, #D4AF37, #B8860B);
   color: #0F172A;
   font-family: 'Inter', sans-serif;
-  font-weight: 600;
-  padding: 1.2rem 2rem;
-  border-radius: 6px;
+  font-weight: 700;
+  padding: 1.3rem 2rem;
+  border-radius: 8px;
   text-decoration: none;
   display: inline-block;
   transition: all 0.3s ease;
   border: none;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   text-align: center;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
   width: 100%;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 
   &:hover {
-    transform: translateY(-2px) scale(1.02);
-    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
   }
 
   &:active {
@@ -432,20 +448,9 @@ const Navbar = () => {
       <NavbarContainer className={scrolled ? 'scrolled' : ''} role="navigation" aria-label="Main navigation">
         <NavbarWrapper>
           <LogoContainer>
-            <BarsContainer>
-              <Bar width="18px" />
-              <Bar width="24px" />
-              <Bar width="30px" />
-              <Bar width="24px" />
-              <Bar width="18px" />
-            </BarsContainer>
-            <Circle />
-            <TextContainer>
-              <RegalText href="/" aria-label="Regal Residencia Home">
-                REGAL
-              </RegalText>
-              <ResidenciaText>Residencial</ResidenciaText>
-            </TextContainer>
+            <a href="/" aria-label="Regal Residencia Home">
+              <img src="/logo.png" alt="Regal Residencia Logo" />
+            </a>
           </LogoContainer>
           
           <div style={{ display: 'flex', alignItems: 'center' }}>
