@@ -58,27 +58,41 @@ const Container = styled.div`
 
 const ContentBox = styled(motion.div)`
   position: relative;
-  background: rgba(10, 10, 10, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.5);
-  border-radius: 12px;
-  padding: 15px;
-  width: 293px;
-  max-width: 293px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.95) 50%, rgba(15, 23, 42, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(96, 165, 250, 0.3);
+  border-radius: 1rem;
+  padding: 1rem;
+  max-width: 20rem;
+  width: 100%;
+  box-shadow: 0 15px 30px -8px rgba(0, 0, 0, 0.4), 
+              0 0 20px rgba(59, 130, 246, 0.15),
+              inset 0 0 15px rgba(59, 130, 246, 0.08);
   z-index: 100;
   overflow: visible;
   pointer-events: auto;
   top: 10px;
-  left: -54px;
+  left: 80px;
+  
+  /* Gradient overlay */
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(147, 197, 253, 0.05) 50%, rgba(124, 58, 237, 0.1) 100%);
+    border-radius: 1rem;
+    z-index: -1;
+  }
   
   @media (max-width: 767px) {
-    max-width: 96%;
-    width: 96%;
-    padding: 12px;
+    max-width: 90%;
+    padding: 0.75rem;
     top: 5px;
-    left: 0px;
+    left: 5px;
   }
 `;
 
@@ -86,14 +100,14 @@ const CloseButton = styled.button`
   background: rgba(212, 175, 55, 0.3);
   border: 1px solid rgba(212, 175, 55, 0.5);
   color: #d4af37;
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer !important;
-  font-size: 18px;
+  font-size: 14px;
   font-weight: bold;
   line-height: 1;
   transition: all 0.3s ease;
@@ -139,141 +153,237 @@ const VisualColumn = styled.div`
 `;
 
 const Tag = styled.span`
-  display: inline-block;
-  background: rgba(212, 175, 55, 0.15);
-  color: #d4af37;
-  padding: 4px 12px;
-  border-radius: 15px;
-  font-size: 12px;
-  font-weight: 500;
-  margin-bottom: 10px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(212, 175, 55, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.2) 0%, rgba(249, 115, 22, 0.2) 100%);
+  color: #fbbf24;
+  padding: 0.3rem 0.6rem;
+  border-radius: 30px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  backdrop-blur-sm;
+  
+  svg {
+    width: 0.8rem;
+    height: 0.8rem;
+  }
 `;
 
 const Heading = styled.h1`
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 10px;
-  background: linear-gradient(to right, #ffffff, #d4af37);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  margin: 1rem 0;
+  line-height: 1.3;
   
-  @media (min-width: 768px) {
-    font-size: 22px;
+  br {
+    display: block;
+  }
+  
+  span {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #fbbf24 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(251, 191, 36, 0.3);
   }
   
   @media (max-width: 767px) {
-    font-size: 16px;
+    font-size: 1.1rem;
+    margin: 0.75rem 0;
   }
 `;
 
 const Subheading = styled.p`
-  font-size: 14px;
-  color: #ffffff;
-  line-height: 1.4;
-  margin-bottom: 15px;
-  
-  @media (min-width: 768px) {
-    font-size: 16px;
-  }
+  font-size: 0.875rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+  margin: 0 0 1rem 0;
   
   @media (max-width: 767px) {
-    font-size: 12px;
+    font-size: 0.75rem;
+    margin: 0 0 0.75rem 0;
   }
 `;
 
 const CTAWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  align-items: center;
-  margin-bottom: 15px;
-  
-  @media (min-width: 768px) {
-    flex-direction: row;
-    align-items: flex-start;
-  }
+  gap: 0.5rem;
+  margin-bottom: 1rem;
   
   @media (max-width: 767px) {
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
+    gap: 0.3rem;
+    margin-bottom: 0.75rem;
   }
 `;
 
 const PrimaryButton = styled(motion.button)`
-  background: linear-gradient(135deg, #d4af37, #b8860b);
-  color: #0a0a0a;
+  background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  color: #ffffff;
   border: none;
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(245, 158, 11, 0.3);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(245, 158, 11, 0.5);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:active {
+    transform: translateY(0) scale(0.98);
+  }
+  
+  svg {
+    width: 1rem;
+    height: 1rem;
   }
   
   @media (max-width: 767px) {
-    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.7rem;
   }
 `;
 
 const SecondaryButton = styled(motion.button)`
   background: transparent;
-  color: #d4af37;
-  border: 1px solid #d4af37;
-  padding: 8px 18px;
-  font-size: 14px;
-  font-weight: 600;
-  border-radius: 6px;
+  color: #93c5fd;
+  border: 1px solid rgba(147, 197, 253, 0.5);
+  padding: 0.6rem 1rem;
+  border-radius: 30px;
+  font-size: 0.8rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  backdrop-filter: blur(5px);
   
   &:hover {
-    background: rgba(212, 175, 57, 0.1);
-    transform: translateY(-2px);
+    background: rgba(147, 197, 253, 0.1);
+    color: #bfdbfe;
+    border-color: rgba(147, 197, 253, 0.8);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px rgba(59, 130, 246, 0.2);
+  }
+  
+  &:active {
+    transform: translateY(0);
   }
   
   @media (max-width: 767px) {
-    width: 100%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.7rem;
   }
 `;
 
 const TrustBadges = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  flex-wrap: wrap;
-  
-  @media (min-width: 768px) {
-    justify-content: flex-start;
-  }
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
   
   @media (max-width: 767px) {
-    justify-content: center;
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 `;
 
 const Badge = styled.div`
   display: flex;
   align-items: center;
-  gap: 6px;
-  color: #ffffff;
-  font-size: 12px;
+  gap: 0.5rem;
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
   
   svg {
-    width: 16px;
-    height: 16px;
-    fill: #d4af37;
+    width: 1.2rem;
+    height: 1.2rem;
+    color: #fbbf24;
+  }
+  
+  div {
+    display: flex;
+    flex-direction: column;
+    
+    .rating {
+      font-weight: 800;
+      font-size: 1rem;
+      color: #ffffff;
+      line-height: 1;
+    }
+    
+    .label {
+      font-size: 0.6rem;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.1rem;
+    }
+  }
+  
+  span {
+    color: #e2e8f0;
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+  
+  @media (max-width: 767px) {
+    padding: 0.4rem;
+    
+    svg {
+      width: 1rem;
+      height: 1rem;
+    }
+    
+    span {
+      font-size: 0.65rem;
+    }
+    
+    div {
+      .rating {
+        font-size: 0.8rem;
+      }
+      
+      .label {
+        font-size: 0.5rem;
+      }
+    }
   }
 `;
 
@@ -356,12 +466,12 @@ const RedesignedHero = () => {
   const [isLoaded, setIsLoaded] = useState(false); // Track if component has loaded
   const closeButtonRef = useRef(null);
 
-  // Show popup after 3 seconds
+  // Show popup after 6 seconds
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
       setIsLoaded(true); // Mark as loaded to trigger animation
-    }, 3000);
+    }, 6000);
     
     return () => clearTimeout(timer);
   }, []);
@@ -419,7 +529,7 @@ const RedesignedHero = () => {
             >
               <ContentColumn>
                 <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
-                  <Tag>Premium Luxury Living</Tag>
+                  <Tag><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.575 2.37a2.625 2.625 0 00-3.15 0L2.22 6.84a2.625 2.625 0 00-.855 1.853v8.614c0 .918.33.833.855 1.853l6.205 4.47a2.625 2.625 0 003.15 0l6.205-4.47c.525-1.02.855-1.105.855-1.853V8.693c0-.918-.33-.833-.855-1.853l-6.205-4.47z"/></svg> Premium Luxury Living</Tag>
                   <CloseButton 
                     ref={closeButtonRef}
                     type="button"
@@ -435,7 +545,7 @@ const RedesignedHero = () => {
                 </div>
                 <Heading>
                   Experience<br />
-                  Unparalleled<br />
+                  <span>Unparalleled</span><br />
                   Luxury Living
                 </Heading>
                 <Subheading>
@@ -449,7 +559,13 @@ const RedesignedHero = () => {
                     whileTap={{ scale: 0.95 }}
                     onClick={handlePrimaryClick}
                   >
+                    <svg viewBox="0 0 24 24" fill="currentColor" style={{width: '1.25rem', height: '1.25rem'}}>
+                      <path d="M12 2C8.22 2 5 5.22 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.78-3.22-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                    </svg>
                     Schedule a Private Tour
+                    <svg viewBox="0 0 24 24" fill="currentColor" style={{width: '1.25rem', height: '1.25rem'}}>
+                      <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+                    </svg>
                   </PrimaryButton>
                   
                   <SecondaryButton
@@ -463,18 +579,26 @@ const RedesignedHero = () => {
                 
                 <TrustBadges>
                   <Badge>
-                    <svg viewBox="0 0 24 24">
-                      <path d="M12 2L15.09 8.26L22 9L17 14L18.18 21L12 17.77L5.82 21L7 14L2 9L8.91 8.26L12 2Z" />
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M11.575 2.37a2.625 2.625 0 00-3.15 0L2.22 6.84a2.625 2.625 0 00-.855 1.853v8.614c0 .918.33.833.855 1.853l6.205 4.47a2.625 2.625 0 003.15 0l6.205-4.47c.525-1.02.855-1.105.855-1.853V8.693c0-.918-.33-.833-.855-1.853l-6.205-4.47z"/>
                     </svg>
-                    <span>4.9/5 Rating</span>
+                    <div>
+                      <div className="rating">4.9/5</div>
+                      <div className="label">Rating</div>
+                    </div>
                   </Badge>
                   
                   <Badge>
-                    <svg viewBox="0 0 24 24">
-                      <path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" />
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63l-1.312.437a.75.75 0 01-.528-.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.528.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.528.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.528.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.528.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.363-.63l-1.312-.437a.75.75 0 01-.363-.63V19.125z"/>
                     </svg>
-                    <span>100+ Happy Residents</span>
+                    <div>
+                      <div className="rating">100+</div>
+                      <div className="label">Happy Residents</div>
+                    </div>
                   </Badge>
+                  
+              
                 </TrustBadges>
               </ContentColumn>
             </ContentBox>

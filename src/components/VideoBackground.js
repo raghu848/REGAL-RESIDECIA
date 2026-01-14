@@ -6,21 +6,35 @@ const VideoContainer = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  
+  @media (max-width: 767px) {
+    height: 100vh;
+    width: 100vw;
+  }
 `;
 
 const BackgroundVideo = styled.video`
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
   object-fit: cover;
   opacity: 1;
   pointer-events: none;
+  
+  /* Mobile-specific adjustments */
+  @media (max-width: 767px) {
+    min-width: 100vw;
+    min-height: 100vh;
+  }
   
   /* Hide all native video controls */
   &::-webkit-media-controls {

@@ -3,6 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import HeroSection from './components/RedesignedHero';
+import Disclaimer from './components/Disclaimer';
 
 // Lazy load heavy components
 const SparkleStars = lazy(() => import('./components/SparkleStars'));
@@ -22,6 +23,8 @@ const LoadingFallback = () => <div style={{ minHeight: '200px' }} />;
 
 // Global Styles for Dark Theme
 const GlobalStyle = createGlobalStyle`
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  
   :root {
     --primary-dark: #0a0a0a;
     --secondary-dark: #121212;
@@ -39,24 +42,29 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Poppins', 'Inter', sans-serif;
     background-color: var(--primary-dark);
     color: var(--text-light);
     overflow-x: hidden;
+    line-height: 1.6;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
+    font-family: 'Playfair Display', 'Poppins', serif;
+    font-weight: 700;
+    letter-spacing: 0.5px;
   }
 
   .section-title {
     position: relative;
     text-align: center;
     margin-bottom: 3rem;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     color: var(--text-light);
-    font-weight: 700; /* Make it bolder */
+    font-weight: 800; /* Make it bolder */
+    font-family: 'Playfair Display', 'Poppins', serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
   .section-title::after {
@@ -205,13 +213,14 @@ const GlobalStyle = createGlobalStyle`
     color: var(--primary-dark);
     border: none;
     padding: 0.8rem 2rem;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
     border-radius: 4px;
     cursor: pointer;
     transition: all var(--transition-speed) ease;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.2px;
     box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
   }
 
@@ -756,6 +765,7 @@ function App() {
           <Footer />
           <SparkleStars />
         </Suspense>
+        <Disclaimer />
         
         {/* Sticky Social Media Icons */}
         <StickyIconsContainer>
