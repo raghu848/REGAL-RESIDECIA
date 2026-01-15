@@ -38,7 +38,7 @@ const NavbarContainer = styled.nav`
 `;
 
 const NavbarWrapper = styled.div`
-  max-width: 1400px;
+  max-width: 1300px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -48,20 +48,20 @@ const NavbarWrapper = styled.div`
 
 const LogoContainer = styled.div`
   position: relative;
-  width: 160px;
-  height: 80px;
+  width: 110px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #0F172A;
-  border-radius: 16px;
+  background: #000000;
+  border-radius: 19px;
   padding: 19px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   
   @media (max-width: 768px) {
     width: 140px;
     height: 70px;
-    padding: 15px;
+-    padding: 15px;
   }
   
   @media (max-width: 480px) {
@@ -71,8 +71,8 @@ const LogoContainer = styled.div`
   }
   
   img {
-    max-width: 100%;
-    max-height: 100%;
+    max-width: 90%;
+    max-height: 80%;
     object-fit: contain;
     transform: scale(1.2);
     transform-origin: center;

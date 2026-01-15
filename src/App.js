@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import HeroSection from './components/RedesignedHero';
-import Disclaimer from './components/Disclaimer';
+
 
 // Lazy load heavy components
 const SparkleStars = lazy(() => import('./components/SparkleStars'));
@@ -11,7 +11,7 @@ const ProjectOverview = lazy(() => import('./components/ProjectOverview'));
 const Amenities = lazy(() => import('./components/Amenities'));
 const LivingSpaces = lazy(() => import('./components/LivingSpaces'));
 const BuildingGallery = lazy(() => import('./components/BuildingGallery'));
-const Testimonials = lazy(() => import('./components/Testimonials'));
+
 const InquiryForm = lazy(() => import('./components/InquiryForm'));
 const Footer = lazy(() => import('./components/Footer'));
 const SitePlans = lazy(() => import('./components/SitePlans'));
@@ -758,14 +758,12 @@ function App() {
           <div id="location">
             <BuildingGallery />
           </div>
-          <Testimonials />
           <div id="inquiry">
             <InquiryForm />
           </div>
           <Footer />
           <SparkleStars />
         </Suspense>
-        <Disclaimer />
         
         {/* Sticky Social Media Icons */}
         <StickyIconsContainer>

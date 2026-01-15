@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import axios from 'axios';
 
 const FormSection = styled.section`
-  padding: 5rem 0;
+  padding: 2rem 0;
   
   /* Responsive design for all resolutions */
   @media (max-width: 1200px) {
@@ -848,7 +848,7 @@ const InquiryForm = () => {
         >
           <h2 className="section-title">Schedule a Visit</h2>
         </motion.div>
-        
+              
         <FormContainer>
           <FormInfo>
             <motion.h2

@@ -462,9 +462,27 @@ const AmenitiesSection = styled.div`
   }
   
   .amenities-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .amenities-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(4, 1fr);
     gap: 0.8rem;
+  }
+  
+  @media (max-width: 768px) {
+    .amenities-row {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .amenities-row {
+      grid-template-columns: 1fr;
+    }
   }
   
   .amenity-item {
@@ -512,7 +530,7 @@ const ProjectOverview = () => {
           transition={{ duration: 0.8 }}
         >
           <SectionHeader>
-            <div className="subtitle">Discover Excellence</div>
+            <div className="subtitle">DISCOVER EXCELLENCE</div>
             <h2>Project Overview</h2>
             <p className="description">
               Experience the epitome of luxury living at Regal Residencia, where sophisticated design meets modern convenience in the heart of Mohali's most prestigious location.
@@ -648,14 +666,18 @@ const ProjectOverview = () => {
           <AmenitiesSection>
             <h4>Premium Lifestyle Amenities</h4>
             <div className="amenities-grid">
-              <div className="amenity-item"><strong>Luxury Shopping Districts</strong></div>
-              <div className="amenity-item"><strong>Prestigious Educational Institutions</strong></div>
-              <div className="amenity-item"><strong>Elite Healthcare Facilities</strong></div>
-              <div className="amenity-item"><strong>Gourmet Dining Experiences</strong></div>
-              <div className="amenity-item"><strong>Exclusive Parks & Recreation</strong></div>
-              <div className="amenity-item"><strong>Private Banking Services</strong></div>
-              <div className="amenity-item"><strong>Premium Fuel Stations</strong></div>
-              <div className="amenity-item"><strong>World-Class Fitness Centers</strong></div>
+              <div className="amenities-row">
+                <div className="amenity-item"><strong>Luxury Shopping Districts</strong></div>
+                <div className="amenity-item"><strong>Prestigious Educational Institutions</strong></div>
+                <div className="amenity-item"><strong>Elite Healthcare Facilities</strong></div>
+                <div className="amenity-item"><strong>Gourmet Dining Experiences</strong></div>
+              </div>
+              <div className="amenities-row">
+                <div className="amenity-item"><strong>Exclusive Parks & Recreation</strong></div>
+                <div className="amenity-item"><strong>Private Banking Services</strong></div>
+                <div className="amenity-item"><strong>Premium Fuel Stations</strong></div>
+                <div className="amenity-item"><strong>World-Class Fitness Centers</strong></div>
+              </div>
             </div>
           </AmenitiesSection>
         </ConnectivitySection>

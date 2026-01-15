@@ -441,6 +441,7 @@ const FloorPlansSection = styled(motion.div)`
   border-radius: 16px;
   border: 2px solid rgba(212, 175, 55, 0.3);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  margin-top: 1.5rem;
   
   h4 {
     font-family: 'Playfair Display', serif;
@@ -454,60 +455,51 @@ const FloorPlansSection = styled(motion.div)`
     }
   }
   
-  .plans-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.8rem;
-    
-    @media (max-width: 480px) {
-      grid-template-columns: 1fr;
-      gap: 0.6rem;
-    }
-  }
-  
-  .plan-card {
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
-    padding: 1.5rem;
-    border-radius: 12px;
+  .plans-placeholder {
     text-align: center;
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    transition: all 0.3s ease;
-    
-    &:hover {
-      transform: scale(1.01);
-      box-shadow: 0 6px 20px rgba(212, 175, 55, 0.15);
-    }
-    
-    h5 {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 1.1rem;
-      color: #d4af37;
-      margin-bottom: 0.8rem;
-      font-weight: 700;
-      
-      @media (max-width: 480px) {
-        font-size: 1rem;
-      }
-    }
+    padding: 1rem;
     
     p {
       font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
+      font-size: 1.1rem;
       color: #2a2a2a;
-      margin: 0.4rem 0;
-      font-weight: 500;
-      
-      strong {
-        color: #1a1a1a;
-        font-weight: 700;
-      }
-      
-      @media (max-width: 480px) {
-        font-size: 0.85rem;
-      }
+      font-weight: 600;
+      margin: 0;
     }
   }
 `;
+
+const UnifiedFrame = styled.div`
+  background: #ffffff;
+  border: 3px solid #d4af37;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 12px 40px rgba(212, 175, 55, 0.15);
+  
+  @media (max-width: 768px) {
+    padding: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    padding: 1rem;
+  }
+`;
+
+const ContentRow = styled.div`
+  display: flex;
+  gap: 2rem;
+  
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  @media (max-width: 480px) {
+    gap: 1rem;
+  }
+`;
+
+
 
 const spacesData = [
   {
@@ -623,7 +615,7 @@ const LivingSpaces = () => {
           transition={{ duration: 0.8 }}
         >
           <SectionHeader>
-            <div className="subtitle">Discover Your Space</div>
+            <div className="subtitle">DISCOVER YOUR SPACE</div>
             <h2>Living Spaces</h2>
           </SectionHeader>
         </motion.div>
@@ -667,107 +659,65 @@ const LivingSpaces = () => {
                   </ImageCard>
                 ))}
                 
-                <FeaturesSection
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.3 }}
-                >
-                  <h4>Premium Features</h4>
-                  <div className="features-grid">
-                    {spacesData[activeSpace].features.map((feature, index) => (
-                      <motion.div
-                        key={index}
-                        className="feature-item"
-                        initial={{ opacity: 0, x: -20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
-                      >
-                        {feature}
-                      </motion.div>
-                    ))}
-                  </div>
-                </FeaturesSection>
-              </LeftColumn>
-              
-              <RightColumn>
-                <UnitHeader>
-                  <motion.h3
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {spacesData[activeSpace].name}
-                  </motion.h3>
-                  
-                  <motion.div 
-                    className="specs"
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
-                  >
-                    <div className="spec-badge">
-                      Type: <span className="value">{spacesData[activeSpace].type}</span>
-                    </div>
-                    <div className="spec-badge">
-                      Area: <span className="value">{spacesData[activeSpace].area}</span>
-                    </div>
-                  </motion.div>
-                  
-                  <motion.div
-                    className="description"
-                    initial={{ opacity: 0, x: 30 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5, delay: 0.2 }}
-                  >
-                    {spacesData[activeSpace].description}
-                  </motion.div>
-                </UnitHeader>
-                
-                <RoomDetailsSection
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
-                >
-                  <h4>Room Dimensions</h4>
-                  <div className="rooms-grid">
-                    {Object.entries(spacesData[activeSpace].roomDetails).map(([roomName, roomDetails], index) => (
-                      <motion.div
-                        key={index}
-                        className="room-card"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
-                      >
-                        <h5>{roomName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</h5>
-                        <p>{roomDetails}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </RoomDetailsSection>
-                
                 <FloorPlansSection
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.7 }}
                 >
                   <h4>Floor Plan Options</h4>
-                  <div className="plans-grid">
-                    {spacesData[activeSpace].floorPlans.map((plan, index) => (
-                      <motion.div
-                        key={index}
-                        className="plan-card"
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.3, delay: 0.8 + index * 0.1 }}
-                      >
-                        <h5>{plan.option}</h5>
-                        <p><strong>Podium:</strong> {plan.podium}</p>
-                        <p><strong>Floors:</strong> {plan.floors}</p>
-                        <p>{plan.commercial}</p>
-                      </motion.div>
-                    ))}
+                  <div className="plans-placeholder">
+                    <p>2BHK | 3BHK | 4BHK options available</p>
                   </div>
                 </FloorPlansSection>
+              </LeftColumn>
+              
+              <RightColumn>
+                <UnifiedFrame>
+                  <ContentRow>
+                    <RoomDetailsSection
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                    >
+                      <h4>Room Dimensions</h4>
+                      <div className="rooms-grid">
+                        {Object.entries(spacesData[activeSpace].roomDetails).map(([roomName, roomDetails], index) => (
+                          <motion.div
+                            key={index}
+                            className="room-card"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.3, delay: 0.4 + index * 0.05 }}
+                          >
+                            <h5>{roomName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</h5>
+                            <p>{roomDetails}</p>
+                          </motion.div>
+                        ))}
+                      </div>
+                    </RoomDetailsSection>
+                    
+                    <FeaturesSection
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.5 }}
+                    >
+                      <h4>Premium Features</h4>
+                      <div className="features-grid">
+                        {spacesData[activeSpace].features.map((feature, index) => (
+                          <motion.div
+                            key={index}
+                            className="feature-item"
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.3, delay: 0.6 + index * 0.05 }}
+                          >
+                            {feature}
+                          </motion.div>
+                        ))}
+                      </div>
+                    </FeaturesSection>
+                  </ContentRow>
+                </UnifiedFrame>
               </RightColumn>
             </ContentGrid>
           </motion.div>
