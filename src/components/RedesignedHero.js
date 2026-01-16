@@ -1,10 +1,10 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { motion, AnimatePresence } from 'framer-motion';
 import VideoBackground from './VideoBackground';
 
 const HeroWrapper = styled.section`
-  padding: 40px 20px;
+  padding: 50px 20px 40px 20px;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   position: relative;
   overflow: hidden;
@@ -44,7 +44,7 @@ const Container = styled.div`
   margin: 0 auto;
   position: relative;
   z-index: 10;
-  height: 70vh;
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -57,7 +57,7 @@ const Container = styled.div`
 `;
 
 const ContentBox = styled(motion.div)`
-  position: relative;
+  position: absolute;
   background: linear-gradient(135deg, rgba(15, 23, 42, 0.95) 0%, rgba(30, 58, 138, 0.95) 50%, rgba(15, 23, 42, 0.95) 100%);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -136,6 +136,7 @@ const CloseButton = styled.button`
 const ContentColumn = styled.div`
   text-align: left;
   margin-top: 20px; /* Reduced margin since tag and button are inline */
+  margin-left: -15px; /* Move content slightly to the left */
 `;
 
 const VisualColumn = styled.div`
@@ -165,7 +166,7 @@ const Tag = styled.span`
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border: 1px solid rgba(245, 158, 11, 0.3);
-  backdrop-blur-sm;
+  backdrop-filter: blur(4px);
   
   svg {
     width: 0.8rem;
@@ -175,10 +176,12 @@ const Tag = styled.span`
 
 const Heading = styled.h1`
   font-size: 1.5rem;
-  font-weight: 800;
+  font-weight: 300;
   color: #ffffff;
   margin: 1rem 0;
   line-height: 1.3;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-style: italic;
   
   br {
     display: block;
@@ -464,7 +467,6 @@ const HeroVisual = styled(motion.div)`
 const RedesignedHero = () => {
   const [isVisible, setIsVisible] = useState(false); // Initially hidden
   const [isLoaded, setIsLoaded] = useState(false); // Track if component has loaded
-  const closeButtonRef = useRef(null);
 
   // Show popup after 6 seconds
   useEffect(() => {
@@ -476,21 +478,7 @@ const RedesignedHero = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  // Optimized event listener - only add when visible
-  useEffect(() => {
-    if (!isVisible) return;
-    const button = closeButtonRef.current;
-    if (!button) return;
-
-    const handleClick = (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      setIsVisible(false);
-    };
-    
-    button.addEventListener('click', handleClick, true);
-    return () => button.removeEventListener('click', handleClick, true);
-  }, [isVisible]);
+  // Note: Close button uses onClick handler directly - no need for separate event listener
 
   const handlePrimaryClick = () => {
     // Scroll to the inquiry section
@@ -527,80 +515,7 @@ const RedesignedHero = () => {
               exit={{ opacity: 0, x: 100, scale: 0.9 }}
               transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <ContentColumn>
-                <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '10px'}}>
-                  <Tag><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11.575 2.37a2.625 2.625 0 00-3.15 0L2.22 6.84a2.625 2.625 0 00-.855 1.853v8.614c0 .918.33.833.855 1.853l6.205 4.47a2.625 2.625 0 003.15 0l6.205-4.47c.525-1.02.855-1.105.855-1.853V8.693c0-.918-.33-.833-.855-1.853l-6.205-4.47z"/></svg> Premium Luxury Living</Tag>
-                  <CloseButton 
-                    ref={closeButtonRef}
-                    type="button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      e.stopPropagation();
-                      setIsVisible(false);
-                    }}
-                    aria-label="Close"
-                  >
-                    ×
-                  </CloseButton>
-                </div>
-                <Heading>
-                  Experience<br />
-                  <span>Unparalleled</span><br />
-                  Luxury Living
-                </Heading>
-                <Subheading>
-                  Discover Regal Residencia, where modern architecture meets timeless elegance. 
-                  Our premium residential project redefines luxury living in the heart of Mohali.
-                </Subheading>
-                
-                <CTAWrapper>
-                  <PrimaryButton
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handlePrimaryClick}
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor" style={{width: '1.25rem', height: '1.25rem'}}>
-                      <path d="M12 2C8.22 2 5 5.22 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.78-3.22-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    </svg>
-                    Schedule a Private Tour
-                    <svg viewBox="0 0 24 24" fill="currentColor" style={{width: '1.25rem', height: '1.25rem'}}>
-                      <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
-                    </svg>
-                  </PrimaryButton>
-                  
-                  <SecondaryButton
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    onClick={handleSecondaryClick}
-                  >
-                    Explore Amenities
-                  </SecondaryButton>
-                </CTAWrapper>
-                
-                <TrustBadges>
-                  <Badge>
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M11.575 2.37a2.625 2.625 0 00-3.15 0L2.22 6.84a2.625 2.625 0 00-.855 1.853v8.614c0 .918.33.833.855 1.853l6.205 4.47a2.625 2.625 0 003.15 0l6.205-4.47c.525-1.02.855-1.105.855-1.853V8.693c0-.918-.33-.833-.855-1.853l-6.205-4.47z"/>
-                    </svg>
-                    <div>
-                      <div className="rating">4.9/5</div>
-                      <div className="label">Rating</div>
-                    </div>
-                  </Badge>
-                  
-                  <Badge>
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M4.5 6.375a4.125 4.125 0 118.25 0 4.125 4.125 0 01-8.25 0zM14.25 8.625a3.375 3.375 0 116.75 0 3.375 3.375 0 01-6.75 0zM1.5 19.125a7.125 7.125 0 0114.25 0v.003l-.001.119a.75.75 0 01-.363.63l-1.312.437a.75.75 0 01-.528-.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.528.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.528.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.528.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.528.04l-1.038-.346a.75.75 0 00-.528-.04l-1.038.346a.75.75 0 01-.363-.63l-1.312-.437a.75.75 0 01-.363-.63V19.125z"/>
-                    </svg>
-                    <div>
-                      <div className="rating">100+</div>
-                      <div className="label">Happy Residents</div>
-                    </div>
-                  </Badge>
-                  
-              
-                </TrustBadges>
-              </ContentColumn>
+            
             </ContentBox>
           )}
         </AnimatePresence>

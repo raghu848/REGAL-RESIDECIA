@@ -50,6 +50,9 @@ const SectionHeader = styled.div`
     font-size: 2.5rem;
     color: var(--text-light);
     margin-bottom: 1rem;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: 300;
+    font-style: italic;
   }
   
   p {

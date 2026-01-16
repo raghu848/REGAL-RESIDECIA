@@ -6,15 +6,16 @@ import HeroSection from './components/RedesignedHero';
 
 
 // Lazy load heavy components
-const SparkleStars = lazy(() => import('./components/SparkleStars'));
-const ProjectOverview = lazy(() => import('./components/ProjectOverview'));
+
 const Amenities = lazy(() => import('./components/Amenities'));
-const LivingSpaces = lazy(() => import('./components/LivingSpaces'));
+const Location = lazy(() => import('./components/Location'));
 const BuildingGallery = lazy(() => import('./components/BuildingGallery'));
+const AboutUs = lazy(() => import('./components/AboutUs'));
+const ArchitecturalExcellence = lazy(() => import('./components/ArchitecturalExcellence'));
 
 const InquiryForm = lazy(() => import('./components/InquiryForm'));
 const Footer = lazy(() => import('./components/Footer'));
-const SitePlans = lazy(() => import('./components/SitePlans'));
+
 
 // Loading fallback component
 const LoadingFallback = () => <div style={{ minHeight: '200px' }} />;
@@ -745,24 +746,25 @@ function App() {
         <Navbar />
         <HeroSection />
         <Suspense fallback={LoadingFallback()}>
-          <div id="about">
-            <ProjectOverview />
+          <AboutUs />
+          <ArchitecturalExcellence />
+          
+          <div id="location">
+            <Location />
           </div>
-          <div id="living-spaces">
-            <LivingSpaces />
-          </div>
+          
           <div id="amenities">
-            <SitePlans />
             <Amenities />
           </div>
-          <div id="location">
+
+          <div id="gallery">
             <BuildingGallery />
           </div>
+          
           <div id="inquiry">
             <InquiryForm />
           </div>
           <Footer />
-          <SparkleStars />
         </Suspense>
         
         {/* Sticky Social Media Icons */}

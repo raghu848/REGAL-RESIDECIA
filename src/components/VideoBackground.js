@@ -5,14 +5,14 @@ const VideoContainer = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 100%;
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
   
   @media (max-width: 767px) {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
   }
 `;
@@ -21,19 +21,19 @@ const BackgroundVideo = styled.video`
   position: absolute;
   top: 50%;
   left: 50%;
-  min-width: 100%;
+  width: 100vw;
   min-height: 100%;
-  width: auto;
   height: auto;
   transform: translate(-50%, -50%);
-  object-fit: cover;
+  object-fit: fill;
   opacity: 1;
   pointer-events: none;
   
   /* Mobile-specific adjustments */
   @media (max-width: 767px) {
-    min-width: 100vw;
+    width: 100vw;
     min-height: 100vh;
+    height: auto;
   }
   
   /* Hide all native video controls */
@@ -93,15 +93,24 @@ const VideoBackground = () => {
     const video = videoRef.current;
     if (!video) return;
 
+    // Set video attributes for better autoplay support
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    
     const playPromise = video.play();
     if (playPromise !== undefined) {
-      playPromise.catch(() => {
+      playPromise.catch((error) => {
         // Autoplay prevented - will play on user interaction
+        console.log('Video autoplay prevented, waiting for user interaction:', error);
         const handleInteraction = () => {
-          video.play().catch(() => {});
-          document.removeEventListener('click', handleInteraction);
+          video.play().catch((err) => {
+            console.error('Failed to play video after interaction:', err);
+          });
         };
+        // Listen for any user interaction
         document.addEventListener('click', handleInteraction, { once: true });
+        document.addEventListener('touchstart', handleInteraction, { once: true });
+        document.addEventListener('keydown', handleInteraction, { once: true });
       });
     }
   }, []);

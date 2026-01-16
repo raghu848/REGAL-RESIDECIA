@@ -43,13 +43,42 @@ const DownloadIcon = styled.svg`
 `;
 
 const DownloadBrochureButton = ({ className, variant = 'default' }) => {
-  // Point to the HTML brochure file which now has content
-  const brochureUrl = '/brochures/regal-residencia-brochure.html';
+  const handleDownload = async (e) => {
+    e.preventDefault();
+    
+    try {
+      // Fetch the text file content
+      const response = await fetch('/brochures/regal-residencia-brochure.txt');
+      const textContent = await response.text();
+      
+      // Create a blob with the content
+      const blob = new Blob([textContent], { type: 'text/plain' });
+      
+      // Create a download link
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'regal-residencia-brochure.txt';
+      
+      // Trigger the download
+      document.body.appendChild(a);
+      a.click();
+      
+      // Cleanup
+      document.body.removeChild(a);
+      window.URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error downloading brochure:', error);
+      
+      // Fallback to direct link if fetch fails
+      window.location.href = '/brochures/regal-residencia-brochure.txt';
+    }
+  };
   
   return (
     <DownloadButton 
-      href={brochureUrl} 
-      download="regal-residencia-brochure.html"
+      onClick={handleDownload}
+      href="#"
       className={className}
       title="Download our project brochure"
     >

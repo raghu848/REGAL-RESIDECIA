@@ -39,9 +39,14 @@ const FormSection = styled.section`
   @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
     padding: 3.4rem 0;
   }
-  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--secondary-dark) 100%);
+  background: url('/images/render/from_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   position: relative;
   overflow: hidden;
+  min-height: 100vh;
+  padding: 4rem 0;
 `;
 
 const FormContainer = styled.div`
@@ -49,6 +54,9 @@ const FormContainer = styled.div`
   grid-template-columns: 1fr 1fr;
   gap: 3rem;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
   
   @media (max-width: 1200px) {
     grid-template-columns: 1fr 1fr;
@@ -63,18 +71,22 @@ const FormContainer = styled.div`
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+    padding: 1.5rem;
   }
   
   @media (max-width: 576px) {
     gap: 1rem;
+    padding: 1rem;
   }
   
   @media (max-width: 480px) {
     gap: 0.9rem;
+    padding: 0.8rem;
   }
   
   @media (max-width: 400px) {
     gap: 0.8rem;
+    padding: 0.6rem;
   }
   
   /* Additional media queries for 125% scaling */
@@ -90,17 +102,27 @@ const FormContainer = styled.div`
 `;
 
 const FormInfo = styled.div`
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 3px solid var(--accent-gold);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
   h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
-    color: var(--text-light);
+    color: #ab8977;
+    font-style: italic;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-weight: 300;
   }
   
   p {
     font-size: 1.1rem;
     line-height: 1.8;
-    color: var(--text-muted);
+    color: var(--primary-dark);
     margin-bottom: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    text-align: justify;
   }
   
   .contact-info {
@@ -127,14 +149,14 @@ const FormInfo = styled.div`
   }
   
   .info-details h4 {
-    color: var(--text-light);
+    color: var(--primary-dark);
     margin-bottom: 0.3rem;
   }
   
   .info-details p {
     margin: 0;
     font-size: 1rem;
-    color: var(--text-muted);
+    color: var(--primary-dark);
   }
   
   /* Responsive design for all resolutions */
@@ -147,6 +169,7 @@ const FormInfo = styled.div`
     p {
       font-size: 1.05rem;
       margin-bottom: 1.8rem;
+      text-align: justify;
     }
     
     .contact-info {
@@ -183,6 +206,7 @@ const FormInfo = styled.div`
     p {
       font-size: 1rem;
       margin-bottom: 1.6rem;
+      text-align: justify;
     }
     
     .contact-info {
@@ -219,6 +243,7 @@ const FormInfo = styled.div`
     p {
       font-size: 0.95rem;
       margin-bottom: 1.4rem;
+      text-align: justify;
     }
     
     .contact-info {
@@ -255,6 +280,7 @@ const FormInfo = styled.div`
     p {
       font-size: 0.9rem;
       margin-bottom: 1.2rem;
+      text-align: justify;
     }
     
     .contact-info {
@@ -428,11 +454,11 @@ const FormInfo = styled.div`
 `;
 
 const StyledForm = styled.form`
-  background: rgba(255, 255, 255, 0.05);
+  background: white;
   border-radius: 12px;
   padding: 2.5rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 3px solid var(--accent-gold);
+  box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
   
   .form-group {
     margin-bottom: 1.5rem;
@@ -441,24 +467,24 @@ const StyledForm = styled.form`
   label {
     display: block;
     margin-bottom: 0.5rem;
-    color: var(--text-light);
+    color: var(--primary-dark);
     font-weight: 500;
   }
   
   input, textarea {
     width: 100%;
     padding: 0.8rem 1rem;
-    background: rgba(0, 0, 0, 0.3);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--accent-gold);
     border-radius: 4px;
-    color: var(--text-light);
-    font-family: 'Inter', sans-serif;
+    color: var(--primary-dark);
+    font-family: 'Montserrat', sans-serif;
     font-size: 1rem;
     transition: border-color var(--transition-speed) ease;
     
     &:focus {
       outline: none;
-      border-color: var(--accent-gold);
+      border-color: #b8860b;
     }
   }
   
@@ -469,8 +495,8 @@ const StyledForm = styled.form`
   
   .submit-btn {
     width: 100%;
-    background: linear-gradient(135deg, var(--accent-gold), #b8860b);
-    color: var(--primary-dark);
+    background: #ab8977;
+    color: white;
     border: none;
     padding: 1rem;
     font-size: 1.1rem;
@@ -480,15 +506,15 @@ const StyledForm = styled.form`
     transition: all var(--transition-speed) ease;
     text-transform: uppercase;
     letter-spacing: 1px;
-    box-shadow: 0 4px 20px rgba(212, 175, 55, 0.4);
+    box-shadow: 0 4px 20px rgba(171, 137, 119, 0.4);
     
     &:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
+      box-shadow: 0 8px 25px rgba(171, 137, 119, 0.6);
     }
     
     &:disabled {
-      background: rgba(212, 175, 55, 0.5);
+      background: rgba(171, 137, 119, 0.5);
       cursor: not-allowed;
       transform: none;
       box-shadow: none;
@@ -846,7 +872,7 @@ const InquiryForm = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <h2 className="section-title">Schedule a Visit</h2>
+          <h2 className="section-title" style={{ background: 'white', padding: '0.5rem 1.5rem', borderRadius: '8px', border: '2px solid var(--accent-gold)', color: '#ab8977', fontStyle: 'italic', fontFamily: 'Georgia, Times New Roman, serif', fontWeight: '300' }}>Schedule a Visit</h2>
         </motion.div>
               
         <FormContainer>
@@ -873,7 +899,7 @@ const InquiryForm = () => {
                           )}
             </motion.p>
             
-            <motion.div
+            {/* <motion.div
               className="contact-info"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -903,7 +929,7 @@ const InquiryForm = () => {
                   <p>info@regalresidencia.com</p>
                 </div>
               </div>
-            </motion.div>
+            </motion.div> */}
           </FormInfo>
           
           <motion.div

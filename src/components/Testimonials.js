@@ -547,6 +547,9 @@ const SectionTitle = styled.h2`
   display: inline-block;
   left: 50%;
   transform: translateX(-50%);
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 300;
+  font-style: italic;
   
   &::after {
     content: '';

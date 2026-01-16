@@ -1,477 +1,276 @@
 import React from 'react';
-import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-const AmenitiesSection = styled.section`
-  padding: 1rem 2;
-  background-color: var(--primary-dark);
-  
-  /* Responsive design for all resolutions */
-  @media (max-width: 1200px) {
-    padding: 4rem 0;
-  }
-  
-  @media (max-width: 992px) {
-    padding: 3.5rem 0;
-  }
-  
-  @media (max-width: 768px) {
-    padding: 3rem 0;
-  }
-  
-  @media (max-width: 576px) {
-    padding: 2.5rem 0;
-  }
-  
-  @media (max-width: 480px) {
-    padding: 2.2rem 0;
-  }
-  
-  @media (max-width: 400px) {
-    padding: 2rem 0;
-  }
-  
-  /* Additional media queries for 125% scaling */
-  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
-    padding: 3.2rem 0;
-  }
-  
-  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
-    padding: 3.4rem 0;
-  }
-`;
-
-const AmenitiesGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 3rem;
-  
-  /* Responsive design for all resolutions */
-  @media (max-width: 1200px) {
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.8rem;
-    margin-top: 2.5rem;
-  }
-  
-  @media (max-width: 992px) {
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 1.6rem;
-    margin-top: 2.2rem;
-  }
-  
-  @media (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 1.4rem;
-    margin-top: 2rem;
-  }
-  
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
-    gap: 1.2rem;
-    margin-top: 1.8rem;
-  }
-  
-  @media (max-width: 480px) {
-    grid-template-columns: 1fr;
-    gap: 1.1rem;
-    margin-top: 1.7rem;
-  }
-  
-  @media (max-width: 400px) {
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-  
-  /* Additional media queries for 125% scaling */
-  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
-    gap: 1.45rem;
-    margin-top: 2.05rem;
-  }
-  
-  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2.1rem;
-  }
-`;
-
-const AmenityCard = styled(motion.div)`
-  background: rgba(255, 255, 255, 0.05);
-  border-radius: 12px;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all var(--transition-speed) ease;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
-    border-color: rgba(212, 175, 55, 0.3);
-  }
-  
-  .amenity-image {
-    height: 200px;
-    overflow: hidden;
-    position: relative;
-    
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform var(--transition-speed) ease;
-    }
-    
-    &::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-      pointer-events: none;
-    }
-  }
-  
-  &:hover .amenity-image img {
-    transform: scale(1.1);
-  }
-  
-  .amenity-content {
-    padding: 1.5rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    
-    h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: var(--text-light);
-    }
-    
-    p {
-      color: var(--text-muted);
-      line-height: 1.6;
-      flex-grow: 1;
-    }
-  }
-  
-  /* Responsive design for all resolutions */
-  @media (max-width: 1200px) {
-    border-radius: 10px;
-    
-    .amenity-image {
-      height: 180px;
-    }
-    
-    &:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 18px 27px rgba(0, 0, 0, 0.3);
-    }
-    
-    .amenity-content {
-      padding: 1.3rem;
-      
-      h3 {
-        font-size: 1.4rem;
-        margin-bottom: 0.4rem;
-      }
-      
-      p {
-        font-size: 0.95rem;
-      }
-    }
-  }
-  
-  @media (max-width: 992px) {
-    border-radius: 9px;
-    
-    .amenity-image {
-      height: 160px;
-    }
-    
-    &:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 24px rgba(0, 0, 0, 0.3);
-    }
-    
-    .amenity-content {
-      padding: 1.2rem;
-      
-      h3 {
-        font-size: 1.3rem;
-        margin-bottom: 0.3rem;
-      }
-      
-      p {
-        font-size: 0.9rem;
-      }
-    }
-  }
-  
-  @media (max-width: 768px) {
-    border-radius: 8px;
-    
-    .amenity-image {
-      height: 150px;
-    }
-    
-    &:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 14px 21px rgba(0, 0, 0, 0.3);
-    }
-    
-    .amenity-content {
-      padding: 1.1rem;
-      
-      h3 {
-        font-size: 1.2rem;
-        margin-bottom: 0.2rem;
-      }
-      
-      p {
-        font-size: 0.85rem;
-      }
-    }
-  }
-  
-  @media (max-width: 576px) {
-    border-radius: 7px;
-    
-    .amenity-image {
-      height: 140px;
-    }
-    
-    &:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 18px rgba(0, 0, 0, 0.3);
-    }
-    
-    .amenity-content {
-      padding: 1rem;
-      
-      h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.1rem;
-      }
-      
-      p {
-        font-size: 0.8rem;
-      }
-    }
-  }
-  
-  @media (max-width: 480px) {
-    border-radius: 6.5px;
-    
-    .amenity-image {
-      height: 135px;
-    }
-    
-    &:hover {
-      transform: translateY(-3.5px);
-      box-shadow: 0 11px 16.5px rgba(0, 0, 0, 0.3);
-    }
-    
-    .amenity-content {
-      padding: 0.95rem;
-      
-      h3 {
-        font-size: 1.05rem;
-      }
-      
-      p {
-        font-size: 0.78rem;
-      }
-    }
-  }
-  
-  @media (max-width: 400px) {
-    border-radius: 6px;
-    
-    .amenity-image {
-      height: 130px;
-    }
-    
-    &:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.3);
-    }
-    
-    .amenity-content {
-      padding: 0.9rem;
-      
-      h3 {
-        font-size: 1rem;
-      }
-      
-      p {
-        font-size: 0.75rem;
-      }
-    }
-  }
-  
-  /* Additional media queries for 125% scaling */
-  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
-    border-radius: 8.2px;
-    
-    .amenity-image {
-      height: 152px;
-    }
-    
-    &:hover {
-      transform: translateY(-5.2px);
-      box-shadow: 0 14.5px 22px rgba(0, 0, 0, 0.3);
-    }
-    
-    .amenity-content {
-      padding: 1.12rem;
-      
-      h3 {
-        font-size: 1.22rem;
-        margin-bottom: 0.22rem;
-      }
-      
-      p {
-        font-size: 0.87rem;
-      }
-    }
-  }
-  
-  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
-    border-radius: 8.5px;
-    
-    .amenity-image {
-      height: 155px;
-    }
-    
-    &:hover {
-      transform: translateY(-5.5px);
-      box-shadow: 0 15px 23px rgba(0, 0, 0, 0.3);
-    }
-    
-    .amenity-content {
-      padding: 1.15rem;
-      
-      h3 {
-        font-size: 1.25rem;
-        margin-bottom: 0.25rem;
-      }
-      
-      p {
-        font-size: 0.9rem;
-      }
-    }
-  }
-`;
-
-const amenitiesData = [
-  {
-    id: 1,
-    title: "Swimming Pool",
-    description: "Olympic-sized infinity pool with panoramic views and luxury cabanas. Open sky swimming pool area with deck and seating.",
-    image: "https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-  },
-  {
-    id: 2,
-    title: "Clubhouse",
-    description: "World-class clubhouse with gym, spa, and entertainment facilities. Includes indoor games room, banquet hall, mini theatre, and indoor golf.",
-    image: "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-  },
-  {
-    id: 3,
-    title: "Landscaped Gardens",
-    description: "Expansive green spaces with walking tracks, meditation areas, pergola seating, palm island, and zen garden.",
-    image: "https://images.unsplash.com/photo-1515542408672-7ef1ed6e9b2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-  },
-  {
-    id: 4,
-    title: "Kids Play Area",
-    description: "Safe and engaging play zones designed for children of all ages. Includes toddler play areas and skating rink.",
-    image: "https://images.unsplash.com/photo-1593697821252-0c9137d9fc45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-  },
-  {
-    id: 5,
-    title: "Gym & Fitness",
-    description: "State-of-the-art fitness center with professional equipment and trainers. Includes spa and sauna facilities.",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-  },
-  {
-    id: 6,
-    title: "Multipurpose Court",
-    description: "Basketball, tennis, and badminton courts for sports enthusiasts. Includes box cricket pitch and multipurpose court.",
-    image: "https://images.unsplash.com/photo-1549476464-37392f717541?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-  },
-  {
-    id: 7,
-    title: "Commercial Spaces",
-    description: "Showroom spaces with carpet area of 1440 sq.ft (18'0\"X80'0\") and 960 sq.ft (16'0\"X60'0\"). Total saleable area of 5760 sq.ft and 3840 sq.ft respectively.",
-    image: "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-  },
-  {
-    id: 8,
-    title: "Parking",
-    description: "Ample parking spaces with lower ground capacity of 886 cars and ground capacity of 652 cars. Total parking capacity of 1538 cars.",
-    image: "https://images.unsplash.com/photo-1758448721043-2cc4eba0e483?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-  },
-  {
-    id: 9,
-    title: "24/7 Security",
-    description: "Round-the-clock security with CCTV surveillance, trained security personnel, and advanced access control systems for complete peace of mind.",
-    image: "https://images.unsplash.com/photo-1542744056-3711a3a5d3b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80"
-  }
-];
-
 const Amenities = () => {
+  const amenities = [
+    { icon: '/images/icons/club_10934333.svg', name: 'Clubhouse' },
+    { icon: '/images/icons/bar-counter_4256133.svg', name: 'Lounge Bar' },
+    { icon: '/images/icons/game-center_18369956.svg', name: 'Indoor Games Room' },
+    { icon: '/images/icons/stadium_4276518.svg', name: 'Banquet Hall' },
+    { icon: '/images/icons/theater_3041710.svg', name: 'Mini Theatre' },
+    { icon: '/images/icons/gym_11055008.svg', name: 'Gymnasium' },
+    { icon: '/images/icons/sauna_17386830.svg', name: 'Spa & Sauna' },
+    { icon: '/images/icons/computer_14197303.svg', name: 'Library' },
+    { icon: '/images/icons/rubber-pool_10772888.svg', name: 'Open-to-Sky Swimming Pool' },
+    { icon: '/images/icons/beach_18694042.svg', name: 'Palm Island Pool Area' },
+    { icon: '/images/icons/ice-skate_11249697.svg', name: 'Skating Rink' },
+    { icon: '/images/icons/playground_10638591.svg', name: 'Kids Play Area' },
+    { icon: '/images/icons/cricket-stump_17559333.svg', name: 'Box Cricket Pitch' },
+    { icon: '/images/icons/badminton_12635730.svg', name: 'Badminton Court' },
+    { icon: '/images/icons/golf-equipment_5477988.svg', name: 'Open-to-Sky Mini Golf' },
+    { icon: '/images/icons/wedding-dinner_9360394.svg', name: 'Amphitheatre' },
+    { icon: '/images/icons/computer_14197303.svg', name: 'Lawn Zen Garden' },
+    { icon: '/images/icons/gazebo_4590895.svg', name: 'Gazebo' },
+  ];
+
   return (
-    <AmenitiesSection>
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <h2 className="section-title">{`Luxury Amenities`.includes('Luxury') ? (
-                          <span>{`Luxury Amenities`.split('Luxury')[0]}<span className="luxury-text">Luxury</span>{`Luxury Amenities`.split('Luxury')[1]}</span>
-                        ) : (
-                          `Luxury Amenities`
-                        )}</h2>
-        </motion.div>
+    <section className="amenities-section">
+      <div className="background-image"></div>
+      
+      <div className="content-wrapper">
+        <div className="text-content">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="heading"
+          >
+            An Elevated Lifestyle Hub
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="subheading"
+          >
+            Where wellness, recreation, and refined social spaces come together seamlessly.
+          </motion.p>
+        </div>
         
-        <AmenitiesGrid>
-          {amenitiesData.map((amenity, index) => (
-            <AmenityCard
-              key={amenity.id}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+        <div className="amenities-grid">
+          {amenities.map((amenity, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="amenity-item"
             >
-              <div className="amenity-image">
-                <img src={amenity.image} alt={amenity.title} className="img-radius-1" onError={(e) => {
-                  e.target.src = 'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80';
-                }} />
-              </div>
-              <div className="amenity-content">
-                <h3>{amenity.title}</h3>
-                <p>{amenity.description.toLowerCase().includes('luxury') ? (
-                                      <span dangerouslySetInnerHTML={{__html: amenity.description.replace(/(luxury)/gi, '<span class="luxury-text">$1</span>') }} />
-                                    ) : (
-                                      amenity.description
-                                    )}</p>
-              </div>
-            </AmenityCard>
+                        <div 
+                className="icon-container"
+                style={{
+                  backgroundImage: `url(${amenity.icon})`,
+                  backgroundSize: 'contain',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center',
+                  filter: 'invert(85%) sepia(30%) saturate(400%) hue-rotate(340deg)',
+                }}
+              ></div>
+              <span className="amenity-name">{amenity.name}</span>
+            </motion.div>
           ))}
-        </AmenitiesGrid>
+        </div>
       </div>
-    </AmenitiesSection>
+
+      <style jsx>{`
+        .amenities-section {
+          position: relative;
+          padding: 6rem 0;
+          min-height: 100vh;
+          overflow: hidden;
+          background: #0a0a0a;
+        }
+        
+        .background-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-image: url('/images/render/Asset 1-100.jpg');
+          background-size: cover;
+          background-position: center;
+          opacity: 0.15; /* Blurry, less opacity */
+          filter: blur(2px);
+          z-index: 1;
+        }
+        
+        .content-wrapper {
+          position: relative;
+          max-width: 1400px;
+          margin: 0 auto;
+          padding: 0 4rem;
+          display: grid;
+          grid-template-columns: 1fr 1.5fr;
+          gap: 4rem;
+          z-index: 2;
+        }
+        
+        .text-content {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+        }
+        
+        .heading {
+          font-family: 'Georgia', 'Times New Roman', serif;
+          font-size: 3.5rem;
+          font-weight: 300;
+          font-style: italic;
+          color: #e5b9a2; /* e5b9a2 color tone */
+          line-height: 1.2;
+          margin-bottom: 1.5rem;
+        }
+        
+        .subheading {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1.2rem;
+          line-height: 1.6;
+          color: white;
+          max-width: 500px;
+        }
+        
+        .amenities-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.2rem;
+          padding: 1rem 0;
+        }
+        
+        .amenity-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+          padding: 0.8rem 0.5rem;
+          transition: transform 0.3s ease;
+        }
+        
+        .amenity-item:hover {
+          transform: translateY(-5px);
+        }
+        
+        .icon-container {
+          width: 50px;
+          height: 50px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1rem;
+        }
+        
+        .icon-container {
+          width: 50px;
+          height: 50px;
+          margin-bottom: 1rem;
+        }
+        
+        .amenity-name {
+          color: white; /* White text */
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.9rem;
+          font-weight: 500;
+          line-height: 1.4;
+          text-align: center;
+        }
+        
+        @media (max-width: 1200px) {
+          .content-wrapper {
+            padding: 0 3rem;
+            gap: 3rem;
+          }
+          
+          .heading {
+            font-size: 3rem;
+          }
+          
+          .subheading {
+            font-size: 1.1rem;
+          }
+          
+          .amenities-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+          }
+        }
+        
+        @media (max-width: 992px) {
+          .content-wrapper {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            padding: 0 2rem;
+          }
+          
+          .text-content {
+            align-items: center;
+            text-align: center;
+          }
+          
+          .subheading {
+            max-width: 100%;
+          }
+          
+          .amenities-grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+          }
+        }
+        
+        @media (max-width: 768px) {
+          .content-wrapper {
+            padding: 0 1.5rem;
+          }
+          
+          .heading {
+            font-size: 2.5rem;
+          }
+          
+          .amenities-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+          }
+          
+          .icon-container {
+            width: 45px;
+            height: 45px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .amenities-section {
+            padding: 4rem 0;
+          }
+          
+          .content-wrapper {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 0 1rem;
+          }
+          
+          .heading {
+            font-size: 2rem;
+          }
+          
+          .amenities-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+          }
+          
+          .icon-container {
+            width: 40px;
+            height: 40px;
+          }
+          
+          .amenity-name {
+            font-size: 0.8rem;
+          }
+        }
+      `}</style>
+    </section>
   );
 };
 

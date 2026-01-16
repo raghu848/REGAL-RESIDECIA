@@ -95,9 +95,10 @@ const SectionHeader = styled.div`
   }
   
   h2 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 2.5rem;
-    font-weight: 700;
+    font-weight: 300;
+    font-style: italic;
     color: #ffffff;
     margin-bottom: 1rem;
     line-height: 1.2;
@@ -178,8 +179,10 @@ const FeatureBox = styled(motion.div)`
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
   h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 1.6rem;
+    font-weight: 300;
+    font-style: italic;
     color: #d4af37;
     margin-bottom: 1.2rem;
     display: flex;
@@ -523,7 +526,7 @@ const ProjectOverview = () => {
   return (
     <OverviewSection>
       <Container>
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -536,7 +539,7 @@ const ProjectOverview = () => {
               Experience the epitome of luxury living at Regal Residencia, where sophisticated design meets modern convenience in the heart of Mohali's most prestigious location.
             </p>
           </SectionHeader>
-        </motion.div>
+        </motion.div> */}
         
         <ContentGrid>
           <FeatureBox

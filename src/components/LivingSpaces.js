@@ -245,8 +245,10 @@ const UnitHeader = styled.div`
   border: 2px solid rgba(212, 175, 55, 0.2);
   
   h3 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 2rem;
+    font-weight: 300;
+    font-style: italic;
     color: #1a1a1a;
     margin-bottom: 1rem;
     
@@ -308,8 +310,10 @@ const FeaturesSection = styled(motion.div)`
   border: 2px solid rgba(212, 175, 55, 0.2);
   
   h4 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 1.6rem;
+    font-weight: 300;
+    font-style: italic;
     color: #d4af37;
     margin-bottom: 1.2rem;
     display: flex;
@@ -377,8 +381,10 @@ const RoomDetailsSection = styled(motion.div)`
   box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
   
   h4 {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Georgia', 'Times New Roman', serif;
     font-size: 1.6rem;
+    font-weight: 300;
+    font-style: italic;
     color: #d4af37;
     margin-bottom: 0.8rem;
     text-align: center;

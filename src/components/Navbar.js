@@ -1,412 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { motion, AnimatePresence } from 'framer-motion';
-import DownloadBrochureButton from './DownloadBrochureButton';
-
-const NavbarContainer = styled.nav`
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(255, 255, 255, 0.95); /* White background */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.1); /* Champagne gold accent */
-  z-index: 1000;
-  padding: 0.8rem 1.5rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  margin: 0; /* Removing side margins to make navbar full width */
-
-  @media (max-width: 768px) {
-    padding: 0.8rem 1rem;
-    margin: 0; /* No side margins on smaller screens */
-  }
-
-  @media (max-width: 480px) {
-    margin: 0; /* No side margins on very small screens */
-  }
-
-  &.scrolled {
-    padding: 0.5rem 1.5rem;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
-    
-    @media (max-width: 768px) {
-      padding: 0.5rem 1rem;
-    }
-  }
-`;
-
-const NavbarWrapper = styled.div`
-  max-width: 1300px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-`;
-
-const LogoContainer = styled.div`
-  position: relative;
-  width: 110px;
-  height: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #000000;
-  border-radius: 19px;
-  padding: 19px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  
-  @media (max-width: 768px) {
-    width: 140px;
-    height: 70px;
--    padding: 15px;
-  }
-  
-  @media (max-width: 480px) {
-    width: 120px;
-    height: 60px;
-    padding: 12px;
-  }
-  
-  img {
-    max-width: 90%;
-    max-height: 80%;
-    object-fit: contain;
-    transform: scale(1.2);
-    transform-origin: center;
-  }
-  
-  @media (max-width: 768px) {
-    img {
-      transform: scale(1.4);
-    }
-  }
-  
-  @media (max-width: 480px) {
-    img {
-      transform: scale(1.5);
-    }
-  }
-`;
-
-const BarsContainer = styled.div`
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  z-index: 2;
-`;
-
-const Bar = styled.div`
-  background: linear-gradient(90deg, #D4A540 0%, #F4D576 50%, #D4A540 100%);
-  height: 4px;
-  border-radius: 2px;
-  width: ${props => props.width || '20px'};
-`;
-
-const Circle = styled.div`
-  position: absolute;
-  right: 35px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 25px;
-  height: 25px;
-  border: 1.5px solid #666;
-  border-radius: 50%;
-  z-index: 1;
-`;
-
-const TextContainer = styled.div`
-  padding-top: 0;
-  z-index: 3;
-`;
-
-const RegalText = styled.a`
-  font-family: 'Arial Black', 'Arial Bold', sans-serif;
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #D4A540;
-  text-decoration: none;
-  letter-spacing: 0.5px;
-  margin: 0;
-  text-transform: uppercase;
-  display: block;
-`;
-
-const ResidenciaText = styled.span`
-  font-family: 'Brush Script MT', cursive, sans-serif;
-  font-size: 1.1rem;
-  font-weight: 300;
-  color: #999;
-  margin: -5px 0 0 0;
-  letter-spacing: 0.5px;
-  font-style: italic;
-  display: block;
-  line-height: 1;
-`;
-
-const NavContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: 2rem; /* Slight left shift */
-  
-  @media (max-width: 1024px) {
-    margin-left: 1.5rem;
-  }
-  
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const NavLinks = styled.ul`
-  display: flex;
-  list-style: none;
-  gap: 1.8rem;
-  align-items: center;
-
-  @media (max-width: 1024px) {
-    gap: 1.2rem;
-  }
-`;
-
-const NavLink = styled.li`
-  a {
-    color: #0F172A; /* Dark text for contrast on white background */
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 1rem;
-    position: relative;
-    padding: 0.5rem 0;
-    transition: all 0.3s ease;
-    white-space: nowrap;
-
-    &:hover {
-      color: #D4AF37;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: #D4AF37;
-      transition: width 0.3s ease;
-    }
-
-    &:hover::after {
-      width: 100%;
-    }
-  }
-`;
-
-const CTAButton = styled(motion.a)`
-  background: linear-gradient(135deg, #D4AF37, #B8860B);
-  color: #0F172A;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  padding: 0.9rem 1.6rem;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: all 0.3s ease;
-  border: none;
-  font-size: 1.05rem;
-  cursor: pointer;
-  white-space: nowrap;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-
-  &:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-
-  @media (max-width: 1024px) {
-    padding: 0.8rem 1.4rem;
-    font-size: 1rem;
-  }
-
-  @media (max-width: 768px) {
-    display: none;
-  }
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-left: 1rem;
-`;
-
-const MobileMenuButton = styled.button`
-  display: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  z-index: 1001;
-  margin-left: 1rem;
-
-  @media (max-width: 768px) {
-    display: block;
-  }
-
-  div {
-    width: 25px;
-    height: 3px;
-    background: #0F172A; /* Dark color for contrast on white background */
-    margin: 5px 0;
-    transition: 0.3s;
-    border-radius: 2px;
-  }
-
-  &.open div:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-
-  &.open div:nth-child(2) {
-    opacity: 0;
-  }
-
-  &.open div:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
-  }
-`;
-
-const MobileMenuOverlay = styled(motion.div)`
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100vh;
-  background: rgba(255, 255, 255, 0.98); /* White background for mobile menu */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 999;
-  padding: 2rem;
-`;
-
-const MobileNavLinks = styled.ul`
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  gap: 2.5rem;
-  text-align: center;
-  width: 100%;
-  max-width: 300px;
-`;
-
-const MobileNavLink = styled.li`
-  a {
-    color: #0F172A; /* Dark text for contrast on white background */
-    text-decoration: none;
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 1.4rem;
-    padding: 0.5rem 0;
-    display: block;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: #D4AF37;
-    }
-  }
-`;
-
-const MobileButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  width: 100%;
-  max-width: 300px;
-  margin-top: 2rem;
-`;
-
-const MobileCTAButton = styled(motion.a)`
-  background: linear-gradient(135deg, #D4AF37, #B8860B);
-  color: #0F172A;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  padding: 1.3rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  display: inline-block;
-  transition: all 0.3s ease;
-  border: none;
-  font-size: 1.15rem;
-  text-align: center;
-  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
-  width: 100%;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-
-  &:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.6);
-  }
-
-  &:active {
-    transform: translateY(0);
-  }
-`;
-
-const QuickContact = styled.div`
-  display: flex;
-  gap: 1.5rem;
-  margin-top: 2rem;
-`;
-
-const ContactLink = styled.a`
-  color: #D4AF37;
-  text-decoration: none;
-  font-family: 'Inter', sans-serif;
-  font-weight: 500;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: color 0.3s ease;
-
-  &:hover {
-    color: #FFF;
-  }
-
-  svg {
-    width: 20px;
-    height: 20px;
-  }
-`;
-
-const CalendarIcon = styled.svg`
-  width: 18px;
-  height: 18px;
-`;
-
-const LocationIcon = styled.svg`
-  width: 18px;
-  height: 18px;
-  margin-right: 4px;
-`;
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -435,7 +27,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // Close mobile menu when resizing to desktop
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth > 768 && isOpen) {
@@ -447,7 +38,6 @@ const Navbar = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, [isOpen]);
 
-  // Smooth scrolling function
   const scrollToSection = (e, targetId) => {
     e.preventDefault();
     closeMenu();
@@ -455,137 +45,469 @@ const Navbar = () => {
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       window.scrollTo({
-        top: targetElement.offsetTop - 80, // Adjust for navbar height
+        top: targetElement.offsetTop - 80,
         behavior: 'smooth'
       });
     }
   };
 
-  // Open Google Maps
   const openMaps = (e) => {
     e.preventDefault();
     closeMenu();
-    // Replace with actual coordinates for Regal Residencia
     window.open('https://maps.google.com/?q=Regal+Residencia,+Mohali', '_blank');
   };
 
   return (
     <>
-      <NavbarContainer className={scrolled ? 'scrolled' : ''} role="navigation" aria-label="Main navigation">
-        <NavbarWrapper>
-          <LogoContainer>
+      <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
+        <div className="navbar-container">
+          <div className="logo-container">
             <a href="/" aria-label="Regal Residencia Home">
-              <img src="/logo.png" alt="Regal Residencia Logo" />
+              <img src="/images/render/Regalia_Logo.png" alt="Regal Residencia Logo" style={{ height: '65px', width: 'auto', display: 'block', objectFit: 'contain' }} />
             </a>
-          </LogoContainer>
+          </div>
           
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <NavContainer>
-              <NavLinks>
-                <NavLink><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Project</a></NavLink>
-                <NavLink><a href="#amenities" onClick={(e) => scrollToSection(e, 'amenities')}>Amenities</a></NavLink>
-                <NavLink>
-                  <a href="#" onClick={openMaps}>
-                    <LocationIcon viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                      <path d="M0 0h24v24H0z" fill="none"/>
-                    </LocationIcon>
-                    Location
-                  </a>
-                </NavLink>
-              </NavLinks>
-            </NavContainer>
+          <div className="nav-right">
+            <div className="nav-links">
+              <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Project</a>
+              <a href="#amenities" onClick={(e) => scrollToSection(e, 'amenities')}>Amenities</a>
+              <a href="#" onClick={openMaps}>
+                {/* <svg viewBox="0 0 24 24" fill="currentColor" className="location-icon">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg> */}
+                Location
+              </a>
+            </div>
             
-            <ButtonsContainer>
-              <DownloadBrochureButton />
+            <div className="button-group">
+              <button className="download-btn">Download Brochure</button>
               
-              <CTAButton
+              <a
                 href="#inquiry"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="cta-btn"
                 onClick={(e) => scrollToSection(e, 'inquiry')}
-                aria-label="Schedule Site Visit"
               >
-                <CalendarIcon viewBox="0 0 24 24" fill="currentColor">
+                <svg viewBox="0 0 24 24" fill="currentColor" className="calendar-icon">
                   <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
-                  <path d="M0 0h24v24H0z" fill="none"/>
-                </CalendarIcon>
+                </svg>
                 Book Visit
-              </CTAButton>
-            </ButtonsContainer>
+              </a>
+            </div>
             
-            <MobileMenuButton 
-              className={isOpen ? 'open' : ''} 
+            <button 
+              className={`mobile-menu-btn ${isOpen ? 'open' : ''}`}
               onClick={toggleMenu}
               aria-label={isOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isOpen}
-              aria-controls="mobile-menu"
             >
               <div></div>
               <div></div>
               <div></div>
-            </MobileMenuButton>
+            </button>
           </div>
-        </NavbarWrapper>
-      </NavbarContainer>
+        </div>
+      </nav>
       
-      <AnimatePresence>
-        {isOpen && (
-          <MobileMenuOverlay
-            initial={{ opacity: 0, x: '100%' }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.3 }}
-            id="mobile-menu"
-          >
-            <div style={{ textAlign: 'center', marginBottom: '2rem', width: '100%' }}>
-              <a href="/" aria-label="Regal Residencia Home" style={{ display: 'inline-block' }}>
-                <img src="/logo.png" alt="Regal Residencia Logo" style={{ height: '60px', width: 'auto' }} />
+      {isOpen && (
+        <div className="mobile-overlay">
+          <div className="mobile-content">
+            <div className="mobile-logo">
+              <a href="/">
+                <img src="/images/render/Regalia_Logo.png" alt="Regal Residencia Logo" style={{ height: '60px', width: 'auto', display: 'block', objectFit: 'contain' }} />
               </a>
             </div>
-            <MobileNavLinks>
-              <MobileNavLink><a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Project</a></MobileNavLink>
-              <MobileNavLink><a href="#amenities" onClick={(e) => scrollToSection(e, 'amenities')}>Amenities</a></MobileNavLink>
-              <MobileNavLink>
-                <a href="#" onClick={openMaps}>
-                  <LocationIcon viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                    <path d="M0 0h24v24H0z" fill="none"/>
-                  </LocationIcon>
-                  Location
-                </a>
-              </MobileNavLink>
-            </MobileNavLinks>
+            <div className="mobile-nav">
+              <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Project</a>
+              <a href="#amenities" onClick={(e) => scrollToSection(e, 'amenities')}>Amenities</a>
+              <a href="#" onClick={openMaps}>
+                {/* <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                </svg> */}
+                Location
+              </a>
+            </div>
             
-            <MobileButtonsContainer>
-              <DownloadBrochureButton />
-              <MobileCTAButton
-                href="#inquiry"
-                onClick={(e) => scrollToSection(e, 'inquiry')}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
+            <div className="mobile-buttons">
+              <button className="download-btn mobile">Download Brochure</button>
+              <a href="#inquiry" className="cta-btn mobile" onClick={(e) => scrollToSection(e, 'inquiry')}>
                 Book Visit
-              </MobileCTAButton>
-            </MobileButtonsContainer>
+              </a>
+            </div>
             
-            <QuickContact>
-              <ContactLink href="tel:+91XXXXXXXXXX" aria-label="Call us">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3 2h18a1 1 0 011 1v18a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1zm17 4.53l-6.24 5.1a1 1 0 01-1.28 0L6 6.53V19h12V6.53z" />
+            <div className="mobile-contact">
+              <a href="tel:+91XXXXXXXXXX">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
                 </svg>
                 Call Now
-              </ContactLink>
-              <ContactLink href="https://wa.me/+91XXXXXXXXXX" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+              </a>
+              <a href="https://wa.me/+91XXXXXXXXXX" target="_blank" rel="noopener noreferrer">
+                <svg viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
                 WhatsApp
-              </ContactLink>
-            </QuickContact>
-          </MobileMenuOverlay>
-        )}
-      </AnimatePresence>
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style jsx>{`
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        .navbar {
+          position: fixed;
+          top: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 90%;
+          background: linear-gradient(to bottom, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.96));
+          backdrop-filter: blur(12px);
+          border-bottom: 1px solid rgba(200, 180, 140, 0.25);
+          z-index: 1000;
+          padding: 0;
+          transition: all 0.3s ease;
+          border-radius: 0 0 30px 30px;
+        }
+
+        .navbar.scrolled {
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+          padding: 0;
+        }
+
+        .navbar-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1rem 2rem;
+        }
+
+        .logo-container {
+          flex-shrink: 0;
+        }
+
+        .logo-container a {
+          display: block;
+        }
+
+        .logo-container img {
+          height: 65px;
+          width: auto;
+          display: block;
+        }
+
+        .nav-right {
+          display: flex;
+          align-items: center;
+          gap: 3rem;
+          flex: 1;
+          justify-content: flex-end;
+        }
+
+        .nav-links {
+          display: flex;
+          align-items: center;
+          gap: 2.5rem;
+        }
+
+        .nav-links a {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.85rem;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+          color: #4a4a4a;
+          text-decoration: none;
+          transition: color 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          position: relative;
+        }
+
+        .nav-links a:hover {
+          color: #c8b48c;
+        }
+
+        .nav-links a::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: #c8b48c;
+          transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+          width: 100%;
+        }
+
+        .location-icon {
+          width: 16px;
+          height: 16px;
+        }
+
+        .button-group {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .download-btn {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.85rem;
+          font-weight: 600;
+          letter-spacing: 0.5px;
+          color: #4a4a4a;
+          background: transparent;
+          border: 1.5px solid #c8b48c;
+          padding: 0.7rem 1.5rem;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+        }
+
+        .download-btn:hover {
+          background: rgba(200, 180, 140, 0.1);
+          color: #c8b48c;
+          transform: translateY(-2px);
+        }
+
+        .cta-btn {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.85rem;
+          font-weight: 700;
+          letter-spacing: 1px;
+          color: white;
+          background: #ab8977;
+          border: none;
+          padding: 0.7rem 1.8rem;
+          border-radius: 4px;
+          text-decoration: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          white-space: nowrap;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          box-shadow: 0 4px 12px rgba(171, 137, 119, 0.3);
+        }
+
+        .cta-btn:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 6px 20px rgba(171, 137, 119, 0.45);
+        }
+
+        .calendar-icon {
+          width: 16px;
+          height: 16px;
+        }
+
+        .mobile-menu-btn {
+          display: none;
+          background: transparent;
+          border: none;
+          cursor: pointer;
+          padding: 0.5rem;
+          z-index: 1001;
+        }
+
+        .mobile-menu-btn div {
+          width: 25px;
+          height: 2.5px;
+          background: #4a4a4a;
+          margin: 5px 0;
+          transition: 0.3s;
+          border-radius: 2px;
+        }
+
+        .mobile-menu-btn.open div:nth-child(1) {
+          transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .mobile-menu-btn.open div:nth-child(2) {
+          opacity: 0;
+        }
+
+        .mobile-menu-btn.open div:nth-child(3) {
+          transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        .mobile-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100vh;
+          background: rgba(255, 255, 255, 0.98);
+          backdrop-filter: blur(10px);
+          z-index: 999;
+          display: none;
+          animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .mobile-content {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+          width: 100%;
+          padding: 2rem;
+          gap: 2rem;
+        }
+
+        .mobile-logo img {
+          height: 60px;
+          width: auto;
+        }
+
+        .mobile-nav {
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          text-align: center;
+        }
+
+        .mobile-nav a {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: #4a4a4a;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+        }
+
+        .mobile-nav a:hover {
+          color: #c8b48c;
+        }
+
+        .mobile-nav svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        .mobile-buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+          width: 100%;
+          max-width: 300px;
+        }
+
+        .download-btn.mobile,
+        .cta-btn.mobile {
+          width: 100%;
+          justify-content: center;
+          padding: 1rem 2rem;
+          font-size: 0.95rem;
+        }
+
+        .mobile-contact {
+          display: flex;
+          gap: 2rem;
+          margin-top: 1rem;
+        }
+
+        .mobile-contact a {
+          color: #c8b48c;
+          text-decoration: none;
+          font-family: 'Montserrat', sans-serif;
+          font-weight: 500;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-size: 0.95rem;
+        }
+
+        .mobile-contact svg {
+          width: 20px;
+          height: 20px;
+        }
+
+        @media (max-width: 1200px) {
+          .navbar-container {
+            max-width: 95%;
+            padding: 1rem 2rem;
+          }
+
+          .nav-links {
+            gap: 2rem;
+          }
+
+          .nav-right {
+            gap: 2rem;
+          }
+        }
+
+        @media (max-width: 992px) {
+          .navbar-container {
+            max-width: 95%;
+            padding: 1rem 1.5rem;
+          }
+
+          .nav-links {
+            gap: 1.5rem;
+          }
+
+          .nav-links a {
+            font-size: 0.8rem;
+          }
+
+          .download-btn,
+          .cta-btn {
+            padding: 0.6rem 1.2rem;
+            font-size: 0.8rem;
+          }
+        }
+
+        @media (max-width: 768px) {
+          .navbar-container {
+            padding: 1rem 1.5rem;
+          }
+
+          .logo-container img {
+            height: 55px;
+          }
+
+          .nav-links,
+          .button-group {
+            display: none;
+          }
+
+          .mobile-menu-btn {
+            display: block;
+          }
+
+          .mobile-overlay {
+            display: flex;
+          }
+
+          .nav-right {
+            gap: 0;
+          }
+        }
+      `}</style>
     </>
   );
 };

@@ -28,7 +28,7 @@ const CarouselContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  perspective: 2000px;
+  perspective: 2500px; // Increased perspective for enhanced 3D effect
   margin: 2rem 0 2rem;
   z-index: 2;
   
@@ -52,34 +52,35 @@ const GalleryItem = styled(motion.div)`
   position: absolute;
   width: 400px;
   height: 480px;
-  border-radius: 28px;
+  border-radius: 32px; // More rounded corners
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
-  border: 4px solid rgba(212, 165, 64, 0.5);
-  transition: all 0.3s ease;
-  background: linear-gradient(45deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
+  box-shadow: 0 35px 70px rgba(0, 0, 0, 0.8); // Enhanced shadow
+  border: 4px solid rgba(229, 185, 162, 0.6); // Using the brand color
+  transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); // Smoother transition
+  background: linear-gradient(45deg, rgba(229, 185, 162, 0.15), rgba(171, 137, 119, 0.1)); // Using brand colors
   
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1); // Smoother image transition
   }
   
   &:hover {
-    transform: scale(1.05) !important;
-    box-shadow: 0 35px 70px rgba(212, 165, 64, 0.5);
-    border: 4px solid rgba(212, 175, 55, 0.8);
+    transform: scale(1.08) !important; // Slightly more scaling
+    box-shadow: 0 40px 80px rgba(229, 185, 162, 0.6); // Enhanced hover shadow
+    border: 4px solid rgba(229, 185, 162, 0.9); // Stronger border on hover
     
     img {
-      transform: scale(1.15);
+      transform: scale(1.2); // More zoom on hover
     }
   }
   
   @media (max-width: 768px) {
     width: 320px;
     height: 380px;
+    border-radius: 24px;
   }
 `;
 
@@ -99,9 +100,9 @@ const NavigationArrows = styled.div`
 `;
 
 const ArrowButton = styled.button`
-  background: rgba(212, 165, 64, 0.2);
-  border: 2px solid #D4A540;
-  color: #D4A540;
+  background: rgba(229, 185, 162, 0.2);
+  border: 2px solid #e5b9a2;
+  color: #e5b9a2;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -115,7 +116,7 @@ const ArrowButton = styled.button`
   box-shadow: 0 5px 15px rgba(212, 165, 64, 0.2);
   
   &:hover {
-    background: linear-gradient(135deg, #D4A540, #b8860b);
+    background: linear-gradient(135deg, #e5b9a2, #d4a08a);
     color: #0a0a0a;
     transform: scale(1.1) translateY(-3px);
     box-shadow: 0 8px 25px rgba(212, 165, 64, 0.4);
@@ -147,13 +148,13 @@ const Dot = styled.button`
   height: 12px;
   border-radius: 50%;
   border: none;
-  background: ${props => props.active ? '#D4A540' : 'rgba(255, 255, 255, 0.3)'};
+  background: ${props => props.active ? '#e5b9a2' : 'rgba(255, 255, 255, 0.3)'};
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 2px 5px rgba(212, 165, 64, 0.3);
   
   &:hover {
-    background: #D4A540;
+    background: #e5b9a2;
     transform: scale(1.3);
     box-shadow: 0 3px 8px rgba(212, 165, 64, 0.5);
   }
@@ -166,14 +167,15 @@ const Dot = styled.button`
 
 const Caption = styled.p`
   text-align: center;
-  color: #D4A540;
+  color: #e5b9a2;
   font-size: 1.3rem;
-  font-weight: 600;
+  font-weight: 300;
   margin-top: 1.5rem;
   font-style: italic;
   position: relative;
   z-index: 2;
-  text-shadow: 0 0 10px rgba(212, 165, 64, 0.3);
+  text-shadow: 0 0 10px rgba(229, 185, 162, 0.3);
+  font-family: 'Georgia', 'Times New Roman', serif;
   padding: 0.5rem;
   
   @media (max-width: 768px) {
@@ -209,8 +211,8 @@ const LightboxClose = styled.button`
   position: absolute;
   top: 2rem;
   right: 2rem;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(229, 185, 162, 0.1);
+  border: 1px solid rgba(229, 185, 162, 0.3);
   color: white;
   width: 50px;
   height: 50px;
@@ -237,7 +239,7 @@ const Luxury3DGallery = ({ items }) => {
     if (isAutoPlaying && items.length > 1) {
       intervalRef.current = setInterval(() => {
         setCurrentIndex(prev => (prev + 1) % items.length);
-      }, 3000); // Increased interval to 3 seconds
+      }, 5000); // Increased interval to 5 seconds for smoother, more elegant transition
     }
 
     return () => {
@@ -285,11 +287,11 @@ const Luxury3DGallery = ({ items }) => {
   // Calculate positions for 3D effect
   const getTransform = (index, activeIndex, length) => {
     const positions = [
-      { x: -200, y: 0, z: -200, scale: 0.7, opacity: 0.5, rotateY: -30 },
-      { x: -100, y: 0, z: -100, scale: 0.85, opacity: 0.8, rotateY: -15 },
+      { x: -280, y: 0, z: -280, scale: 0.6, opacity: 0.3, rotateY: -45 },
+      { x: -140, y: 0, z: -140, scale: 0.75, opacity: 0.6, rotateY: -25 },
       { x: 0, y: 0, z: 0, scale: 1, opacity: 1, rotateY: 0 },
-      { x: 100, y: 0, z: -100, scale: 0.85, opacity: 0.8, rotateY: 15 },
-      { x: 200, y: 0, z: -200, scale: 0.7, opacity: 0.5, rotateY: 30 },
+      { x: 140, y: 0, z: -140, scale: 0.75, opacity: 0.6, rotateY: 25 },
+      { x: 280, y: 0, z: -280, scale: 0.6, opacity: 0.3, rotateY: 45 },
     ];
 
     const diff = index - activeIndex;
@@ -302,11 +304,11 @@ const Luxury3DGallery = ({ items }) => {
         const posIndex = wrappedIndex + 2;
         return positions[posIndex];
       }
-      return { x: 0, y: 0, z: 0, scale: 0.7, opacity: 0.5, rotateY: 0 };
+      return { x: 0, y: 0, z: 0, scale: 0.6, opacity: 0.3, rotateY: 0 };
     }
 
     const posIndex = diff + 2;
-    return positions[posIndex] || { x: 0, y: 0, z: 0, scale: 0.7, opacity: 0.5, rotateY: 0 };
+    return positions[posIndex] || { x: 0, y: 0, z: 0, scale: 0.6, opacity: 0.3, rotateY: 0 };
   };
 
   // Open lightbox
@@ -344,11 +346,12 @@ const Luxury3DGallery = ({ items }) => {
                     transform: `translateX(${transform.x}px) translateY(${transform.y}px) translateZ(${transform.z}px) rotateY(${transform.rotateY}deg) scale(${transform.scale})`,
                     opacity: transform.opacity,
                     zIndex: Math.round(transform.scale * 10),
+                    transition: 'all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1)', // Smoother transition
                   }}
                   whileHover={{ scale: 1.05 }}
                   onClick={() => openLightbox(index)}
                 >
-                  <img src={item.src} alt={item.title} loading="lazy" />
+                  <img src={item.src} alt="Gallery item" loading="lazy" />
                 </GalleryItem>
               );
             })}
@@ -364,7 +367,7 @@ const Luxury3DGallery = ({ items }) => {
           </NavigationArrows>
         </CarouselContainer>
         
-        <Caption>{items[currentIndex]?.title || ''}</Caption>
+
         
         <DotsContainer>
           {items.map((_, index) => (

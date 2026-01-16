@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Luxury3DGallery from './Luxury3DGallery';
 
 const GallerySection = styled.section`
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
   padding: 4rem 2rem;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   position: relative;
@@ -60,16 +61,30 @@ const SectionTitle = styled.h2`
   text-align: center;
   margin-bottom: 1rem;
   font-size: 2.5rem;
-  color: #D4A540;
-  font-family: 'Playfair Display', serif;
-  font-weight: 700;
+  color: #e5b9a2;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.3;
+  
+  &::before {
+    content: "";
+    position: absolute;
+    top: -1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #e5b9a2, transparent);
+    border-radius: 2px;
+  }
   
   &::after {
     content: '';
     display: block;
     width: 100px;
     height: 4px;
-    background: linear-gradient(90deg, #D4A540, #F4D576);
+    background: linear-gradient(90deg, #e5b9a2, #f0d0c0);
     margin: 1rem auto;
     border-radius: 2px;
   }
@@ -82,10 +97,11 @@ const SectionTitle = styled.h2`
 
 const GallerySubtitle = styled.p`
   text-align: center;
-  color: #e0e0e0;
+  color: white;
   font-size: 1.2rem;
   margin-bottom: 3rem;
   font-weight: 300;
+  font-family: 'Montserrat', sans-serif;
   position: relative;
   z-index: 2;
   
@@ -100,49 +116,49 @@ const GallerySubtitle = styled.p`
 // Combined gallery items for the 3D gallery
 const galleryItems = [
   // Building images
-  { id: 4, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.jpg", title: "Tower A Elevation" },
-  { id: 5, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.jpg", title: "Clubhouse & Pool Area" },
-  { id: 6, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.jpg", title: "Main Entrance Foyer" },
-  { id: 7, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.jpg", title: "Garden Courtyard" },
-  { id: 8, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.jpg", title: "Luxury Apartment Interior" },
-  { id: 9, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.jpg", title: "Sky Lounge & Bar" },
-  { id: 10, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.jpg", title: "Fitness Center" },
-  { id: 11, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.jpg", title: "Spa & Wellness Area" },
-  { id: 12, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.jpg", title: "Conference Room" },
-  { id: 13, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.jpg", title: "Children's Play Area" },
-  { id: 14, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.jpg", title: "Parking Area" },
-  { id: 15, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.jpg", title: "Landscaped Gardens" },
-  { id: 16, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.jpg", title: "Swimming Pool & Deck" },
-  { id: 17, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.jpg", title: "Terrace & Outdoor Seating" },
-  { id: 18, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.jpg", title: "Elevator Lobby" },
-  { id: 19, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.jpg", title: "Staircase Design" },
-  { id: 20, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.jpg", title: "Security & Concierge" },
-  { id: 21, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.jpg", title: "Service Areas" },
+  { id: 4, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.jpg" },
+  { id: 5, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.jpg" },
+  { id: 6, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.jpg" },
+  { id: 7, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.jpg" },
+  { id: 8, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.jpg" },
+  { id: 9, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.jpg" },
+  { id: 10, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.jpg" },
+  { id: 11, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.jpg" },
+  { id: 12, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.jpg" },
+  { id: 13, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.jpg" },
+  { id: 14, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.jpg" },
+  { id: 15, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.jpg" },
+  { id: 16, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.jpg" },
+  { id: 17, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.jpg" },
+  { id: 18, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.jpg" },
+  { id: 19, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.jpg" },
+  { id: 20, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.jpg" },
+  { id: 21, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.jpg" },
   
   // Render images
-  { id: 101, src: "/images/render/3-100.jpg", title: "Exterior View - Day" },
-  { id: 102, src: "/images/render/Asset 1-100.jpg", title: "Aerial View - Residential Block" },
-  { id: 103, src: "/images/render/Asset 2-100.jpg", title: "Night View - Illuminated Facade" },
+  { id: 101, src: "/images/render/3-100.jpg" },
+  { id: 102, src: "/images/render/Asset 1-100.jpg" },
+  { id: 103, src: "/images/render/Asset 2-100.jpg" },
   
   // Additional luxury items
-  { id: 301, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.jpg", title: "Luxury Lobby Design" },
-  { id: 302, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.jpg", title: "Premium Kitchen Setup" },
-  { id: 303, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.jpg", title: "Master Bedroom View" },
-  { id: 304, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.jpg", title: "Luxury Bathroom Design" },
-  { id: 305, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.jpg", title: "Balcony with View" },
-  { id: 306, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.jpg", title: "Home Office Space" },
-  { id: 307, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.jpg", title: "Dining Area Elegance" },
-  { id: 308, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.jpg", title: "Living Room Ambiance" },
-  { id: 309, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.jpg", title: "Penthouse Terrace" },
-  { id: 310, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.jpg", title: "Gated Community Entrance" },
-  { id: 311, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.jpg", title: "Underground Parking" },
-  { id: 312, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.jpg", title: "Landscaped Water Features" },
-  { id: 313, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.jpg", title: "Yoga & Meditation Deck" },
-  { id: 314, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.jpg", title: "Barbecue Pavilion" },
-  { id: 315, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.jpg", title: "Multipurpose Hall" },
-  { id: 316, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.jpg", title: "Library & Study" },
-  { id: 317, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.jpg", title: "Wine Cellar & Tasting Room" },
-  { id: 318, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.jpg", title: "Private Cinema" }
+  { id: 301, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.jpg" },
+  { id: 302, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.jpg" },
+  { id: 303, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.jpg" },
+  { id: 304, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.jpg" },
+  { id: 305, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.jpg" },
+  { id: 306, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.jpg" },
+  { id: 307, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.jpg" },
+  { id: 308, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.jpg" },
+  { id: 309, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.jpg" },
+  { id: 310, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.jpg" },
+  { id: 311, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.jpg" },
+  { id: 312, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.jpg" },
+  { id: 313, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.jpg" },
+  { id: 314, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.jpg" },
+  { id: 315, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.jpg" },
+  { id: 316, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.jpg" },
+  { id: 317, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.jpg" },
+  { id: 318, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.jpg" }
 ];
 
 const BuildingGallery = () => {
