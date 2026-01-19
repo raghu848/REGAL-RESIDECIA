@@ -4,10 +4,10 @@ import styled from 'styled-components';
 
 const LocationSection = styled.section`
   position: relative;
-  padding: 8rem 0; /* Increased from 6rem */
+  padding: 3rem 0; /* Increased from 6rem */
   overflow: hidden;
   background: #0a0a0a;
-  margin-top: 4rem;
+  margin-top: 3rem;
   
   &::before {
     content: '';
@@ -55,7 +55,7 @@ const LocationSection = styled.section`
   .location-heading {
     font-family: 'Georgia', 'Times New Roman', serif;
     font-style: italic;
-    font-size: 3rem; /* Increased from 2.5rem */
+    font-size: 2.5rem; /* Increased from 2.5rem */
     color: #e5b9a2;
     margin-bottom: 2rem; /* Increased from 1.5rem */
     line-height: 1.3;
@@ -64,7 +64,7 @@ const LocationSection = styled.section`
   
   .location-paragraph {
     font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1.3rem; /* Increased from 1.1rem */
+    font-size: 1rem; /* Increased from 1.1rem */
     line-height: 1.8; /* Increased from 1.7 */
     color: #000000;
     opacity: 0.9;

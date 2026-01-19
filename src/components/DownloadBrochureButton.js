@@ -2,37 +2,44 @@ import React from 'react';
 import styled from 'styled-components';
 
 const DownloadButton = styled.a`
-  background: transparent;
-  color: #D4AF37;
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
+  background: linear-gradient(135deg, #D4AF37 0%, #F4E5A4 100%);
+  color: #0F172A;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
   text-decoration: none;
   font-size: 1rem;
   transition: all 0.3s ease;
   white-space: nowrap;
   border: 2px solid #D4AF37;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
   display: inline-flex;
   align-items: center;
   gap: 0.6rem;
   letter-spacing: 0.5px;
   text-transform: uppercase;
-
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+  
   &:hover {
-    background: #D4AF37;
+    background: linear-gradient(135deg, #F4E5A4 0%, #D4AF37 100%);
     color: #0F172A;
     text-decoration: none;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+    border-color: #e5b9a2;
+  }
+  
+  &:active {
+    transform: translateY(-1px);
   }
 
   @media (max-width: 1024px) {
     font-size: 0.9rem;
+    padding: 0.7rem 1.3rem;
   }
 
   @media (max-width: 768px) {
-    padding: 0.4rem 0.8rem;
+    padding: 0.6rem 1rem;
     font-size: 0.85rem;
   }
 `;
@@ -47,18 +54,23 @@ const DownloadBrochureButton = ({ className, variant = 'default' }) => {
     e.preventDefault();
     
     try {
-      // Fetch the text file content
-      const response = await fetch('/brochures/regal-residencia-brochure.txt');
-      const textContent = await response.text();
+      // Try to download the HTML version first as it's more informative
+      const response = await fetch('/brochures/regal-residencia-brochure.html');
       
-      // Create a blob with the content
-      const blob = new Blob([textContent], { type: 'text/plain' });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      
+      const htmlContent = await response.text();
+      
+      // Create a blob with the HTML content
+      const blob = new Blob([htmlContent], { type: 'text/html' });
       
       // Create a download link
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'regal-residencia-brochure.txt';
+      a.download = 'Regal-Residencia-Brochure.html';
       
       // Trigger the download
       document.body.appendChild(a);
@@ -68,10 +80,35 @@ const DownloadBrochureButton = ({ className, variant = 'default' }) => {
       document.body.removeChild(a);
       window.URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Error downloading brochure:', error);
+      console.error('Error downloading HTML brochure:', error);
       
-      // Fallback to direct link if fetch fails
-      window.location.href = '/brochures/regal-residencia-brochure.txt';
+      try {
+        // Fallback to TXT version
+        const response = await fetch('/brochures/regal-residencia-brochure.txt');
+        const textContent = await response.text();
+        
+        // Create a blob with the content
+        const blob = new Blob([textContent], { type: 'text/plain' });
+        
+        // Create a download link
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'Regal-Residencia-Brochure.txt';
+        
+        // Trigger the download
+        document.body.appendChild(a);
+        a.click();
+        
+        // Cleanup
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+      } catch (txtError) {
+        console.error('Error downloading TXT brochure:', txtError);
+        
+        // Final fallback - redirect to the file directly
+        window.open('/brochures/regal-residencia-brochure.html', '_blank');
+      }
     }
   };
   
@@ -79,7 +116,7 @@ const DownloadBrochureButton = ({ className, variant = 'default' }) => {
     <DownloadButton 
       onClick={handleDownload}
       href="#"
-      className={className}
+      className={`download-btn ${className || ''}`.trim()}
       title="Download our project brochure"
     >
       <DownloadIcon viewBox="0 0 24 24" fill="currentColor">

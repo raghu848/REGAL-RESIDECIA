@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import DownloadBrochureButton from './DownloadBrochureButton';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,7 +81,7 @@ const Navbar = () => {
             </div>
             
             <div className="button-group">
-              <button className="download-btn">Download Brochure</button>
+              <DownloadBrochureButton className="download-btn" />
               
               <a
                 href="#inquiry"
@@ -127,7 +128,7 @@ const Navbar = () => {
             </div>
             
             <div className="mobile-buttons">
-              <button className="download-btn mobile">Download Brochure</button>
+              <DownloadBrochureButton className="download-btn mobile" />
               <a href="#inquiry" className="cta-btn mobile" onClick={(e) => scrollToSection(e, 'inquiry')}>
                 Book Visit
               </a>

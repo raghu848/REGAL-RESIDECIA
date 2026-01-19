@@ -944,6 +944,7 @@ const Footer = () => {
               </a>
             </SocialLinks>
             <div style={{ marginTop: '2rem', textAlign: 'left' }}>
+              <p>𝑷𝒓𝒐𝒅𝒖𝒄𝒕 𝒃𝒚</p>
               <img 
                 src="/images/render/GDPL_Logo_white.png" 
                 alt="GDPR Compliance Logo"

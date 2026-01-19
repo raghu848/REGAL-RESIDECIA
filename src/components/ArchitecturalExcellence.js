@@ -108,14 +108,14 @@ const ArchitecturalExcellenceSection = styled.section`
   }
 
   .heading {
-    font-family: 'Playfair Display', Georgia, serif;
+  font-family: 'Georgia', 'Times New Roman', serif;
     font-style: italic;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     color: #e5b9a2;
     margin-bottom: 1.5rem;
     line-height: 1.4;
-    font-weight: 700;
-    text-transform: uppercase;
+    font-weight: 300;
+    text-transform: none;
     letter-spacing: 1.5px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     position: relative;
@@ -216,7 +216,7 @@ const ArchitecturalExcellence = () => {
               transition={{ duration: 0.8 }}
             >
               <h2 className="heading">
-                Architectural Excellence <br />By Reza Kabul
+                <span>Architectural Excellence <br />By Reza Kabul</span>
               </h2>
               <p className="paragraph">
                 One of India's most respected architects, brings decades of global experience and design excellence to this project. Founder of ARK Reza Kabul Architects, established in 1988, he is known for pioneering landmark developments rooted in his philosophy of "liberating spaces." With studios in India and the USA, his portfolio spans residential, commercial, and iconic high-rise projects across India and internationally. His work is widely recognised for setting new benchmarks in architectural innovation, scale, and timeless design.
