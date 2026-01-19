@@ -72,12 +72,9 @@ const Navbar = () => {
             <div className="nav-links">
               <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Project</a>
               <a href="#amenities" onClick={(e) => scrollToSection(e, 'amenities')}>Amenities</a>
-              <a href="#" onClick={openMaps}>
-                {/* <svg viewBox="0 0 24 24" fill="currentColor" className="location-icon">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg> */}
+              <button type="button" onClick={openMaps} className="location-link">
                 Location
-              </a>
+              </button>
             </div>
             
             <div className="button-group">
@@ -119,12 +116,9 @@ const Navbar = () => {
             <div className="mobile-nav">
               <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Project</a>
               <a href="#amenities" onClick={(e) => scrollToSection(e, 'amenities')}>Amenities</a>
-              <a href="#" onClick={openMaps}>
-                {/* <svg viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                </svg> */}
+              <button type="button" onClick={openMaps} className="location-link">
                 Location
-              </a>
+              </button>
             </div>
             
             <div className="mobile-buttons">
@@ -246,6 +240,43 @@ const Navbar = () => {
         }
 
         .nav-links a:hover::after {
+          width: 100%;
+        }
+        
+        .location-link {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 0.85rem;
+          font-weight: 500;
+          letter-spacing: 0.5px;
+          color: #4a4a4a;
+          text-decoration: none;
+          transition: color 0.3s ease;
+          display: flex;
+          align-items: center;
+          gap: 0.4rem;
+          position: relative;
+          background: none;
+          border: none;
+          cursor: pointer;
+          padding: 0;
+        }
+        
+        .location-link:hover {
+          color: #c8b48c;
+        }
+        
+        .location-link::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: #c8b48c;
+          transition: width 0.3s ease;
+        }
+        
+        .location-link:hover::after {
           width: 100%;
         }
 

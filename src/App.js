@@ -679,64 +679,7 @@ const InstagramIcon = styled(SocialIcon)`
   }
 `;
 
-// LinkedIn Icon
-const LinkedInIcon = styled(SocialIcon)`
-  background: linear-gradient(135deg, #0077B5, #00A0DC);
-  
-  &:hover {
-    box-shadow: 0 6px 20px rgba(0, 119, 181, 0.5);
-  }
-  
-  /* Responsive design for all resolutions */
-  @media (max-width: 1200px) {
-    width: 48px;
-    height: 48px;
-    font-size: 1.4rem;
-  }
-  
-  @media (max-width: 992px) {
-    width: 46px;
-    height: 46px;
-    font-size: 1.35rem;
-  }
-  
-  @media (max-width: 768px) {
-    width: 45px;
-    height: 45px;
-    font-size: 1.3rem;
-  }
-  
-  @media (max-width: 576px) {
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-  }
-  
-  @media (max-width: 480px) {
-    width: 38px;
-    height: 38px;
-    font-size: 1.1rem;
-  }
-  
-  @media (max-width: 400px) {
-    width: 35px;
-    height: 35px;
-    font-size: 1rem;
-  }
-  
-  /* Additional media queries for 125% scaling */
-  @media screen and (min-resolution: 120dpi) and (max-width: 768px) {
-    width: 47px;
-    height: 47px;
-    font-size: 1.35rem;
-  }
-  
-  @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
-    width: 50px;
-    height: 50px;
-    font-size: 1.4rem;
-  }
-`;
+
 
 function App() {
   return (

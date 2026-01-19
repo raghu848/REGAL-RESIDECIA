@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
-import { motion, useAnimation } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const GalleryContainer = styled.section`
   padding: 0 2rem 4rem;
@@ -165,23 +165,7 @@ const Dot = styled.button`
   }
 `;
 
-const Caption = styled.p`
-  text-align: center;
-  color: #e5b9a2;
-  font-size: 1.3rem;
-  font-weight: 300;
-  margin-top: 1.5rem;
-  font-style: italic;
-  position: relative;
-  z-index: 2;
-  text-shadow: 0 0 10px rgba(229, 185, 162, 0.3);
-  font-family: 'Georgia', 'Times New Roman', serif;
-  padding: 0.5rem;
-  
-  @media (max-width: 768px) {
-    font-size: 1.1rem;
-  }
-`;
+
 
 const Lightbox = styled.div`
   position: fixed;
@@ -234,6 +218,19 @@ const Luxury3DGallery = ({ items }) => {
   const intervalRef = useRef(null);
   const containerRef = useRef(null);
 
+  // Navigation functions
+  const goToNext = () => {
+    setCurrentIndex(prev => (prev + 1) % items.length);
+  };
+
+  const goToPrev = () => {
+    setCurrentIndex(prev => (prev - 1 + items.length) % items.length);
+  };
+
+  const goToSlide = (index) => {
+    setCurrentIndex(index);
+  };
+
   // Auto-rotate carousel
   useEffect(() => {
     if (isAutoPlaying && items.length > 1) {
@@ -265,24 +262,11 @@ const Luxury3DGallery = ({ items }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [goToNext, goToPrev]);
 
   // Handle mouse enter/leave for auto-play
   const handleMouseEnter = () => setIsAutoPlaying(false);
   const handleMouseLeave = () => setIsAutoPlaying(true);
-
-  // Navigation functions
-  const goToNext = () => {
-    setCurrentIndex(prev => (prev + 1) % items.length);
-  };
-
-  const goToPrev = () => {
-    setCurrentIndex(prev => (prev - 1 + items.length) % items.length);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
 
   // Calculate positions for 3D effect
   const getTransform = (index, activeIndex, length) => {
