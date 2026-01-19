@@ -64,7 +64,7 @@ const Navbar = () => {
         <div className="navbar-container">
           <div className="logo-container">
             <a href="/" aria-label="Regal Residencia Home">
-              <img src="/images/render/Regalia_Logo.png" alt="Regal Residencia Logo" style={{ height: '65px', width: 'auto', display: 'block', objectFit: 'contain' }} />
+              <img src="/images/render/Regalia_Logo.png" alt="Regal Residencia Logo" style={{ height: '43px', width: 'auto', display: 'block', objectFit: 'contain' }} />
             </a>
           </div>
           
@@ -110,7 +110,7 @@ const Navbar = () => {
           <div className="mobile-content">
             <div className="mobile-logo">
               <a href="/">
-                <img src="/images/render/Regalia_Logo.png" alt="Regal Residencia Logo" style={{ height: '60px', width: 'auto', display: 'block', objectFit: 'contain' }} />
+                <img src="/images/render/Regalia_Logo.png" alt="Regal Residencia Logo" style={{ height: '43px', width: 'auto', display: 'block', objectFit: 'contain' }} />
               </a>
             </div>
             <div className="mobile-nav">
@@ -155,7 +155,7 @@ const Navbar = () => {
 
         .navbar {
           position: fixed;
-          top: 10px;
+          top: 8px;
           left: 50%;
           transform: translateX(-50%);
           width: 90%;
@@ -191,7 +191,7 @@ const Navbar = () => {
         }
 
         .logo-container img {
-          height: 65px;
+          height: 43px;
           width: auto;
           display: block;
         }
@@ -407,7 +407,7 @@ const Navbar = () => {
         }
 
         .mobile-logo img {
-          height: 60px;
+          height: 43px;
           width: auto;
         }
 
@@ -431,6 +431,27 @@ const Navbar = () => {
         }
 
         .mobile-nav a:hover {
+          color: #c8b48c;
+        }
+        
+        .mobile-nav .location-link {
+          font-family: 'Montserrat', sans-serif;
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: #4a4a4a;
+          text-decoration: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          background: none;
+          border: none;
+          padding: 0;
+          margin: 0;
+          cursor: pointer;
+        }
+        
+        .mobile-nav .location-link:hover {
           color: #c8b48c;
         }
 
