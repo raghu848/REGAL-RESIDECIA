@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
@@ -219,17 +219,17 @@ const Luxury3DGallery = ({ items }) => {
   const containerRef = useRef(null);
 
   // Navigation functions
-  const goToNext = () => {
+  const goToNext = useCallback(() => {
     setCurrentIndex(prev => (prev + 1) % items.length);
-  };
+  }, [items.length]);
 
-  const goToPrev = () => {
+  const goToPrev = useCallback(() => {
     setCurrentIndex(prev => (prev - 1 + items.length) % items.length);
-  };
+  }, [items.length]);
 
-  const goToSlide = (index) => {
+  const goToSlide = useCallback((index) => {
     setCurrentIndex(index);
-  };
+  }, []);
 
   // Auto-rotate carousel
   useEffect(() => {
