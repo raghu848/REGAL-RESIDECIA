@@ -29,11 +29,24 @@ const BackgroundVideo = styled.video`
   opacity: 1;
   pointer-events: none;
   
-  /* Mobile-specific adjustments */
-  @media (max-width: 767px) {
-    width: 100vw;
-    min-height: 100vh;
-    height: auto;
+  &.desktop-video {
+    display: block;
+    
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+  
+  &.mobile-video {
+    display: none;
+    
+    @media (max-width: 767px) {
+      display: block;
+      width: 100vw;
+      min-height: 100vh;
+      height: auto;
+      object-fit: cover;
+    }
   }
   
   /* Hide all native video controls */
@@ -88,35 +101,46 @@ const BackgroundVideo = styled.video`
 
 const VideoBackground = () => {
   const videoRef = useRef(null);
+  const mobileVideoRef = useRef(null);
 
   useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    // Set video attributes for better autoplay support
-    video.setAttribute('playsinline', '');
-    video.setAttribute('webkit-playsinline', '');
+    const desktopVideo = videoRef.current;
+    const mobileVideo = mobileVideoRef.current;
     
-    const playPromise = video.play();
-    if (playPromise !== undefined) {
-      playPromise.catch((error) => {
-        // Autoplay prevented - will play on user interaction
-        console.log('Video autoplay prevented, waiting for user interaction:', error);
-        const handleInteraction = () => {
-          video.play().catch((err) => {
-            console.error('Failed to play video after interaction:', err);
-          });
-        };
-        // Listen for any user interaction
-        document.addEventListener('click', handleInteraction, { once: true });
-        document.addEventListener('touchstart', handleInteraction, { once: true });
-        document.addEventListener('keydown', handleInteraction, { once: true });
-      });
-    }
+    // Function to handle video playback
+    const playVideo = (video) => {
+      if (!video) return;
+      
+      // Set video attributes for better autoplay support
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          // Autoplay prevented - will play on user interaction
+          console.log('Video autoplay prevented, waiting for user interaction:', error);
+          const handleInteraction = () => {
+            video.play().catch((err) => {
+              console.error('Failed to play video after interaction:', err);
+            });
+          };
+          // Listen for any user interaction
+          document.addEventListener('click', handleInteraction, { once: true });
+          document.addEventListener('touchstart', handleInteraction, { once: true });
+          document.addEventListener('keydown', handleInteraction, { once: true });
+        });
+      }
+    };
+    
+    // Play both videos
+    playVideo(desktopVideo);
+    playVideo(mobileVideo);
   }, []);
 
   return (
     <VideoContainer>
+      {/* Desktop Video */}
       <BackgroundVideo
         ref={videoRef}
         autoPlay
@@ -128,8 +152,27 @@ const VideoBackground = () => {
         controlsList="nodownload nofullscreen noremoteplayback"
         disablePictureInPicture
         disableRemotePlayback
+        className="desktop-video"
       >
         <source src="/videos/hero-background.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </BackgroundVideo>
+      
+      {/* Mobile Video */}
+      <BackgroundVideo
+        ref={mobileVideoRef}
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="metadata"
+        controls={false}
+        controlsList="nodownload nofullscreen noremoteplayback"
+        disablePictureInPicture
+        disableRemotePlayback
+        className="mobile-video"
+      >
+        <source src="/videos/Regal_Website_Video_vertical.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </BackgroundVideo>
     </VideoContainer>

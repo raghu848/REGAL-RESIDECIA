@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DownloadBrochureButton from './DownloadBrochureButton';
+import PopupEnquiryForm from './PopupEnquiryForm';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -145,6 +146,8 @@ const Navbar = () => {
           </div>
         </div>
       )}
+      
+      <PopupEnquiryForm />
 
       <style jsx>{`
         * {
