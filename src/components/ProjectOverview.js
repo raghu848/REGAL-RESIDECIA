@@ -550,7 +550,7 @@ const ProjectOverview = () => {
           >
             <h3>Prime Location</h3>
             <p>
-              Strategically positioned in Mohali Sector 114, Regal Residencia offers unparalleled access to the region's finest amenities. Experience seamless connectivity to international hubs while enjoying the tranquility of an exclusive residential enclave.
+              Strategically positioned in Regal Residencia, Sector 114, Sahibzada Ajit Singh Nagar, Punjab 140307, Regal Residencia offers unparalleled access to the region's finest amenities. Experience seamless connectivity to international hubs while enjoying the tranquility of an exclusive residential enclave.
             </p>
             <div className="highlight">
               📍 Minutes from International Airport & Railway Station

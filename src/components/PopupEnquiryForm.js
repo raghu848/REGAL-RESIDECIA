@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
+import axios from 'axios';
 
 const PopupOverlay = styled.div`
   position: fixed;
@@ -192,25 +193,34 @@ const PopupEnquiryForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Form submitted:', formData);
     
-    // Mark as submitted to prevent future popups
-    setHasSubmitted(true);
-    
-    // Show success message
-    setShowSuccessMessage(true);
-    
-    // Hide success message after 3 seconds
-    setTimeout(() => {
-      setShowSuccessMessage(false);
-    }, 3000);
-    
-    // Reset form and close popup
-    setFormData({ name: '', phone: '', message: '' });
-    setShowPopup(false);
+    try {
+      // Send inquiry to backend API
+      await axios.post('http://localhost:5000/api/inquiry', {
+        ...formData,
+        email: '' // Adding empty email field as it's not in the popup form
+      });
+      
+      // Mark as submitted to prevent future popups
+      setHasSubmitted(true);
+      
+      // Show success message
+      setShowSuccessMessage(true);
+      
+      // Hide success message after 3 seconds
+      setTimeout(() => {
+        setShowSuccessMessage(false);
+      }, 3000);
+      
+      // Reset form and close popup
+      setFormData({ name: '', phone: '', message: '' });
+      setShowPopup(false);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('Failed to submit inquiry. Please try again.');
+    }
   };
 
   return (

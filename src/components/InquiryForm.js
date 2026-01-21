@@ -841,8 +841,8 @@ const InquiryForm = () => {
     setFormMessage('');
     
     try {
-      // In a real application, this would point to your backend API
-      await axios.post('/api/inquiry', formData);
+      // Send inquiry to backend API
+      await axios.post('http://localhost:5000/api/inquiry', formData);
       
       setFormMessage('Thank you for your inquiry! Our team will contact you shortly.');
       setFormMessageType('success');
@@ -926,7 +926,7 @@ const InquiryForm = () => {
                 <div className="info-icon">✉️</div>
                 <div className="info-details">
                   <h4>Email</h4>
-                  <p>info@regalresidencia.com</p>
+                  <p>gdplmohali@gmail.com</p>
                 </div>
               </div>
             </motion.div> */}

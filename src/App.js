@@ -713,7 +713,7 @@ function App() {
         {/* Sticky Social Media Icons */}
         <StickyIconsContainer>
           <PhoneIcon
-            href="tel:+919876543210"
+            href="tel:+9107710380077"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             title="Call us"
@@ -722,7 +722,7 @@ function App() {
           </PhoneIcon>
           
           <WhatsAppIcon
-            href="https://wa.me/919876543210"
+            href="https://wa.me/9107710380077"
             target="_blank"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
