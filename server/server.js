@@ -7,7 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'http://localhost:5005', 'http://127.0.0.1:3000', 'http://127.0.0.1:5005'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Create transporter for sending emails
@@ -53,8 +56,11 @@ app.post('/api/inquiry', async (req, res) => {
       `
     };
 
-    // Send email
-    await transporter.sendMail(mailOptions);
+    // For testing - log the data instead of sending email
+    console.log('New inquiry received:', { name, email, phone, message });
+    
+    // Uncomment below when Gmail credentials are configured
+    // await transporter.sendMail(mailOptions);
 
     res.status(200).json({ 
       message: 'Inquiry submitted successfully! We will contact you soon.' 

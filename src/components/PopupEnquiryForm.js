@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -154,35 +154,40 @@ const PopupEnquiryForm = () => {
   });
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [hasSubmitted, setHasSubmitted] = useState(false);
+  const [dismissCount, setDismissCount] = useState(0); // Track how many times the popup has been dismissed
+  const timeoutRef = useRef(null); // Track timeout ID to clear if needed
 
-  // Show popup 15 seconds after it's closed, but not after submission
+  // Show popup with increasing delay after each dismissal, but not after submission
   useEffect(() => {
-    let timeout;
+    // Clear any existing timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
     
-    const scheduleNextPopup = () => {
-      timeout = setTimeout(() => {
-        if (!hasSubmitted) {
-          setShowPopup(true);
-        }
-      }, 15000);
+    const calculateDelay = () => {
+      // Base delay is 15 seconds, plus 15 seconds for each dismissal
+      return 15000 + (dismissCount * 15000);
     };
-
-    // Start the first popup after initial load
-    scheduleNextPopup();
-
+    
+    // Schedule next popup if not submitted
+    if (!hasSubmitted) {
+      timeoutRef.current = setTimeout(() => {
+        setShowPopup(true);
+      }, calculateDelay());
+    }
+    
+    // Cleanup function
     return () => {
-      if (timeout) clearTimeout(timeout);
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
     };
-  }, [hasSubmitted]);
+  }, [hasSubmitted, dismissCount]);
 
   const handleClose = () => {
     setShowPopup(false);
-    // Schedule next popup 15 seconds after closing, but not after submission
-    if (!hasSubmitted) {
-      setTimeout(() => {
-        setShowPopup(true);
-      }, 15000);
-    }
+    // Increase the dismiss count
+    setDismissCount(prev => prev + 1);
   };
 
   const handleInputChange = (e) => {

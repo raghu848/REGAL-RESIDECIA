@@ -918,7 +918,7 @@ const InquiryForm = () => {
                 <div className="info-icon">📞</div>
                 <div className="info-details">
                   <h4>Phone</h4>
-                  <p>+91 98765 43210</p>
+                  <p>+91 778900 0077</p>
                 </div>
               </div>
               

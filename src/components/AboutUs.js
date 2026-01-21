@@ -164,7 +164,7 @@ const TextContent = styled.div`
       margin-bottom: 1rem;
     }
     
-    p {
+    
       font-size: 0.95rem;
     }
   }
@@ -261,7 +261,7 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                This proposed residential–commercial development at Sector 114, Mohali, is envisioned as a thoughtfully planned urban destination that seamlessly blends modern living with vibrant commercial spaces. Spread across expansive residential and commercial zones, the project features high-rise towers with spacious 3 & 4 BHK residences, complemented by a well-integrated retail and lifestyle hub. Designed around open landscapes, podium-level amenities, and connected green spaces, the development offers an elevated lifestyle with world-class facilities, efficient planning, and excellent connectivity to Chandigarh, the airport, and key city landmarks.
+                This proposed residential–commercial development at Sector 114, Mohali, is envisioned as a thoughtfully planned urban destination that seamlessly blends modern living with vibrant commercial spaces. Spread across expansive residential and commercial zones, The project features high-rise towers with spacious 3 & 4 BHK residences crowned by exclusive 3+1 and 4+1 BHK penthouses, complemented by a well-integrated retail and lifestyle hub. Designed around open landscapes, podium-level amenities, and connected green spaces, the development offers an elevated lifestyle with world-class facilities, efficient planning, and excellent connectivity to Chandigarh, the airport, and key city landmarks.
 
               </motion.p>
             </TextContent>
