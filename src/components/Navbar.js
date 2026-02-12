@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DownloadBrochureButton from './DownloadBrochureButton';
 import PopupEnquiryForm from './PopupEnquiryForm';
+import { trackEvent } from '../services/analytics';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,6 +45,9 @@ const Navbar = () => {
     e.preventDefault();
     closeMenu();
     
+    // Track navigation click
+    trackEvent('click_navigation', 'engagement', `nav_${targetId}`);
+    
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       window.scrollTo({
@@ -56,6 +60,10 @@ const Navbar = () => {
   const openMaps = (e) => {
     e.preventDefault();
     closeMenu();
+    
+    // Track location click
+    trackEvent('click_location', 'engagement', 'nav_location_map');
+    
     window.open('https://maps.google.com/?q=Regal+Residencia,+Mohali', '_blank');
   };
 

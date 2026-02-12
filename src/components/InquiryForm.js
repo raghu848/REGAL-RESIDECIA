@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { trackFormSubmission, trackEvent } from '../services/analytics';
 
 const FormSection = styled.section`
   padding: 2rem 0;
@@ -840,12 +841,23 @@ const InquiryForm = () => {
     setIsSubmitting(true);
     setFormMessage('');
     
+    // Track form submission event
+    trackEvent('form_start', 'engagement', 'inquiry_form');
+    
+    // Determine the API URL based on environment
+    const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:5000/api/inquiry'
+      : 'https://www.regalresidenciamohali.com/api/inquiry';
+    
     try {
       // Send inquiry to backend API
-      await axios.post('http://localhost:5000/api/inquiry', formData);
+      await axios.post(apiUrl, formData);
       
       setFormMessage('Thank you for your inquiry! Our team will contact you shortly.');
       setFormMessageType('success');
+      
+      // Track successful form submission
+      trackFormSubmission('inquiry_form_success');
       
       // Reset form
       setFormData({
@@ -858,6 +870,9 @@ const InquiryForm = () => {
       setFormMessage('Failed to submit inquiry. Please try again.');
       setFormMessageType('error');
       console.error('Error submitting inquiry:', error);
+      
+      // Track failed form submission
+      trackEvent('form_error', 'engagement', 'inquiry_form');
     } finally {
       setIsSubmitting(false);
     }

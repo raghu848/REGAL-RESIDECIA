@@ -102,9 +102,9 @@ const ImageContainer = styled(motion.div)`
 `;
 
 const TextContent = styled.div`
-  h2 {
+  h1 {
     font-family: 'Georgia', 'Times New Roman', serif;
-    font-size: 2.8rem;
+    font-size: 2.4rem;
     font-weight: 300;
     color: #2c2c2c;
     line-height: 1.3;
@@ -246,14 +246,23 @@ const AboutUs = () => {
             </ImageContainer>
             
             <TextContent>
-              <motion.h2
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
+                style={{
+                  fontSize: '2.6rem',
+                  color: 'var(--text-light)',
+                  fontWeight: '500',
+                  fontFamily: "'Playfair Display', 'Poppins', serif",
+                  letterSpacing: '1px',
+                  // textTransform: 'uppercase',
+                  margin: '0 0 1.5rem 0'
+                }}
               >
-               <span>A Landmark<br />Destination in Mohali</span>
-              </motion.h2>
+               <span>A Landmark <br />Destination in Mohali</span>
+              </motion.h1>
               
               <motion.p
                 initial={{ opacity: 0, y: 20 }}

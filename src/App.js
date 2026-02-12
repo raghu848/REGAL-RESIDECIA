@@ -1,8 +1,9 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
 import HeroSection from './components/RedesignedHero';
+import { initializeAnalytics, trackPageView } from './services/analytics';
 
 
 // Lazy load heavy components
@@ -682,6 +683,27 @@ const InstagramIcon = styled(SocialIcon)`
 
 
 function App() {
+  useEffect(() => {
+    // Initialize Google Analytics
+    initializeAnalytics();
+    
+    // Track initial page view
+    trackPageView(window.location.pathname + window.location.search);
+    
+    // Track page views on URL changes (manually since we're not using router)
+    const handleLocationChange = () => {
+      trackPageView(window.location.pathname + window.location.search);
+    };
+    
+    // Listen for hash changes (for anchor navigation within the page)
+    window.addEventListener('hashchange', handleLocationChange);
+    
+    // Cleanup listener on unmount
+    return () => {
+      window.removeEventListener('hashchange', handleLocationChange);
+    };
+  }, []);
+  
   return (
     <>
       <GlobalStyle />

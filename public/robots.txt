@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://regalresidencia.com/sitemap.xml
+Sitemap: https://regalresidenciamohali.com/sitemap.xml
 
 # Directories
 Disallow: /admin/

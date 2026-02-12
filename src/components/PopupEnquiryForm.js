@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
+import { trackFormSubmission, trackEvent } from '../services/analytics';
 
 const PopupOverlay = styled.div`
   position: fixed;
@@ -201,15 +202,26 @@ const PopupEnquiryForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
+    // Track form submission event
+    trackEvent('form_start', 'engagement', 'popup_enquiry_form');
+    
+    // Determine the API URL based on environment
+    const apiUrl = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+      ? 'http://localhost:5000/api/inquiry'
+      : 'https://www.regalresidenciamohali.com/api/inquiry';
+    
     try {
       // Send inquiry to backend API
-      await axios.post('http://localhost:5000/api/inquiry', {
+      await axios.post(apiUrl, {
         ...formData,
         email: '' // Adding empty email field as it's not in the popup form
       });
       
       // Mark as submitted to prevent future popups
       setHasSubmitted(true);
+      
+      // Track successful form submission
+      trackFormSubmission('popup_enquiry_form_success');
       
       // Show success message
       setShowSuccessMessage(true);
@@ -225,6 +237,9 @@ const PopupEnquiryForm = () => {
     } catch (error) {
       console.error('Error submitting form:', error);
       alert('Failed to submit inquiry. Please try again.');
+      
+      // Track failed form submission
+      trackEvent('form_error', 'engagement', 'popup_enquiry_form');
     }
   };
 

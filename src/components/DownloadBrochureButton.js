@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { trackDownload, trackEvent } from '../services/analytics';
 
 const DownloadButton = styled.a`
   background: linear-gradient(135deg, #D4AF37 0%, #F4E5A4 100%);
@@ -53,6 +54,9 @@ const DownloadBrochureButton = ({ className, variant = 'default' }) => {
   const handleDownload = async (e) => {
     e.preventDefault();
     
+    // Track download initiation
+    trackEvent('click_download', 'engagement', 'brochure_download');
+    
     try {
       // Try to download the HTML version first as it's more informative
       const response = await fetch('/brochures/regal-residencia-brochure.html');
@@ -75,6 +79,9 @@ const DownloadBrochureButton = ({ className, variant = 'default' }) => {
       // Trigger the download
       document.body.appendChild(a);
       a.click();
+      
+      // Track successful download
+      trackDownload('Regal-Residencia-Brochure.html');
       
       // Cleanup
       document.body.removeChild(a);
@@ -100,6 +107,9 @@ const DownloadBrochureButton = ({ className, variant = 'default' }) => {
         document.body.appendChild(a);
         a.click();
         
+        // Track successful download
+        trackDownload('Regal-Residencia-Brochure.txt');
+        
         // Cleanup
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
@@ -108,6 +118,9 @@ const DownloadBrochureButton = ({ className, variant = 'default' }) => {
         
         // Final fallback - redirect to the file directly
         window.open('/brochures/regal-residencia-brochure.html', '_blank');
+        
+        // Track successful download
+        trackDownload('Regal-Residencia-Brochure.html_redirect');
       }
     }
   };
