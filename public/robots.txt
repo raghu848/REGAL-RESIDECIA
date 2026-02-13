@@ -1,19 +1,18 @@
-# Robust robots.txt for Regal Residencia
+# robots.txt for Regal Residencia
 User-agent: *
 Allow: /
 
 # Sitemaps
-Sitemap: https://regalresidenciamohali.com/sitemap.xml
+Sitemap: https://www.regalresidenciamohali.com/sitemap.xml
+
+# Primary domain
+Host: https://www.regalresidenciamohali.com
 
 # Directories
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
 
-# File types
-Disallow: /*.pdf$
+# File types - Allow PDFs for SEO
+# Disallow: /*.pdf$
 Disallow: /*.zip$
-
-# Crawl-delay for礼貌
-User-agent: *
-Crawl-delay: 10

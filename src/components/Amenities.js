@@ -46,7 +46,18 @@ const Amenities = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="subheading"
           >
-            Where wellness, recreation, and refined social spaces come together seamlessly.
+            Where wellness, recreation, and refined social spaces come together seamlessly.Where modern luxury living meets comfort and refined design. Thoughtfully planned to create a seamless blend of wellness, leisure, and sophisticated social spaces, this elevated lifestyle destination redefines premium urban living.
+
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="subheading"
+          >
+
+Discover a higher standard of living crafted for those who value space, privacy, and a vibrant community atmosphere.
           </motion.p>
         </div>
         

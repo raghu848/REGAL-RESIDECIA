@@ -1,25 +1,35 @@
 {
   "short_name": "Regal Residencia",
-  "name": "Regal Residencia Luxury Living",
+  "name": "Regal Residencia | Luxury 3/4 BHK Apartments in Mohali",
+  "description": "GMADA Approved luxury residential project in Sector 114, Mohali. Premium 3/4 BHK apartments with world-class amenities.",
   "icons": [
     {
       "src": "favicon.ico",
       "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/x-icon",
+      "purpose": "any maskable"
     },
     {
-      "src": "images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-016.jpg",
-      "type": "image/jpeg",
-      "sizes": "192x192"
+      "src": "/images/render/Regalia_Logo.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-034.jpg",
-      "type": "image/jpeg",
-      "sizes": "512x512"
+      "src": "/images/render/Regalia_Logo.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
+  "start_url": "/",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "orientation": "portrait-primary",
+  "theme_color": "#ab8977",
+  "background_color": "#ffffff",
+  "categories": ["real estate", "business"],
+  "lang": "en",
+  "dir": "ltr",
+  "scope": "/",
+  "prefer_related_applications": false
 }

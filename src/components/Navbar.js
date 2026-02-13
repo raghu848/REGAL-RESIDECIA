@@ -224,7 +224,7 @@ const Navbar = () => {
         .nav-links a {
           font-family: 'Montserrat', sans-serif;
           font-size: 0.85rem;
-          font-weight: 500;
+          font-weight: 700;
           letter-spacing: 0.5px;
           color: #4a4a4a;
           text-decoration: none;
@@ -233,6 +233,7 @@ const Navbar = () => {
           align-items: center;
           gap: 0.4rem;
           position: relative;
+          text-transform: uppercase;
         }
 
         .nav-links a:hover {
@@ -257,7 +258,7 @@ const Navbar = () => {
         .location-link {
           font-family: 'Montserrat', sans-serif;
           font-size: 0.85rem;
-          font-weight: 500;
+          font-weight: 700;
           letter-spacing: 0.5px;
           color: #4a4a4a;
           text-decoration: none;
@@ -270,6 +271,7 @@ const Navbar = () => {
           border: none;
           cursor: pointer;
           padding: 0;
+          text-transform: uppercase;
         }
         
         .location-link:hover {
@@ -305,7 +307,7 @@ const Navbar = () => {
         .download-btn {
           font-family: 'Montserrat', sans-serif;
           font-size: 0.85rem;
-          font-weight: 600;
+          font-weight: 700;
           letter-spacing: 0.5px;
           color: #4a4a4a;
           background: transparent;
@@ -314,6 +316,7 @@ const Navbar = () => {
           cursor: pointer;
           transition: all 0.3s ease;
           white-space: nowrap;
+          text-transform: uppercase;
         }
 
         .download-btn:hover {
