@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Google Search Console Verification -->
     <meta name="google-site-verification" content="google9ad8c4ce089eb166" />
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.svg" type="image/svg+xml" />
@@ -206,13 +207,16 @@
     }
     </script>
 
-    <!-- Google Tag Manager - Async Loading -->
+    <!-- Google Analytics (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-81FCQ3MSYD"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-81FCQ3MSYD');
+      gtag('config', 'G-81FCQ3MSYD', {
+        'send_page_view': true,
+        'anonymize_ip': false
+      });
     </script>
   </head>
   <body>
