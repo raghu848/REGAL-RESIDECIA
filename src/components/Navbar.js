@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import DownloadBrochureButton from './DownloadBrochureButton';
 import PopupEnquiryForm from './PopupEnquiryForm';
 import { trackEvent } from '../services/analytics';
@@ -81,6 +82,7 @@ const Navbar = () => {
             <div className="nav-links">
               <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Project</a>
               <a href="#amenities" onClick={(e) => scrollToSection(e, 'amenities')}>Amenities</a>
+              <Link to="/privacy-policy" onClick={closeMenu}>Privacy Policy</Link>
               <button type="button" onClick={openMaps} className="location-link">
                 Location
               </button>
@@ -123,8 +125,10 @@ const Navbar = () => {
               </a>
             </div>
             <div className="mobile-nav">
+              <Link to="/" onClick={closeMenu}>Home</Link>
               <a href="#about" onClick={(e) => scrollToSection(e, 'about')}>About Project</a>
               <a href="#amenities" onClick={(e) => scrollToSection(e, 'amenities')}>Amenities</a>
+              <Link to="/privacy-policy" onClick={closeMenu}>Privacy Policy</Link>
               <button type="button" onClick={openMaps} className="location-link">
                 Location
               </button>

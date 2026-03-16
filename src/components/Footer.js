@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const FooterSection = styled.footer`
   background: #0a0a0a;
@@ -922,9 +923,8 @@ const Footer = () => {
             </DirectionsButton>
           </FooterColumn>
         </FooterContainer>
-        
         <Copyright>
-          <p>&copy; {new Date().getFullYear()} Regal Residencia. All Rights Reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Regal Residencia. All Rights Reserved. | <Link to="/privacy-policy" style={{ color: '#e5b9a2', textDecoration: 'none' }}>Privacy Policy</Link></p>
           <p>Premium Residential-Commercial Project at Regal Residencia, Sector 114, Sahibzada Ajit Singh Nagar, Punjab 140307</p>
         </Copyright>
       </div>
