@@ -1,7 +1,7 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroSection from './components/RedesignedHero';
 import { initializeAnalytics, trackPageView } from './services/analytics';
