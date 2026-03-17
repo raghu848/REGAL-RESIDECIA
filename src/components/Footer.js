@@ -756,6 +756,8 @@ const Copyright = styled.div`
   flex: 1;
   margin-left: 2rem;
   font-family: 'Montserrat', sans-serif;
+  position: relative;
+  z-index: 2;
   
   p {
     margin: 0.6rem 0;
@@ -815,6 +817,29 @@ const Copyright = styled.div`
     p {
       margin: 0.15rem 0;
     }
+  }
+`;
+
+const PrivacyLink = styled.a`
+  display: inline-block;
+  color: #e5b9a2;
+  text-decoration: none;
+  font-size: 0.85rem;
+  margin-top: 0.8rem;
+  font-family: 'Montserrat', sans-serif;
+  transition: color 0.3s ease;
+  
+  &:hover {
+    color: #f0d0c0;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 480px) {
+    font-size: 0.75rem;
   }
 `;
 
@@ -926,6 +951,7 @@ const Footer = () => {
         <Copyright>
           <p>&copy; {new Date().getFullYear()} Regal Residencia. All Rights Reserved.</p>
           <p>Premium Residential-Commercial Project at Regal Residencia, Sector 114, Sahibzada Ajit Singh Nagar, Punjab 140307</p>
+          <PrivacyLink href="/privacy-policy">Privacy Policy</PrivacyLink>
         </Copyright>
       </div>
     </FooterSection>

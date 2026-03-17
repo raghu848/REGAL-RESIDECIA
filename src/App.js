@@ -1,6 +1,7 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 import { motion } from 'framer-motion';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import HeroSection from './components/RedesignedHero';
 import { initializeAnalytics, trackPageView } from './services/analytics';
@@ -16,6 +17,7 @@ const ArchitecturalExcellence = lazy(() => import('./components/ArchitecturalExc
 
 const InquiryForm = lazy(() => import('./components/InquiryForm'));
 const Footer = lazy(() => import('./components/Footer'));
+const PrivacyPolicy = lazy(() => import('./components/PrivacyPolicy'));
 
 
 // Loading fallback component
@@ -736,33 +738,45 @@ function App() {
     };
   }, []);
   
-  return (
+    return (
     <>
       <GlobalStyle />
       <AppContainer>
         <Navbar />
-        <HeroSection />
-        <Suspense fallback={LoadingFallback()}>
-          <AboutUs />
-          <ArchitecturalExcellence />
-          
-          <div id="location">
-            <Location />
-          </div>
-          
-          <div id="amenities">
-            <Amenities />
-          </div>
+        <Routes>
+          <Route path="/privacy-policy" element={
+            <Suspense fallback={LoadingFallback()}>
+              <PrivacyPolicy />
+              <Footer />
+            </Suspense>
+          } />
+          <Route path="*" element={
+            <>
+              <HeroSection />
+              <Suspense fallback={LoadingFallback()}>
+                <AboutUs />
+                <ArchitecturalExcellence />
+                
+                <div id="location">
+                  <Location />
+                </div>
+                
+                <div id="amenities">
+                  <Amenities />
+                </div>
 
-          <div id="gallery">
-            <BuildingGallery />
-          </div>
-          
-          <div id="inquiry">
-            <InquiryForm />
-          </div>
-          <Footer />
-        </Suspense>
+                <div id="gallery">
+                  <BuildingGallery />
+                </div>
+                
+                <div id="inquiry">
+                  <InquiryForm />
+                </div>
+                <Footer />
+              </Suspense>
+            </>
+          } />
+        </Routes>
         
         {/* Sticky Social Media Icons */}
         <StickyIconsContainer>

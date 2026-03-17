@@ -48,6 +48,12 @@ const Navbar = () => {
     // Track navigation click
     trackEvent('click_navigation', 'engagement', `nav_${targetId}`);
     
+    // If not on homepage, navigate to homepage with hash
+    if (window.location.pathname !== '/') {
+      window.location.href = '/#' + targetId;
+      return;
+    }
+    
     const targetElement = document.getElementById(targetId);
     if (targetElement) {
       window.scrollTo({
