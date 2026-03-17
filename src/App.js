@@ -714,39 +714,6 @@ const InstagramIcon = styled(SocialIcon)`
 
 
 
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import PrivacyPolicy from './components/PrivacyPolicy';
-
-// ... (existing lazy imports)
-
-const Home = () => {
-  return (
-    <>
-      <HeroSection />
-      <Suspense fallback={LoadingFallback()}>
-        <AboutUs />
-        <ArchitecturalExcellence />
-        
-        <div id="location">
-          <Location />
-        </div>
-        
-        <div id="amenities">
-          <Amenities />
-        </div>
-
-        <div id="gallery">
-          <BuildingGallery />
-        </div>
-        
-        <div id="inquiry">
-          <InquiryForm />
-        </div>
-      </Suspense>
-    </>
-  );
-};
-
 function App() {
   useEffect(() => {
     // Initialize Google Analytics
@@ -755,28 +722,45 @@ function App() {
     // Track initial page view
     trackPageView(window.location.pathname + window.location.search);
     
-    // Track page views on URL changes
+    // Track page views on URL changes (manually since we're not using router)
     const handleLocationChange = () => {
       trackPageView(window.location.pathname + window.location.search);
     };
     
-    window.addEventListener('popstate', handleLocationChange);
+    // Listen for hash changes (for anchor navigation within the page)
+    window.addEventListener('hashchange', handleLocationChange);
     
+    // Cleanup listener on unmount
     return () => {
-      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
     };
   }, []);
   
   return (
-    <Router>
+    <>
       <GlobalStyle />
       <AppContainer>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        </Routes>
-        <Suspense fallback={<LoadingFallback />}>
+        <HeroSection />
+        <Suspense fallback={LoadingFallback()}>
+          <AboutUs />
+          <ArchitecturalExcellence />
+          
+          <div id="location">
+            <Location />
+          </div>
+          
+          <div id="amenities">
+            <Amenities />
+          </div>
+
+          <div id="gallery">
+            <BuildingGallery />
+          </div>
+          
+          <div id="inquiry">
+            <InquiryForm />
+          </div>
           <Footer />
         </Suspense>
         
@@ -832,7 +816,7 @@ function App() {
 
         </StickyIconsContainer>
       </AppContainer>
-    </Router>
+    </>
   );
 }
 
