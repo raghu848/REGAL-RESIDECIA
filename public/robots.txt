@@ -2,7 +2,26 @@
 User-agent: *
 Allow: /
 
-# Sitemaps
+# Explicitly allow AI Search Engines & Bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Sitemaps & LLM standard files
 Sitemap: https://www.regalresidenciamohali.com/sitemap.xml
 
 # Primary domain
@@ -12,7 +31,4 @@ Host: https://www.regalresidenciamohali.com
 Disallow: /admin/
 Disallow: /api/
 Disallow: /private/
-
-# File types - Allow PDFs for SEO
-# Disallow: /*.pdf$
 Disallow: /*.zip$

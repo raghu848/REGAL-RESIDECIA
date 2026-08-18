@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import Luxury3DGallery from './Luxury3DGallery';
 
 const GallerySection = styled.section`
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap');
   padding: 4rem 2rem;
   background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
   position: relative;

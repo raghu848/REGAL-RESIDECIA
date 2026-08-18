@@ -27,8 +27,6 @@ const LoadingFallback = () => <div style={{ minHeight: '200px' }} />;
 
 // Global Styles for Dark Theme
 const GlobalStyle = createGlobalStyle`
-  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-  
   :root {
     --primary-dark: #0a0a0a;
     --secondary-dark: #121212;

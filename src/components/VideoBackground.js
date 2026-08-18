@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 const VideoContainer = styled.div`
@@ -10,6 +10,7 @@ const VideoContainer = styled.div`
   z-index: 0;
   overflow: hidden;
   pointer-events: none;
+  background: #0a0a0a;
   
   @media (max-width: 767px) {
     height: 100%;
@@ -29,24 +30,11 @@ const BackgroundVideo = styled.video`
   opacity: 1;
   pointer-events: none;
   
-  &.desktop-video {
-    display: block;
-    
-    @media (max-width: 767px) {
-      display: none;
-    }
-  }
-  
-  &.mobile-video {
-    display: none;
-    
-    @media (max-width: 767px) {
-      display: block;
-      width: 100vw;
-      min-height: 100vh;
-      height: auto;
-      object-fit: cover;
-    }
+  @media (max-width: 767px) {
+    width: 100vw;
+    min-height: 100vh;
+    height: auto;
+    object-fit: cover;
   }
   
   /* Hide all native video controls */
@@ -100,84 +88,91 @@ const BackgroundVideo = styled.video`
 `;
 
 const VideoBackground = () => {
-  const videoRef = useRef(null);
-  const mobileVideoRef = useRef(null);
+  const activeVideoRef = useRef(null);
+  const [isMobile, setIsMobile] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth <= 767;
+    }
+    return false;
+  });
 
   useEffect(() => {
-    const desktopVideo = videoRef.current;
-    const mobileVideo = mobileVideoRef.current;
-    
-    // Function to handle video playback
-    const playVideo = (video) => {
-      if (!video) return;
-      
-      // Set video attributes for better autoplay support
-      video.setAttribute('playsinline', '');
-      video.setAttribute('webkit-playsinline', '');
-      
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          // Autoplay prevented - will play on user interaction
-          console.log('Video autoplay prevented, waiting for user interaction:', error);
-          const handleInteraction = () => {
-            video.play().catch((err) => {
-              console.error('Failed to play video after interaction:', err);
-            });
-          };
-          // Listen for any user interaction
-          document.addEventListener('click', handleInteraction, { once: true });
-          document.addEventListener('touchstart', handleInteraction, { once: true });
-          document.addEventListener('keydown', handleInteraction, { once: true });
-        });
+    const handleResize = () => {
+      const mobile = window.innerWidth <= 767;
+      if (mobile !== isMobile) {
+        setIsMobile(mobile);
       }
     };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobile]);
+
+  useEffect(() => {
+    const video = activeVideoRef.current;
+    if (!video) return;
     
-    // Play both videos
-    playVideo(desktopVideo);
-    playVideo(mobileVideo);
-  }, []);
+    // Set video attributes for better autoplay support
+    video.setAttribute('playsinline', '');
+    video.setAttribute('webkit-playsinline', '');
+    
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.catch((error) => {
+        console.log('Video autoplay prevented, waiting for user interaction:', error);
+        const handleInteraction = () => {
+          video.play().catch((err) => {
+            console.error('Failed to play video after interaction:', err);
+          });
+        };
+        document.addEventListener('click', handleInteraction, { once: true });
+        document.addEventListener('touchstart', handleInteraction, { once: true });
+        document.addEventListener('keydown', handleInteraction, { once: true });
+      });
+    }
+  }, [isMobile]);
 
   return (
     <VideoContainer>
-      {/* Desktop Video */}
-      <BackgroundVideo
-        ref={videoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        controls={false}
-        controlsList="nodownload nofullscreen noremoteplayback"
-        disablePictureInPicture
-        disableRemotePlayback
-        className="desktop-video"
-      >
-        <source src="/videos/hero-background.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </BackgroundVideo>
-      
-      {/* Mobile Video */}
-      <BackgroundVideo
-        ref={mobileVideoRef}
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        controls={false}
-        controlsList="nodownload nofullscreen noremoteplayback"
-        disablePictureInPicture
-        disableRemotePlayback
-        className="mobile-video"
-      >
-        <source src="/videos/Regal_Website_Video_vertical.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </BackgroundVideo>
+      {isMobile ? (
+        <BackgroundVideo
+          key="mobile-video"
+          ref={activeVideoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          controls={false}
+          controlsList="nodownload nofullscreen noremoteplayback"
+          disablePictureInPicture
+          disableRemotePlayback
+          poster="/images/render/hero-render.jpg"
+        >
+          <source src="/videos/Regal_Website_Video_vertical.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </BackgroundVideo>
+      ) : (
+        <BackgroundVideo
+          key="desktop-video"
+          ref={activeVideoRef}
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="metadata"
+          controls={false}
+          controlsList="nodownload nofullscreen noremoteplayback"
+          disablePictureInPicture
+          disableRemotePlayback
+          poster="/images/render/hero-render.jpg"
+        >
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </BackgroundVideo>
+      )}
     </VideoContainer>
   );
 };
 
 export default VideoBackground;
-
