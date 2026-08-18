@@ -1,7 +1,7 @@
 // Use gtag.js (already loaded in index.html) instead of react-ga4
 // This prevents double initialization and works in all environments
 
-const TRACKING_ID = 'G-81FCQ3MSYD'; // Same ID as in index.html
+const TRACKING_ID = 'G-75D27BTJKD'; // Same ID as in index.html
 
 // Wait for gtag to be available (since script loads async)
 const waitForGtag = (callback, maxAttempts = 50) => {
