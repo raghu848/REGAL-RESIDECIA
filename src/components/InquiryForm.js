@@ -40,7 +40,7 @@ const FormSection = styled.section`
   @media screen and (min-resolution: 144dpi) and (max-width: 768px) {
     padding: 3.4rem 0;
   }
-  background: url('/images/render/from_bg.jpg');
+  background: url('/images/render/from_bg.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

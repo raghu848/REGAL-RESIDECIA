@@ -561,49 +561,49 @@ const PlanCard = styled(motion.div)`
 // Building Gallery Items
 const buildingGalleryItems = [
   // Building images
-  // { id: 4, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.jpg", title: "Tower A Elevation" },
-  // { id: 5, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.jpg", title: "Clubhouse & Pool Area" },
-  // { id: 6, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.jpg", title: "Main Entrance Foyer" },
-  // { id: 7, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.jpg", title: "Garden Courtyard" },
-  // { id: 8, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.jpg", title: "Luxury Apartment Interior" },
-  // { id: 9, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.jpg", title: "Sky Lounge & Bar" },
-  // { id: 10, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.jpg", title: "Fitness Center" },
-  // { id: 11, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.jpg", title: "Spa & Wellness Area" },
-  // { id: 12, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.jpg", title: "Conference Room" },
-  // { id: 13, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.jpg", title: "Children's Play Area" },
-  // { id: 14, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.jpg", title: "Parking Area" },
-  // { id: 15, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.jpg", title: "Landscaped Gardens" },
-  // { id: 16, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.jpg", title: "Swimming Pool & Deck" },
-  // { id: 17, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.jpg", title: "Terrace & Outdoor Seating" },
-  // { id: 18, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.jpg", title: "Elevator Lobby" },
-  // { id: 19, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.jpg", title: "Staircase Design" },
-  // { id: 20, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.jpg", title: "Security & Concierge" },
-  // { id: 21, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.jpg", title: "Service Areas" },
+  // { id: 4, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.webp", title: "Tower A Elevation" },
+  // { id: 5, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.webp", title: "Clubhouse & Pool Area" },
+  // { id: 6, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.webp", title: "Main Entrance Foyer" },
+  // { id: 7, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.webp", title: "Garden Courtyard" },
+  // { id: 8, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.webp", title: "Luxury Apartment Interior" },
+  // { id: 9, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.webp", title: "Sky Lounge & Bar" },
+  // { id: 10, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.webp", title: "Fitness Center" },
+  // { id: 11, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.webp", title: "Spa & Wellness Area" },
+  // { id: 12, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.webp", title: "Conference Room" },
+  // { id: 13, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.webp", title: "Children's Play Area" },
+  // { id: 14, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.webp", title: "Parking Area" },
+  // { id: 15, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.webp", title: "Landscaped Gardens" },
+  // { id: 16, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.webp", title: "Swimming Pool & Deck" },
+  // { id: 17, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.webp", title: "Terrace & Outdoor Seating" },
+  // { id: 18, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.webp", title: "Elevator Lobby" },
+  // { id: 19, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.webp", title: "Staircase Design" },
+  // { id: 20, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.webp", title: "Security & Concierge" },
+  // { id: 21, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.webp", title: "Service Areas" },
   
   // Render images
-  // { id: 101, src: "/images/render/3-100.jpg", title: "Exterior View - Day" },
-  // { id: 102, src: "/images/render/Asset 1-100.jpg", title: "Aerial View - Residential Block" },
-  // { id: 103, src: "/images/render/Asset 2-100.jpg", title: "Night View - Illuminated Facade" },
+  // { id: 101, src: "/images/render/3-100.webp", title: "Exterior View - Day" },
+  // { id: 102, src: "/images/render/Asset 1-100.webp", title: "Aerial View - Residential Block" },
+  // { id: 103, src: "/images/render/Asset 2-100.webp", title: "Night View - Illuminated Facade" },
   
   // Additional luxury items
-  // { id: 301, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.jpg", title: "Luxury Lobby Design" },
-  // { id: 302, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.jpg", title: "Premium Kitchen Setup" },
-  // { id: 303, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.jpg", title: "Master Bedroom View" },
-  // { id: 304, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.jpg", title: "Luxury Bathroom Design" },
-  // { id: 305, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.jpg", title: "Balcony with View" },
-  // { id: 306, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.jpg", title: "Home Office Space" },
-  // { id: 307, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.jpg", title: "Dining Area Elegance" },
-  // { id: 308, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.jpg", title: "Living Room Ambiance" },
-  // { id: 309, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.jpg", title: "Penthouse Terrace" },
-  // { id: 310, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.jpg", title: "Gated Community Entrance" },
-  // { id: 311, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.jpg", title: "Underground Parking" },
-  // { id: 312, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.jpg", title: "Landscaped Water Features" },
-  // { id: 313, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.jpg", title: "Yoga & Meditation Deck" },
-  // { id: 314, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.jpg", title: "Barbecue Pavilion" },
-  // { id: 315, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.jpg", title: "Multipurpose Hall" },
-  // { id: 316, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.jpg", title: "Library & Study" },
-  // { id: 317, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.jpg", title: "Wine Cellar & Tasting Room" },
-  // { id: 318, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.jpg", title: "Private Cinema" }
+  // { id: 301, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-243.webp", title: "Luxury Lobby Design" },
+  // { id: 302, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-251.webp", title: "Premium Kitchen Setup" },
+  // { id: 303, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-258.webp", title: "Master Bedroom View" },
+  // { id: 304, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-260.webp", title: "Luxury Bathroom Design" },
+  // { id: 305, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-266.webp", title: "Balcony with View" },
+  // { id: 306, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-273.webp", title: "Home Office Space" },
+  // { id: 307, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-275.webp", title: "Dining Area Elegance" },
+  // { id: 308, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-281.webp", title: "Living Room Ambiance" },
+  // { id: 309, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-282.webp", title: "Penthouse Terrace" },
+  // { id: 310, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-289.webp", title: "Gated Community Entrance" },
+  // { id: 311, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-290.webp", title: "Underground Parking" },
+  // { id: 312, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-291.webp", title: "Landscaped Water Features" },
+  // { id: 313, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-298.webp", title: "Yoga & Meditation Deck" },
+  // { id: 314, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-299.webp", title: "Barbecue Pavilion" },
+  // { id: 315, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-306.webp", title: "Multipurpose Hall" },
+  // { id: 316, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-308.webp", title: "Library & Study" },
+  // { id: 317, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-314.webp", title: "Wine Cellar & Tasting Room" },
+  // { id: 318, src: "/images/pictures/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-315.webp", title: "Private Cinema" }
 ];
 
 const sitePlansData = [
@@ -611,42 +611,42 @@ const sitePlansData = [
     id: 1,
     title: "Master Site Plan",
     description: "Comprehensive layout showing building placements, road networks, and green spaces. The 13.44-acre project features excellent connectivity with dedicated residential and commercial zones.",
-    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-090.jpg",
+    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-090.webp",
     details: ["13.44 Acres", "8.44 Residential", "5 Commercial", "32 Floors"]
   },
   {
     id: 2,
     title: "Parking Layout",
     description: "Efficiently designed parking system with a total capacity of 1538 cars. Includes both lower ground and ground level parking spaces for residents and visitors.",
-    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-102.jpg",
+    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-102.webp",
     details: ["1538 Cars", "886 Lower Ground", "652 Ground", "24/7 Security"]
   },
   {
     id: 3,
     title: "Landscape Design",
     description: "Thoughtfully planned green spaces featuring landscaped gardens, walking tracks, meditation areas, and recreational zones for a sustainable living environment.",
-    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-110.jpg",
+    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-110.webp",
     details: ["Landscaped Gardens", "Walking Tracks", "Meditation Areas", "Pergola Seating"]
   },
   {
     id: 4,
     title: "Building Orientation",
     description: "Strategically oriented buildings for optimal sunlight, ventilation, and views. Each residential tower is positioned to maximize privacy and minimize obstruction.",
-    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-122.jpg",
+    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-122.webp",
     details: ["Optimal Sunlight", "Cross Ventilation", "Panoramic Views", "Privacy Focus"]
   },
   {
     id: 5,
     title: "Amenities Layout",
     description: "Detailed layout of recreational and leisure facilities including swimming pools, clubhouse, gym, and sports courts. Designed for residents of all ages to enjoy premium amenities.",
-    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-142.jpg",
+    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-142.webp",
     details: ["Swimming Pool", "Clubhouse", "Gym", "Sports Courts"]
   },
   {
     id: 6,
     title: "Infrastructure Plan",
     description: "Comprehensive infrastructure layout showing electrical, water, and sewage systems. Features backup power, water recycling, and smart building technology integration.",
-    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-159.jpg",
+    image: "/images/architech/Screenshot 2024-08-30 at 9.41.53 PM.pdf-image-159.webp",
     details: ["Power Backup", "Water Recycling", "Smart Tech", "Sewage Treatment"]
   }
 ];

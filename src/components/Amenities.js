@@ -102,7 +102,7 @@ Discover a higher standard of living crafted for those who value space, privacy,
           left: 0;
           width: 100%;
           height: 100%;
-          background-image: url('/images/render/Asset 1-100.jpg');
+          background-image: url('/images/render/Asset 1-100.webp');
           background-size: cover;
           background-position: center;
           opacity: 0.15; /* Blurry, less opacity */

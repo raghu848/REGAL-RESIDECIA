@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "regalresidenciamohali.com"
+        }
+      ],
+      "destination": "https://www.regalresidenciamohali.com/:path*",
+      "permanent": true
+    }
+  ]
+}

@@ -852,7 +852,7 @@ const Footer = () => {
           <FooterColumn>
             <LogoContainer style={{ margin: '2rem 0 3rem 0', width: '180px', height: '70px' }}>
               <a href="/" aria-label="Regal Residencia Home">
-                <img src="/images/render/Regalia_Logo_white.png" alt="Regal Residencia Logo" style={{ objectFit: 'contain' }} />
+                <img src="/images/render/Regalia_Logo_white.webp" alt="Regal Residencia Logo" style={{ objectFit: 'contain' }} />
               </a>
             </LogoContainer>
             
@@ -879,8 +879,8 @@ const Footer = () => {
             <div style={{ marginTop: '2rem', textAlign: 'left' }}>
               <p>𝑷𝒓𝒐𝒅𝒖𝒄𝒕 𝒃𝒚</p>
               <img 
-                src="/images/render/GDPL_Logo_white.png" 
-                alt="GDPR Compliance Logo"
+                src="/images/render/GDPL_Logo_white.webp" 
+                alt="GDPL Developer Logo - Gill Developers"
                 style={{ maxWidth: '150px', height: 'auto' }}
               />
             </div>

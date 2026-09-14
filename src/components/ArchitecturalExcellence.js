@@ -226,7 +226,7 @@ const ArchitecturalExcellence = () => {
           
           <div className="image-container">
             <motion.img
-              src="/images/render/Architect_Image.png"
+              src="/images/render/Architect_Image.webp"
               alt="Architect Reza Kabul"
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}

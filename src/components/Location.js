@@ -16,7 +16,7 @@ const LocationSection = styled.section`
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url('/images/render/Location.jpg');
+    background-image: url('/images/render/Location.webp');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

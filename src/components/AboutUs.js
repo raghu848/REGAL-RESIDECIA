@@ -240,7 +240,7 @@ const AboutUs = () => {
               transition={{ duration: 0.8 }}
             >
               <img 
-                src="/images/render/Render_1.png" 
+                src="/images/render/Render_1.webp" 
                 alt="Regal Residencia Development View"
               />
             </ImageContainer>
@@ -252,16 +252,18 @@ const AboutUs = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 style={{
-                  fontSize: '2.6rem',
+                  fontSize: 'clamp(1.6rem, 2.6vw, 2.1rem)',
+                  lineHeight: '1.35',
                   color: 'var(--text-light)',
                   fontWeight: '500',
                   fontFamily: "'Playfair Display', 'Poppins', serif",
-                  letterSpacing: '1px',
-                  // textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
                   margin: '0 0 1.5rem 0'
                 }}
               >
-               <span>A Landmark <br />Destination in Mohali</span>
+               <span>Regal Residencia</span>
+               <br />
+               <span>Luxury 3 &amp; 4 BHK Apartments in Sector 114, Mohali</span>
               </motion.h1>
               
               <motion.p

@@ -147,7 +147,7 @@ const VideoBackground = () => {
           controlsList="nodownload nofullscreen noremoteplayback"
           disablePictureInPicture
           disableRemotePlayback
-          poster="/images/render/hero-render.jpg"
+          poster="/images/render/hero-render.webp"
         >
           <source src="/videos/Regal_Website_Video_vertical.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -165,7 +165,7 @@ const VideoBackground = () => {
           controlsList="nodownload nofullscreen noremoteplayback"
           disablePictureInPicture
           disableRemotePlayback
-          poster="/images/render/hero-render.jpg"
+          poster="/images/render/hero-render.webp"
         >
           <source src="/videos/hero-background.mp4" type="video/mp4" />
           Your browser does not support the video tag.

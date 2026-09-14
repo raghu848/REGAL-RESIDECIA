@@ -14,6 +14,7 @@ const Location = lazy(() => import('./components/Location'));
 const BuildingGallery = lazy(() => import('./components/BuildingGallery'));
 const AboutUs = lazy(() => import('./components/AboutUs'));
 const ArchitecturalExcellence = lazy(() => import('./components/ArchitecturalExcellence'));
+const SEOContentSection = lazy(() => import('./components/SEOContentSection'));
 
 const InquiryForm = lazy(() => import('./components/InquiryForm'));
 const Footer = lazy(() => import('./components/Footer'));
@@ -754,6 +755,7 @@ function App() {
               <Suspense fallback={LoadingFallback()}>
                 <AboutUs />
                 <ArchitecturalExcellence />
+                <SEOContentSection />
                 
                 <div id="location">
                   <Location />

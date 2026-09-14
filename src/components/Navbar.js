@@ -79,7 +79,7 @@ const Navbar = () => {
         <div className="navbar-container">
           <div className="logo-container">
             <a href="/" aria-label="Regal Residencia Home">
-              <img src="/images/render/Regalia_Logo.png" alt="Regal Residencia Logo" style={{ height: '43px', width: 'auto', display: 'block', objectFit: 'contain' }} />
+              <img src="/images/render/Regalia_Logo.webp" alt="Regal Residencia Logo" style={{ height: '43px', width: 'auto', display: 'block', objectFit: 'contain' }} />
             </a>
           </div>
           
@@ -125,7 +125,7 @@ const Navbar = () => {
           <div className="mobile-content">
             <div className="mobile-logo">
               <a href="/">
-                <img src="/images/render/Regalia_Logo.png" alt="Regal Residencia Logo" style={{ height: '43px', width: 'auto', display: 'block', objectFit: 'contain' }} />
+                <img src="/images/render/Regalia_Logo.webp" alt="Regal Residencia Logo" style={{ height: '43px', width: 'auto', display: 'block', objectFit: 'contain' }} />
               </a>
             </div>
             <div className="mobile-nav">
