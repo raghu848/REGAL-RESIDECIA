@@ -1,7 +1,15 @@
-# Google Analytics Implementation for Regal Residencia
+# Analytics & Tracking Implementation for Regal Residencia
 
 ## Overview
-This document outlines the implementation of Google Analytics 4 (GA4) for the Regal Residencia website to provide live insights into user behavior, engagement, and conversion metrics.
+This document outlines the implementation of Google Analytics 4 (GA4) and Meta Pixel (Facebook Pixel) for the Regal Residencia website to provide live insights into user behavior, engagement, and conversion metrics.
+
+## Meta Pixel (Facebook Pixel)
+- **Pixel ID**: `1153464650501962`
+- **Location**: Installed in `public/index.html` within `<head>`
+- **Tracked Events**:
+  - `PageView`: Tracks initial page load and SPA navigation
+  - `Lead`: Triggered automatically on successful inquiry form and popup form submissions
+  - `BrochureDownload`: Triggered when the brochure is downloaded
 
 ## Implemented Tracking Features
 

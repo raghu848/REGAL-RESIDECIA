@@ -39,6 +39,11 @@ const trackPageView = (path) => {
       });
     }
   });
+
+  // Track page view in Meta Pixel
+  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+    window.fbq('track', 'PageView');
+  }
   
   if (process.env.NODE_ENV !== 'production' && !isGtagAvailable()) {
     console.log('Analytics PageView:', { path, title: document.title });
@@ -63,6 +68,11 @@ const trackEvent = (action, category, label, value) => {
 
 const trackFormSubmission = (formName) => {
   trackEvent('form_submit', 'engagement', formName);
+
+  // Track Lead event in Meta Pixel
+  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+    window.fbq('track', 'Lead', { content_name: formName });
+  }
 };
 
 const trackVideoInteraction = (videoName, action) => {
@@ -71,6 +81,11 @@ const trackVideoInteraction = (videoName, action) => {
 
 const trackDownload = (fileName) => {
   trackEvent('download', 'engagement', fileName);
+
+  // Track brochure download in Meta Pixel
+  if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
+    window.fbq('trackCustom', 'BrochureDownload', { content_name: fileName });
+  }
 };
 
 export {
